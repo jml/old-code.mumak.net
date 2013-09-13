@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Shot, crop and share - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="A thing I do all the time is:take a screenshot of a windowopen up GIMPcrop to the relevant partsshare the screenshot as a bug or email attachmentThe &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2010/04/shot-crop-and-share.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Shot, crop and share</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-21T00:00:00+01:00" pubdate data-updated="true">2010-04-21 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+A thing I do all the time is:<div><ul><li>take a screenshot of a window</li><li>open up GIMP</li><li>crop to the relevant parts</li><li>share the screenshot as a bug or email attachment</li></ul><div>The &#8220;take a screenshot&#8221; step is actually:</div></div><div><ul><li>Fire up GNOME Do</li><li>Type &#8220;s c r RET&#8221;</li><li>Select &#8220;Grab the current window&#8221;</li><li>Click &#8220;Take screenshot&#8221;</li></ul><div>Is there a faster way of doing this? I particularly want to speed up the cropping and grabbing steps.</div></div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>mithrandi<span class='comment-date'> on 2010-05-16 04:58</span></div>
+<div class='content'>
+For something more lightweight, you can use `import` from ImageMagick. &quot;import screenshot.png&quot; selects the file type based on the extension, and gives you a cursor with which to click and drag to capture a region of the screen.</div>
+</div>
+<div class='comment'>
+<div class='author'>Calvin Spealman<span class='comment-date'> on 2010-04-25 14:55</span></div>
+<div class='content'>
+KSnapshot has a Region mode which takes a snapshot, immediately showing it fullscreen, and lets you crop it right there.</div>
+</div>
+<div class='comment'>
+<div class='author'>jkakar<span class='comment-date'> on 2010-04-24 12:49</span></div>
+<div class='content'>
++1 for Shutter.  The combination of &quot;Selection&quot; which allows you to draw a box around what you want to capture and &quot;Export&quot; which uploads the taken image to a publicly accessible image server are unbeatable.</div>
+</div>
+<div class='comment'>
+<div class='author'>mniess<span class='comment-date'> on 2010-04-22 13:59</span></div>
+<div class='content'>
+If you have compiz enabled just use the screenshot plugin right away. Super+click&#39;n&#39;drag to take the shot.</div>
+</div>
+<div class='comment'>
+<div class='author'>blockcipher<span class='comment-date'> on 2010-04-22 13:10</span></div>
+<div class='content'>
+The Gimp itself can take screen shots.</div>
+</div>
+<div class='comment'>
+<div class='author'>Serge van Ginderachter<span class='comment-date'> on 2010-04-21 16:00</span></div>
+<div class='content'>
+I have a script (adn a Gnome Panel Launcher pointing to it) wich executes this:<br /><br />cd ~/grabs &amp;&amp; scrot -s %Y%m%d%H%M%S.png<br /><br />- Fire the script = Clik the icon<br />- draw a rectangular on screen of the part you want to &quot;shot&quot;<br />- upload it to your bugtracker easily by having a nautilus bookmark pointing to ~/grabs</div>
+</div>
+<div class='comment'>
+<div class='author'>d0od<span class='comment-date'> on 2010-04-21 15:26</span></div>
+<div class='content'>
+Shutter, surely? I leave it open all the time. You can even set print-screen to invoke it (including just taking an area selection)<br /><br />It even has a handy &#39;redo&#39; button so you can take a snapshot of the same area/window/menu/tooltip over and over&#8230; <br /><br />http://shutter-project.org/</div>
+</div>
+<div class='comment'>
+<div class='author'>zpletan<span class='comment-date'> on 2010-04-21 14:45</span></div>
+<div class='content'>
+Use your take screenshot steps, but use &quot;Select area to grab&quot; instead of &quot;Grab the current window&quot;.</div>
+</div>
+<div class='comment'>
+<div class='author'>Josh Blount<span class='comment-date'> on 2010-04-21 14:40</span></div>
+<div class='content'>
+My steps look like this: <br /><br />1. Invoke gnome-do and type &#39;take&#39;<br />2. Down arrow twice, tab three times, enter (this selects &#39;select area to grab&#39; and completes the screenshot dialog)<br />3. Left click and drag to select area for screenshot<br />4. Name file / save somewhere in the dialog.</div>
+</div>
+<div class='comment'>
+<div class='author'>Aurélien Naldi<span class='comment-date'> on 2010-04-21 14:13</span></div>
+<div class='content'>
+scrot is a great command-line tool for such use.<br />In particular, scrot -s allows to capture a full window by clicking on it or a zone if you move before releasing the button.<br />You can easilly make a small script to launch scrot with this option and open the resulting file in a viewer. It can still be launched using gnome-do if the script is in your $PATH :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Thomas Hervé<span class='comment-date'> on 2010-04-21 14:09</span></div>
+<div class='content'>
+If your windows happens to be Firefox, there are some handy extensions to do that.</div>
+</div>
+<div class='comment'>
+<div class='author'>Guilherme Salgado<span class='comment-date'> on 2010-04-21 13:37</span></div>
+<div class='content'>
+Alt+PrtScn takes a screenshot of the focused window</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-21T00:00:00+01:00" pubdate data-updated="true">2010-04-21 Wednesday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2010/04/shot-crop-and-share.html" data-via="mumak" data-counturl="http://code.mumak.net/2010/04/shot-crop-and-share.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/04/dude-abides.html" title="Previous Post: The Dude Abides">&laquo; The Dude Abides</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/04/accelerate.html" title="Next Post: Accelerate">Accelerate &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

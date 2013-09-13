@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>launchpadlib gotchas - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="I&#8217;ve shown you how to get started with launchpadlib and have shown a slightly more complex launchpadlib script.Before I cry The power is yours &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2010/03/launchpadlib-gotchas.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">launchpadlib gotchas</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-12T00:00:00+00:00" pubdate data-updated="true">2010-03-12 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+I&#8217;ve shown you how to <a href="http://code.mumak.net/2010/03/get-started-with-launchpadlib.html">get started with launchpadlib</a> and have shown a <a href="http://code.mumak.net/2010/03/launchpadlib-powerup.html">slightly more complex launchpadlib script</a>.<br /><br />Before I cry <q>The power is yours!</q> and return to my home within the earth, I&#8217;m going to warn you about the things that can trip you up when using launchpadlib.<br /><h3>Bugs</h3><a href="https://bugs.launchpad.net/launchpadlib/">launchpadlib</a> has bugs. There are also bugs in <a href="https://bugs.launchpad.net/lazr.restful">lazr.restful</a> and <a href="https://bugs.launchpad.net/lazr.restfulclient">lazr.restfulclient</a> – two libraries that are core to launchpadlib&#8217;s behaviour.<div><br /></div><div>Welcome to software engineering.<br /><h3>Documentation</h3>It&#8217;s <a href="https://help.launchpad.net/API">on the wiki</a>, and it&#8217;s good, but it could always be better. There&#8217;s a page of <a href="https://help.launchpad.net/API/Examples"> as well as a </a><a href="https://help.launchpad.net/API/launchpadlib">guide on launchpadlib</a>.<br /><br />The <a href="https://launchpad.net/+apidoc/">reference documentation</a> isn&#8217;t written for Python programmers. It&#8217;s written for REST programmers. Actually, it&#8217;s not written at all but rather auto-generated from our source code. Sometimes this can be  confusing, and I frequently find myself consulting the <a href="http://bazaar.launchpad.net/~launchpad-pqm/launchpad/db-devel/files">Launchpad source code</a> to get things done with the API.<br /><h3>Error messages</h3>I&#8217;m told this has got better with recent releases, but often when you get an error in launchpadlib, it looks like an HTTP error and you have very little help on how to  debug it. Unfortunately, I don&#8217;t have an example ready.<br /><br />If you come across an error like this, file a bug and head straight to #launchpad-dev on freenode to get help.<br /><h3>Potato programming</h3>It&#8217;s really easy to write code with launchpadlib that does this:<pre>  for thing in bunch_of_things:<br />    thing.do_something_on_launchpad()<br /></pre>Code like this is really slow. It will do one round-trip per <q>thing</q>, which can be quite expensive. Twisted folks sometimes call this <q><a href="http://divmod.org/trac/wiki/PotatoProgramming">potato programming</a></q>.<br /><h3>Exposure</h3>Not all of the code within Launchpad is exposed through the API. We have to expose things manually and we haven&#8217;t done it all yet. Sorry.<br /><br />If you come across something that you want, then please <a href="https://bugs.launchpad.net/launchpad/+filebug">file a bug</a> and tag it with <q>api</q>.<br /><br />In general, exposing something of the API is really easy or almost impossible. If the thing you want falls into the first category, you can probably patch Launchpad yourself.<br /><h3>Testing</h3>Testing launchpadlib apps is hard. You do not want your unit tests to run against launchpad.net and running your own instance of Launchpad simply to run unit tests is masochistically stupid.<br /><br />I think the situation here has improved recently too, but I haven&#8217;t heard much about it or explored it myself.<br /><h3>Conclusion</h3>There you have it, all of the gotchas for writing code with launchpadlib. As you can see, it&#8217;s not really any worse than writing for any Python library – I&#8217;m just being up-front with you because I like you.<br /><br />If any of these gotchas no longer apply, please correct me and I will shout your good news from the rooftops.<br /><br />Until then, happy hacking.<br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>mbp<span class='comment-date'> on 2010-03-17 23:39</span></div>
+<div class='content'>
+What a nice post.<br /><br />What should one do to avoid potato programming?<br /><br />The best option for testing seems to be to run your app against staging, which is a real Launchpad instance with a separate expendable database where you can change whatever you like.<br /><br />It&#39;s worth knowing about  James&#39;s tip in :<br /><br />httplib2.debuglevel = 1<br /><br />which will show you a bit of what&#39;s happening on the network.</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-12T00:00:00+00:00" pubdate data-updated="true">2010-03-12 Friday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2010/03/launchpadlib-gotchas.html" data-via="mumak" data-counturl="http://code.mumak.net/2010/03/launchpadlib-gotchas.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/03/have-you-tried-lptools.html" title="Previous Post: Have you tried lptools?">&laquo; Have you tried lptools?</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/visualizing-yak-shaving.html" title="Next Post: Visualizing yak-shaving">Visualizing yak-shaving &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

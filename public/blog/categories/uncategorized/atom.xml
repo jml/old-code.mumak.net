@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | Mere Code]]></title>
+  <link href="http://code.mumak.net/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="http://code.mumak.net/"/>
+  <updated>2013-09-13T22:56:47+01:00</updated>
+  <id>http://code.mumak.net/</id>
+  <author>
+    <name><![CDATA[Jonathan Lange]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Somebody Do This Please]]></title>
+    <link href="http://code.mumak.net/2008/07/somebody-do-this-please_9690.html"/>
+    <updated>2008-07-03T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2008/07/somebody-do-this-please_9690</id>
+    <content type="html"><![CDATA[<div class='post'>
+ &lt;jml&gt; What's the difference between <a href="http://gobby.0x539.de/trac/">Gobby</a> and a <a href="http://moinmo.in/" title="Moin Moin">wiki</a>?<br />&lt;mwh&gt; NAT</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GMail feature request]]></title>
+    <link href="http://code.mumak.net/2008/07/gmail-feature-request.html"/>
+    <updated>2008-07-01T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2008/07/gmail-feature-request</id>
+    <content type="html"><![CDATA[<div class='post'>
+First, where should I make these requests?<br /><br />Second, I'd like to be able to open my GMail without seeing all the new mail in my inbox. Very often, I open up GMail just to look up some fact that I've forgotten, or to put a date to a particular event. Seeing new mail and an unempty inbox distracts me, leading me down a rabbit hole of processing.<br /><br />I guess a GreaseMonkey hack wouldn't be <em>too</em> hard.</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2008]]></title>
+    <link href="http://code.mumak.net/2008/06/2008.html"/>
+    <updated>2008-06-23T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2008/06/2008</id>
+    <content type="html"><![CDATA[<div class='post'>
+<h1 color="#ff0000"><blink>Firefox 3 is awesome!</blink></h1></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Really Satisfying]]></title>
+    <link href="http://code.mumak.net/2008/06/really-satisfying.html"/>
+    <updated>2008-06-13T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2008/06/really-satisfying</id>
+    <content type="html"><![CDATA[<div class='post'>
+I have just returned from the shops with a Snickers bar. The packet says that one out of every six Snickers bars will instantly win me a free Snickers bar.<br /><br />So, <em>statistically speaking</em>, how many Snickers bars do I have? Show working.</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aren't code reviews great?]]></title>
+    <link href="http://code.mumak.net/2008/06/aren-code-reviews-great.html"/>
+    <updated>2008-06-13T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2008/06/aren-code-reviews-great</id>
+    <content type="html"><![CDATA[<div class='post'>
+Ben Sussman-Collins writes about <a href="http://blog.red-bean.com/sussman/?p=96">programmer insecurity</a> and how a lot of programmers dread having others see their code.<br /><br />Some of the <a href="http://jcalderone.livejournal.com">best</a> <a href="http://robertcollins.net">programmers</a> <a href="http://radix.twistedmatrix.com">I've</a> <a href="http://sourcefrog.net">worked</a> <a href="http://glyph.twistedmatrix.com">with</a> <a href="http://python.net/crew/mwh/">are</a> in love with code reviews, and all great writers have editors. (The "linked list" is in no way exhaustive.)  Personally, I see reviews as being a great opportunity to learn.<br /><br />Sussman-Collins also writes about how distributed version control can exacerbate the "isolated genius" problem by shielding ones code from the public eye. This is definitely a big potential drawback of DVCS, but one that's largely mitigated by a culture of short-lived branches and <a href="https://code.launchpad.net">an easy-to-use public registry of all branches for a project</a>.</div>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Command line apps - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="Back in the day, I used to want to use twisted.python.usage for all of my command-line apps. It&#8217;s a fairly nice API &amp; a good way of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2009/10/command-line-apps.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Command line apps</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-15T00:00:00+01:00" pubdate data-updated="true">2009-10-15 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+Back in the day, I used to want to use <a href="http://twistedmatrix.com/projects/core/documentation/howto/options.html">twisted.python.usage</a> for all of my command-line apps. It&#8217;s a fairly nice <a href="http://twistedmatrix.com/documents/8.2.0/api/twisted.python.usage.html">API</a> &amp; a good way of writing code.<br /><div><br /></div><div>Since I started writing Bazaar plugins though, I&#8217;ve fallen in love with Bazaar&#8217;s command interface. <a href="https://code.edge.launchpad.net/~jkakar">Jamu</a> has too, so he wrote <a href="https://edge.launchpad.net/commandant">Commandant</a>. I don&#8217;t really understand it though, which is mostly for lack of trying.</div><div><br /></div><div>Michael turned our internal EC2-using testing tool into a bzr-a-like app <a href="http://bazaar.launchpad.net/~launchpad-pqm/launchpad/stable/annotate/head:/lib/devscripts/ec2test/builtins.py">using the Bazaar APIs</a>. There&#8217;s a bit of duplication, but it works pretty well.</div><div><br /></div><div>The Bazaar developers are aware that their command-line interface code rocks and that it&#8217;s too closely bound to Bazaar. I&#8217;m not sure whether anyone has filed bugs about it or not, but here&#8217;s what I actually want:</div><div><ul><li>The subcommand interface, e.g. &#8220;bzr foo&#8221;</li><li>Option parsing</li><li>Help</li><li>Command aliasing</li><li>Error handling</li><li>Progress display</li><li>Verbosity control&nbsp;</li><li>Logging</li><li>Debug helpers (e.g. The way bzr handles Ctrl-\)</li></ul><div>There&#8217;s also a bunch of cool stuff in Bazaar that&#8217;s useful for a lot of applications, command-line or not.</div><div><ul><li>Registries</li><li>Transports</li><li>Hooks</li><li>Configuration files</li><li>Oh yeah, <b>plugins</b>. (How could I have forgotten this?)</li></ul><div>Sometimes I wish projects like Bazaar and Twisted split this sort of stuff out into separate packages. That would probably change the way the packages are maintained, and I don&#8217;t know whether it would be for better or for worse.</div><div><br /></div><div>Sadly, no moral or action for this post. Just stuff that&#8217;s been on my mind that I wanted to write down and publish. I&#8217;d very much welcome input.<br /><br /><b>Update: </b>Was rewriting this post, then realized that, umm, well, it was a rewrite.</div></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-11-02 14:21</span></div>
+<div class='content'>
+Thanks bignose, I hadn&#39;t heard of that one. I&#39;ll take a look at it.<br /><br />I agree that a progress bar is separate from a command-line parser, but it&#39;s not separate from a command-line app toolkit. I could have made my point better, but what I meant is that Bazaar has a great command-line app toolkit begging to be separated from the dvcs bits.</div>
+</div>
+<div class='comment'>
+<div class='author'>bignose<span class='comment-date'> on 2009-10-31 08:57</span></div>
+<div class='content'>
+Most of the features you list are available with the popular <a href="http://pypi.python.org/pypi/argparse" rel="nofollow">argparse</a> library.<br /><br />As for “progress bar”, I don&#39;t think that belongs much in a command-line parser library; a separate facility for progress bar output seems more suitable.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-10-17 14:43</span></div>
+<div class='content'>
+Dammit. I wrote a reply which then got lost.<br /><br />Here it is again, from memory.<br /><br />Jamu, as I said, I&#39;ve only ever had a fairly shallow look at Commandant. Here are a few things from skimming the README:<br /><br /> * I don&#39;t want to have to use shell aliases to have my program be called by its proper name.<br /><br /> * I dislike the idea of putting files in a directory to get commands. I&#39;d much rather an explicit registry.<br /><br /> * I don&#39;t want the word &quot;Commandant&quot; appearing in the output of my program.<br /><br />Maybe what all of this means is that I was looking for a library, and the README makes it look more like a framework. This is all rather shallow, of course, since I still haven&#39;t actually tried to use it in anger.<br /><br />Hope this helps.<br /><br />jml</div>
+</div>
+<div class='comment'>
+<div class='author'>Jamu Kakar<span class='comment-date'> on 2009-10-16 03:16</span></div>
+<div class='content'>
+I want to add support to Commandant for command aliasing (which implies some kind of configuration file handling), progress display and plugins.  I&#39;m not sure what you mean by &#39;error handling&#39;, but at present Commandant displays str(exception) when an exception is raised by a command.<br /><br />If you have any advice on how to make it easier to figure out what Commandant is for, I&#39;d love to hear it.  Also, thanks for publicizing Commandant!</div>
+</div>
+<div class='comment'>
+<div class='author'>Mary<span class='comment-date'> on 2009-10-15 21:13</span></div>
+<div class='content'>
+This seems like the kind of thing a bounty would be good for, actually.<br /><br />I&#39;m generally pretty sceptical of bounties: &quot;here&#39;s $200 to do $3000 worth of software development, oh, and we&#39;ll haggle over standards just as much as we would if we were paying $3000.&quot; But this sort of task strikes me as fairly well defined, unlikely to blow out significantly in estimates, a bit low priority and unexciting for core volunteers, potentially high impact in terms of users.</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-15T00:00:00+01:00" pubdate data-updated="true">2009-10-15 Thursday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2009/10/command-line-apps.html" data-via="mumak" data-counturl="http://code.mumak.net/2009/10/command-line-apps.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/10/launchpad-status-now-on-identica.html" title="Previous Post: Launchpad status now on identi.ca">&laquo; Launchpad status now on identi.ca</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/10/launchpad-extensions.html" title="Next Post: Launchpad extensions">Launchpad extensions &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

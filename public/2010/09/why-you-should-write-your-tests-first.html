@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Why you should write your tests first - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="We&#8217;re all agreed that any Python code that&#8217;s even a little serious needs unit tests, right? However, sometimes we end up writing our &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Why you should write your tests first</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-07T00:00:00+01:00" pubdate data-updated="true">2010-09-07 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+We&#8217;re all agreed that any Python code that&#8217;s even a little serious needs unit tests, right? However, sometimes we end up writing our tests after we&#8217;ve written our code rather than doing test-driven development, what <a href="http://curtis.hovey.name/">Curtis</a> calls &#8220;code and cover&#8221;. That&#8217;s bad. Here&#8217;s why.<br /><ol><li>It&#8217;s dull. Really dull.</li><li>You find bugs, but it&#8217;s somehow more frustrating. Perhaps because you thought your code was correct already.</li><li>The code is probably not written for testability, which means you have to mix refactoring up with verifying behaviour. Messy &amp; perilous.</li><li>Alternatively, you write tests with a <a href="http://martinfowler.com/articles/mocksArentStubs.html">lot of mocks</a>. Not bad in itself, but risky.</li><li>It&#8217;s much harder to get full coverage.</li><li>You write tests for things that you don&#8217;t care about, just to exercise a particular code path. This makes the tests more <a href="http://xunitpatterns.com/Fragile%20Test.html">fragile</a>.</li><li>You never really know when you are finished.</li></ol><div>Are you a TDDer or a code-and-cover person? Why do you prefer it that way?</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Kevin H<span class='comment-date'> on 2010-09-22 23:46</span></div>
+<div class='content'>
+I tend to sketch out a minimal &quot;spike solution&quot;, then write some tests for it, and then use TDD to add functionality and make sure corner cases get handled.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-09-14 14:29</span></div>
+<div class='content'>
+Thanks for the comments everyone.<br /><br />Julian, if by prototype you mean &quot;proof of concept&quot;, then I also often don&#39;t do that TDD. What tends to happen with those is that the prototype <i>becomes</i> the tests. (After all, how did I know it worked?).<br /><br /><br />Glyph, I would love to write up a more detailed version of this post. It&#39;s unlikely I&#39;ll have the time.<br /><br />A thing that can help with untested mocks &amp; stubs is &quot;interface verification tests&quot;: one set of tests that runs against the real thing and against a more easily testable thing.</div>
+</div>
+<div class='comment'>
+<div class='author'>jkakar<span class='comment-date'> on 2010-09-09 03:53</span></div>
+<div class='content'>
+Whether you do TDD or code-and-cover it&#39;s very important to make sure your test fails when the code you think it is testing is broken (or gone).  Doing TDD ensures this fail-when-broken check happens for each test.  This validation can be performed with code-and-cover, but it is much more tedious.<br /><br />I prefer TDD but use code-and-cover when I really don&#39;t understand what I need.  In that case, the code-and-cover I do is to (1) spike until I know what I want and then (2) comment out my code and TDD until it&#39;s all uncommented and covered properly.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2010-09-08 21:19</span></div>
+<div class='content'>
+&#8230; and another thing.<br /><br />There is one case where not writing tests first is actually a better idea, I think.<br /><br />If you have some code with a lot of dependencies and no test support for those dependencies (where &quot;test support&quot; means mocks, fakes, stubs, in-memory implementations, or what-have-you), sometimes TDD means that you have to start off by writing a largeish pile of unmaintainable one-off junk just to stub out enough to get a simple test running.<br /><br />I go back and forth on this, but I am coming to be of the opinion that having big piles of unmaintainable test stubs <em>can</em> be a worse problem than having poor coverage.  The stubs and functionality and interfaces can diverge from the &quot;real&quot; implementations, and inevitably you end up having to maintain a couple dozen fake implementations of the not-really-test-supported interfaces, each of which has its own quirks.  This can lead to lots of false failures, which leads to decreased trust in the test suite, which is of course bad.<br /><br />If you&#39;re adding functionality to a system, you can usually manage this problem by implementing the new functionality itself in a corner, with only the dependencies that it really needs, and keep the test maintenance burden sane.  Rather than try to make sure that the integration code is properly TDD, the goal is then to just keep the integration code (which glues your shiny new TDD-developed module into the system) as small as possible.<br /><br />This is really just a restatement of &quot;minimize untestable code&quot;, but I take issue with that phrasing, because it&#39;s defeatist (especially in a nice, dynamic language like Python). <em>All</em> code is testable: this strategy should be a temporary measure as you work towards developing <em>good</em> test support for your &quot;untestable&quot; interfaces and thinning out unnecessary coupling.  I think that it may be worthwhile to do some planning and architecture around your test development as well as your main body of code.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2010-09-08 20:57</span></div>
+<div class='content'>
+This seems like it could use a little expanding; it seems to be written for an audience that mostly understands what you&#39;re talking about already, and will just evoke familiar pangs rather than really educate.  <em>Why</em> is code-and-cover dull?  You write the same tests and code either way, right?  Why is it harder to get full coverage?  You just write your tests and then run your coverage tool, of course.<br /><br />I think that there are a lot of folks out there who do code-and-cover but don&#39;t really know why it&#39;s not as good as TDD.  A more expansive post would benefit them quite a bit.<br /><br />(Of course, <em>I</em> know the answers, as do many of your readers, but I&#39;m too lazy to write a good post in response, so I&#39;m hoping you&#39;ll do it for me ;-)).<br /><br />For my part, I do sometimes have trouble getting tests first, mostly in not-fully-covered code that has a big pile of existing dependencies that don&#39;t have test mocks, and building out even the most trivial test infrastructure would take substantially longer than just fixing a simple bug.  However, when I do get around to fixing it &quot;for real&quot;, I try to avoid the code-and-cover mistake of writing a test that passes first: I cut the whole implementation into another file, write a test, and get it to fail first, then start re-importing the smallest bits I need to get my test passing.  Once I&#39;m in the TDD groove again, I will quite often spot uncovered or buggy chunks of functionality and get them fixed right.<br /><br />The few times I have tried to just write tests for existing code without modifying it so that it will fail, it&#39;s been a complete mess.</div>
+</div>
+<div class='comment'>
+<div class='author'>Julian<span class='comment-date'> on 2010-09-08 15:52</span></div>
+<div class='content'>
+The big exception to the rule for me is a prototype, which then turns into something useful.  There&#39;s no way I am going to write tests up front for a prototype.</div>
+</div>
+<div class='comment'>
+<div class='author'>doxxxicle<span class='comment-date'> on 2010-09-07 15:27</span></div>
+<div class='content'>
+I tend to be a &quot;code &amp; cover&quot; type, mostly because the environments and systems I write for are hard to simulate in a test and I often am not sure what I need to do beforehand or how to do it &#8211; i.e. prototyping work.<br /><br />Not very good excuses, I know.</div>
+</div>
+<div class='comment'>
+<div class='author'>absoludity<span class='comment-date'> on 2010-09-07 14:53</span></div>
+<div class='content'>
+The point that I enjoy the most about writing tests first is that it breaks the task down into a lot of mini-successes: write test, run code to show failure, add functionality, run test, success! For me it makes it a bit more like a game where you&#39;re always trying to reach the next level which is just out of reach.<br /><br />Without writing tests first, it&#39;s more like a long wait until a (potentially) big success, followed by many small failure moments as you start finding bugs.<br /><br />But I agree with Martin&#8230; when I&#39;m unsure about which way to go, <i>sometimes</i> a tracer bullet helps me see how I can test.</div>
+</div>
+<div class='comment'>
+<div class='author'>Martin<span class='comment-date'> on 2010-09-07 12:46</span></div>
+<div class='content'>
+I&#39;ve been flip-flopping a lot on this. I probably do more TDD than not, but there are still scenarios where I just can&#39;t start off with tests. Usually, it&#39;s because I either don&#39;t understand the problem well enough yet, or because the testing infrastructure work needed is pretty big, and I can&#39;t bring myself to spending so much time upfront on it.</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-07T00:00:00+01:00" pubdate data-updated="true">2010-09-07 Tuesday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html" data-via="mumak" data-counturl="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/09/unittest-api-part-4.html" title="Previous Post: unittest API, part 4">&laquo; unittest API, part 4</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/09/back.html" title="Next Post: Back">Back &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

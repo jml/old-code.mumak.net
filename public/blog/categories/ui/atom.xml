@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: UI | Mere Code]]></title>
+  <link href="http://code.mumak.net/blog/categories/ui/atom.xml" rel="self"/>
+  <link href="http://code.mumak.net/"/>
+  <updated>2013-09-13T22:56:47+01:00</updated>
+  <id>http://code.mumak.net/</id>
+  <author>
+    <name><![CDATA[Jonathan Lange]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[User Experience — When Reality Attacks]]></title>
+    <link href="http://code.mumak.net/2008/03/user-experience-when-reality-attacks_12.html"/>
+    <updated>2008-03-12T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2008/03/user-experience-when-reality-attacks_12</id>
+    <content type="html"><![CDATA[<div class='post'>
+I've just got back from a hectic week in London, where members of the Bazaar community got together and thrashed out a bunch of important topics.<br /><br />We talked about "user experience" and how we all want Bazaar to be a joy to use. More than one person said that we have been focusing too much on features and performance instead of user experience. The term was never really pinned down, but it's fair to say that there are things other than convenience and speed that affect how users feel while using Bazaar and that we need to work on those things, once we figure out what they are.<br /><br />I think I might know the name of one of them: <em>errors</em>. Next post: "Notes on error".</div>
+
+]]></content>
+  </entry>
+  
+</feed>

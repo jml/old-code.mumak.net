@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>unittest API, part 2 - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="In part 1 of this humble attempt to document the interfaces and contracts that unittest actually cares about, we talked about TestSuite and TestCase &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2010/07/unittest-api-part-2.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">unittest API, part 2</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-30T00:00:00+01:00" pubdate data-updated="true">2010-07-30 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+In <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html">part 1</a> of this humble attempt to document the interfaces and contracts that unittest actually cares about, we talked about <code>TestSuite</code> and <code>TestCase</code>, how they both implement a common interface that&#8217;s used for running tests, <b><code>ITest</code></b> and how they each implement their own interfaces, <b><code>ITestSuite</code></b> and <b><code>ITestCase</code></b>.<br /><br />Now we&#8217;re moving on to a much more complicated object, <code>TestResult</code>, to see how we can pick apart the ways it interacts with the rest of the system.<br /><br /><b><code>TestResult</code></b><br /><br />A <code>TestResult</code> object is all about dealing with the results of tests, as you might expect. However, it doesn&#8217;t generally represent a <i>single</i> test result. You could say it represents the results of a number of tests, but I don&#8217;t think that&#8217;s terribly helpful.<br /><br />Better to think of a <code>TestResult</code> object as an event handler. A <code>TestResult</code> object receives events from a test run and then does something with them.<br /><br />Just as <code>TestCase</code> has a two-faced nature, presenting one interface to the testing framework and another to test authors, so to <code>TestResult</code> can be thought of has having many interfaces:<br /><ol><li>Its interface to a <code>TestCase</code>. This can be thought of as the <i>test event handling </i>interface</li><li>A <i>result querying</i>&nbsp;interface, normally used by a test runner</li><li>An interface for events that come from the test runner, the <i>runner event handling</i> interface.</li><li>An <i>execution control</i> interface.</li></ol>Note that the <i>result querying</i>&nbsp;interface and the <i>runner event handling</i>&nbsp;interface together make up the interface between the <code>TestResult</code> and test runner.<br /><br />Let&#8217;s start with the <i>test event handling</i> interface. The methods below are the interface between <code>TestCase.run()</code> and <code>TestResult</code>. (I guess <code>TestCase.debug</code> too, but no one cares about it).<br /><dl><dt><code>startTest(test)</code></dt><dd>Called when <code>test</code> commences running. Although not enforced, it&#8217;s impolite to provide any results for <code>test</code> before calling this.</dd><dt><code>stopTest(test)</code></dt><dd>Called when <code>test</code> is completely finished. Although not enforced, it&#8217;s impolite to provide any more results for <code>test</code> after calling this, unless you call <code>startTest(test)</code> again first.</dd><dt><code>addSuccess(test)</code></dt><dd>Called when <code>test</code> has been shown to be successful. The default implementation does nothing.</dd><dt><code>addError(test, err)</code></dt><dd>Called when <code>test</code> raises an unexpected error. <code>err</code> is a tuple such as you might get from <code>sys.exc_info()</code>. Calling this method for the first time must change the result of <code>wasSuccessful()</code>.</dd><dt><code>addFailure(test, err)</code></dt><dd>Called when <code>test</code> has failed one of its assertions. <code>err</code> is a tuple such as you might get from <code>sys.exc_info()</code>.</dd></dl>The above interface is tightly coupled to the implementation of <code>TestCase.run()</code>. In particular, if you wish to add more kinds of results to your testing framework (&#8220;skip&#8221; results are a fairly common addition), then you must change both <code>TestCase.run()</code> and the <code>TestResult</code> interface.<br /><br />If you do something like that, I recommend making sure that your modified <code>TestCase</code> can handle <code>TestResult</code> objects that do not provide the extensions to the interface that you need. One common way of doing this is to have the <code>TestCase</code> fall back to the primitive result types, e.g. &#8220;skip&#8221; might become &#8220;success&#8221; for a <code>TestResult</code> that doesn&#8217;t know what skipping means.<br /><br />Importantly, the interface between <code>TestCase</code> and <code>TestResult</code> has been fattened in Python 2.7.<br /><dl><dt><code>addSkip(test, reason)</code></dt><dd>Called when <code>test</code> is skipped. <code>reason</code> is a string explaining why the test was skipped.</dd><dt><code>addExpectedFailure(test, err)</code></dt><dd>Called when <code>test</code> failed in a way that was expected. <code>err</code> is a tuple such as the one returned by <code>sys.exc_info()</code>.</dd><dt><code>addUnexpectedSuccess(test)</code></dt><dd>Called when <code>test</code> was expected to fail, but didn&#8217;t.</dd></dl>The following interface is a way of learning about test results after they have happened, the <i>result querying</i> interface, and is part of the contract between the test runner and the TestResult.<br /><dl><dt><code>wasSuccessful()</code></dt><dd>If there have been no errors and no failures, return <code>True</code>. Return <code>False</code> otherwise.</dd><dt><code>testsRun</code></dt><dd>An integer that is the number of tests that have been run.</dd><dt><code>errors</code></dt><dd>A list of tuples of <code>(test, error_message)</code> for all of the tests with unexpected errors, where <code>test</code> is an <code>ITestCase</code> and <code>error_message</code> is a string suitable for display to humans, generally containing a traceback.</dd><dt><code>failures</code></dt><dd>A list of tuples of <code>(test, error_message)</code> for all of the failing tests, where <code>test</code> is an <code>ITestCase</code> and <code>error_message</code> is a string suitable for display to humans, generally containing a traceback.</dd> </dl>And of course, Python 2.7 fattens this interface again to have the following:<br /><dl><dt><code>skipped</code></dt><dd>A list of tuples of <code>(test, reason)</code> for all of the skipped tests, where <code>test</code> is an <code>ITestCase</code> and <code>reason</code> is a string suitable for display to humans, generally containing a traceback.</dd><dt><code>expectedFailures</code></dt><dd>A list of tuples of <code>(test, error_message)</code> for all of the tests that were expected to fail and failed in the manner they were expected to, where <code>test</code> is an <code>ITestCase</code> and <code>error_message</code> is a string suitable for display to humans, generally containing a traceback.</dd><dt><code>unexpectedSuccesses</code></dt><dd>A list of all of the tests that unexpectedly succeeded. Members of the list are <code>ITestCase</code>s.</dd></dl>In Python 2.7,&nbsp;<code>TestResult</code>&nbsp;also extended its interface to the test runner beyond simple result querying and into allowing the test runner itself to send two very important events to the <code>TestResult</code>, behold the <i>runner event handling</i> interface:<br /><dl><dt><code>startTestRun()</code></dt><dd><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Called before any tests have been run. It is impolite to provide any test results before calling this.</div></dd><dt><code>stopTestRun()</code></dt><dd><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Called after all the tests have finished running. It is impolite to provide any test results after calling this. A&nbsp;<code>TestResult</code>&nbsp;object is generally not expected to handle any events at all after this method has been called.</div></dd></dl>Some test runners rely on <code>TestResult</code>s to use those events to display the results to the user. These runners frequently do not use the result querying part of the interface.<br /><br />There is one more interface that <code>TestResult</code> implements: the <i>execution control</i> interface:<br /><dl><dt><code>stop()</code></dt><dd>Signal that the execution of further tests should stop now. Sets <code>shouldStop</code> to <code>True</code>.</dd><dt><code>shouldStop</code></dt><dd>If <code>True</code>, then test execution should stop. <code>TestSuite.run()</code> should monitor this value and stop execution if ever it is <code>True</code>.</dd><dt></dt></dl>This interface is mostly used as a way of handling <code>KeyboardInterrupt</code>s cleanly.<br /><br /><b>Summary</b><br /><br />If you want your <code>TestResult</code> object to work with standard Python <code>TestCase</code> objects, or any <code>TestCase</code> objects that try to stick close to the standard, then you must provide the <i>test&nbsp;event handling</i> interface described above. If you are writing your own test framework or test runner, you care about this, because you want to run everyone&#8217;s unit tests.<br /><br />If you want your <code>TestResult</code> object to work with the standard Python test runner before Python 2.7, then you must provide the <i>result querying</i> interface. If you are using the standard Python test runner, you care about this. For Trial or testtools, you must provide the <i>runner event handling</i>&nbsp;interface.&nbsp;For anything else, I&#8217;m afraid you are on your own.<br /><br />Always provide the <i>execution control</i> interface.<br /><br /><b>Comments</b><br /><br />In this documentation, I&#8217;ve been trying to describe the various interfaces without inserting too much of my own opinion about their design. However, I think some commentary might actually help to make things easier to understand.<br /><br />By providing a querying interface for <code>TestResult</code> to be used by a test runner, the original designers of unittest practically insisted that responsibility for displaying the results of a test run be split between two different classes. The <code>TestResult</code> takes care of displaying incremental feedback from the running tests and the test runner takes care of displaying the summary. You can see evidence of this design in Python 2.6&#8217;s unittest.py, where there&#8217;s a hidden <code>_TextTestResult</code> subclass which has extra methods that are called only by a special <code>TextTestRunner</code>.<br /><br />The addition of <code>startTestRun()</code> and <code>stopTestRun()</code> mean that now a <code>TestResult</code> object can be fully in charge of displaying its results. As such, providing a query interface and exposing details like the list of test failures somewhat vestigial. <br /><br />I&#8217;m less happy with this post than the previous one. As such your critique is even more welcome.<br /><br />Still to come: the interface for test authors and just what is a test runner anyway?<br /><br /><b>Update:</b> Remove ambiguity in <code>expectedFailures</code> description (see comments). Thanks Aaron.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Aaron<span class='comment-date'> on 2010-07-30 19:36</span></div>
+<div class='content'>
+In your description of expectedFailures:<br /><i>A list of tuples of (test, error_message) for all of the tests that were expected to fail, where test is an ITestCase and error_message is a string suitable for display to humans, generally containing a traceback.</i><br /><br />There is some ambiguity.  I think you mean that it is a list of tests that failed in the expected way, rather that tests that were expected to fail (whether or not they actually did fail that way).</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-30T00:00:00+01:00" pubdate data-updated="true">2010-07-30 Friday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2010/07/unittest-api-part-2.html" data-via="mumak" data-counturl="http://code.mumak.net/2010/07/unittest-api-part-2.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/07/unittest-api-part-1.html" title="Previous Post: unittest API, part 1">&laquo; unittest API, part 1</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/08/unittest-part-3.html" title="Next Post: unittest, part 3">unittest, part 3 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

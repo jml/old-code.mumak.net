@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A Modest Success - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="Over the last few months, James Westby and I have been working on automatic packaging. I want to talk today not about the thing itself but rather &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2012/11/a-modest-success.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">A Modest Success</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-09T00:00:00+00:00" pubdate data-updated="true">2012-11-09 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+Over the last few months, James Westby and I have been working on automatic packaging. I want to talk today not about the thing itself but rather how we go about making it, because I think that we have got a fairly good process going.  <br /><br />Here&#8217;s what it looks like.<br /><br /><b>Conception</b><br /><b><br /></b>We pull the work that we do from a backlog of ideas and requests. For example, a little while ago, we did some experiments that showed that if we changed the way we mapped libraries to Ubuntu packages, we could get much better results for automatically packaging binary apps. The project to change this ended up in our backlog, and we recently decided to work on it.<br /><br />Before we begin work, we like to have a definition of &#8220;done&#8221;. We also write down why we are doing this, and what our assumptions are. We then break things up into tasks. Maybe I&#8217;ll dig into this another time.<br /><br /><b>Guts</b><br /><b><br /></b>Most of what we do goes in a loop:<br /><br /><ol><li>Make a branch</li><li>Work on it</li><li>Propose for merging</li><li>Code review</li><li>Automated tests-then-land</li><li>Automatically triggered staging deploy</li><li>Manual &#8220;is it deployable&#8221; check</li><li>Request production deployment from webops&nbsp;</li></ol><div>We use Bazaar for version control and we use Launchpad for hosting code and doing code review. Here&#8217;s <a href="https://code.launchpad.net/~jml/pkgme-service/remove-django-fixture/+merge/131424">an example one</a>.</div><div><br /></div><div>Code review is quite often fairly boring. My guess is that one in ten actually provoke interesting changes. Most of our branches make small changes, all of our changes are covered with tests, and we have confidence in our test suite and our ability &amp; willingness to make follow-up improvements. Thus, rather than seeing code review as our last line of defence for ensuring code quality, it&#8217;s an opportunity to learn and to perhaps accelerate the process by spotting problems earlier.</div><div><br /></div><div>Once a merge proposal is approved, magic happens.</div><div><br /></div><div>In this case, &#8220;magic&#8221; is a Jenkins instance that uses tarmac to poll Launchpad to figure out which merge proposal are approved and thus ready to land. &nbsp;It runs our test suite, and if it passes, lands the change. If it fails, it posts the failure to the merge proposal and our IRC channel and marks it as needing more work.<br /><br />It&#8217;s important here that our test suite is fast, that it&#8217;s reliable, and that it gives useful error messages when things fail.</div><div><br /></div><div>When the change is to a dependency, then we run the tests of the things that depend on it with the latest change.</div><div><br /></div><div>After a successful change to trunk, we have a Jenkins job that triggers an automatic deployment to our staging server.</div><div><br /></div><div>All of this takes less than five minutes.</div><div><br /></div><div>Once it&#8217;s on staging, our &#8220;QA&#8221; website lists it as a revision that needs to be manually verified. What we do there isn&#8217;t really QA, but instead making sure that if we roll it out to production, we won&#8217;t break anything. As with code review, we are confident in our ability to fix things later. &nbsp;&nbsp;</div><div><br /></div><div>We tend to do these in batches, as our webops are insanely busy. Once we&#8217;ve got a group of changes that are safe to deploy to production, we ping the webops, who then (I think) run a single command that deploys to production very quickly. Sometimes because of interrupts, it can take twenty minutes to an hour to get someone to do this.</div><div><br /></div><div><b>Completion</b></div><div><br /></div><div>At this stage, we return to our definition of done and check to see if the change actually provides the value we thought.&nbsp;</div><div><br /></div><div>Because automatic packaging is an inherently fuzzy problem, we run a barrage of real world data through the new system to see if the recent changes actually help. This also generates interesting qualitative data that gives us hints on where we might want to work next.</div><div><br /></div><div><b>Principles</b></div><div><b><br /></b></div><div>This is the end result of a lot of work, mostly by James Westby with me cheerleading from the sidelines. We&#8217;ve iterated through it a lot, making things faster and more reliable, generally by going from polling to events, by cutting out unnecessary review steps, and by making visibility improvements for when things are broken.</div><div><br /></div><div>Underlying it all are a few principles that we have found to be either true or useful:</div><div><ul><li>a thing is not done until users are happily using it</li><li>more strongly, a thing is not valuable until users are happily using it, until then it is wasted effort&nbsp;</li><li>we should be able deploy any change in the main code or a dependency within minutes at any time, every time</li><li>all deployments must be from trunk, all revisions of trunk must be tested and known-good</li><li>we can avoid a lot of needless effort by asking ourselves why we are doing what we doing, and by being explicit about our assumptions</li><li>regressions are intolerable, everything else is tolerable, because we can, will and do fix it</li></ul><div>Rather than spend time shaping up this information into a pitch for why doing things our way will bring you fortune and glory, we just want to use this post to do the bare minimum of making what we are doing known more broadly.<br /><br />Do you do something similar? Is there something above that you would like to know more about? Are we making claims that seem a bit far-fetched? Are any of our principles BS? Have you tried working toward goals like these?<br /><br />We would really love to know and to hear from you. It will help us get better. Also,&nbsp;I&#8217;ve deliberately fudged some stuff, so it&#8217;d be great to get called out on that.<br /><br />Thanks to James Westby for reviewing this post. All errors are mine.<br /><br /></div></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-09T00:00:00+00:00" pubdate data-updated="true">2012-11-09 Friday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2012/11/a-modest-success.html" data-via="mumak" data-counturl="http://code.mumak.net/2012/11/a-modest-success.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2012/10/undistract-me-redux.html" title="Previous Post: Undistract me (redux)">&laquo; Undistract me (redux)</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2012/11/whats-wrong-with-orms.html" title="Next Post: What's wrong with ORMs">What's wrong with ORMs &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

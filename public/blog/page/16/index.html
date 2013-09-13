@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="As you might know, Launchpad has a code review system. You might have even given it a try a few months ago when it first came out. We, the Launchpad &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/blog/page/16/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/100-pure-doing.html">100% Pure Doing</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-24T00:00:00+00:00" pubdate data-updated="true">2009-02-24 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+As you might know, <a href="https://help.launchpad.net/Code/Review">Launchpad has a code review system</a>. You might have even given it a try a few months ago when it first came out. We, the Launchpad team, started using it almost right away and to be completely honest with you, we didn&#8217;t like it very much. On the whole we are curmudgeonly engineers who would rather fix bugs or build features than fiddle with a silly website. However, now the much-feted power of <a href="http://www.joelonsoftware.com/articles/fog0000000012.html"><span style="font-weight: bold;">dogfood</span></a> was working for us.<br /><br />We&#8217;ve been improving the code review system for <span style="font-style: italic;">ages</span> now. It&#8217;s<a href="https://bugs.edge.launchpad.net/launchpad-bazaar/+bugs?field.tag=code-review"> not perfect</a>, but is getting better rather quickly. Over the last cycle, it has started to become <span style="font-style: italic;">really good</span>. We&#8217;ve <a href="https://bugs.edge.launchpad.net/launchpad-bazaar/+bugs?field.searchtext=&amp;orderby=-importance&amp;search=Search&amp;field.status%3Alist=FIXCOMMITTED&amp;assignee_option=any&amp;field.assignee=&amp;field.bug_reporter=&amp;field.bug_supervisor=&amp;field.bug_commenter=&amp;field.subscriber=&amp;field.omit_dupes.used=&amp;field.omit_dupes=on&amp;field.has_patch.used=&amp;field.has_cve.used=&amp;field.tag=code-review&amp;field.tags_combinator=ANY">done a lot of things this cycle</a>, I want to focus on <a href="https://bugs.edge.launchpad.net/launchpad-bazaar/+bug/325985">one in particular</a>, since it&#8217;s dear to my heart.<br /><br />On our <a href="https://edge.launchpad.net/">cutting edge servers</a>, and in the next release, the &#8220;active reviews&#8221; page for a project is tailored to you specifically. Instead of just showing you all the reviews, like it used to do, it shows you the following lists:<br /><ul><li>The reviews you <span style="font-style: italic;">must </span>do. That is, the reviews specifically requested of you that you haven&#8217;t done.</li><li>The reviews you <span style="font-style: italic;">can</span> do. Reviews that have been requested of your team that no one else has done yet.</li><li>The reviews you are <span style="font-style: italic;">waiting on</span>. Reviews that you&#8217;ve requested that haven&#8217;t been done yet.<br /></li><li>The reviews you have <span style="font-style: italic;">completed</span>. Reviews you&#8217;ve done that haven&#8217;t been replied to yet.</li><li>Everything else.</li></ul>It&#8217;s the first list that makes me happiest. At last, I have a list of reviews that I can churn through, knowing that I&#8217;m doing the right thing, not having to figure what state it&#8217;s in or make decisions about how important it is. I simply <span style="font-style: italic;">do</span>.<br /><br />The second list is pretty awesome too. If ever I&#8217;m between branches or have a few minutes to spare during a lengthy test run, I have an already-prepared list of ways to make other people happy. That&#8217;s the kind of software I like.<br /><br />And, well, actually, I like the third list too. It&#8217;s great to be able to look at the things you are blocked on and see who you need to hassle. The &#8220;Waiting For&#8221; pattern comes from GTD, and is one of the best things about the system and deserves wider notoriety.<br /><br /><br /><span style="font-size:78%;">(Oh, and just wait for the release announcement!)</span></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/server-reinstalled.html">Server reinstalled</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-21T00:00:00+00:00" pubdate data-updated="true">2009-02-21 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Now running a beautiful instance of Ubuntu 8.04 LTS. Different passwords, no PHP, no Wordpress.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/scheduled-unreliability.html">Scheduled Unreliability</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-21T00:00:00+00:00" pubdate data-updated="true">2009-02-21 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+This blog will be available on and off this weekend as I upgrade the server it&#8217;s on.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/one-bird-two-stones.html">One bird, two stones</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-21T00:00:00+00:00" pubdate data-updated="true">2009-02-21 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a href="http://glyph.twistedmatrix.com/">Glyph</a> thinks that <a href="http://glyph.twistedmatrix.com/2009/02/explaining-why-interfaces-are-great.html">interfaces are great</a>, and he is right (although I haven&#8217;t read the full post, I certainly agree with the title).<br /><br />One of the natural things you can do with interfaces is this: make a new class Bar that delegates all of the properties of IFoo to an instance of class Foo. This is the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">Decorator pattern</a> (not to be confused with Python&#8217;s decorator syntax), and is also the Bird in this parable.<br /><br />We use interfaces a lot in Launchpad, and we need to Decorate classes quite a bit. So, we wrote something to make it easy and open sourced it. It&#8217;s called <a href="https://launchpad.net/lazr.delegates">lazr.delegates</a>. This is Stone One, if you like.<br /><br />Stone Two was actually cast first, and is called <a href="http://twistedmatrix.com/documents/current/api/twisted.python.components.html#proxyForInterface">twisted.python.components.proxyForInterface</a>. It&#8217;s distributed as a part of Twisted, and solves exactly the same problem. For those interested, here&#8217;s the <a href="http://bazaar.launchpad.net/%7Evcs-imports/twisted/main/annotate/head%3A/twisted/python/components.py">Twisted implementation</a> (scroll to line 320ish) and here&#8217;s the <a href="http://bazaar.launchpad.net/%7Elaunchpad-pqm/lazr.delegates/devel/annotate/head%3A/src/lazr/delegates/__init__.py">lazr implementation</a>.<br /><br />Both implementations are fairly simple, and yet it is perhaps a shame that there are two of them. If anyone is at fault, it&#8217;s me, since I knew about proxyForInterface and watched lazr.delegate arrive in the Launchpad tree without even thinking that the two might actually be the same thing.<br /><br />But I wonder, is there a process bug here? Is there something Launchpad, Twisted, Zope or Guido could have done to avoid this?</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Michael Hudson<span class='comment-date'> on 2009-02-22 23:56</span></div>
+<div class='content'>
+I guess Twisted isn&#8217;t the obvious place to look for interface utilities, or at least, it&#8217;s not obvious to many people.<BR/><BR/>I guess you can relate this to the difficulty of spinning out useful things into separately distributed (maintained, released, installed, &#8230;) packages.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/neat-trick.html">Neat trick</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-21T00:00:00+00:00" pubdate data-updated="true">2009-02-21 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+In Argentina I hacked up a little command for the &#8216;launchpad&#8217; Bazaar plugin. It&#8217;s a command line tool to open the Launchpad page for your branch in your web browser.<br /><pre>  $ cd ~/src/testresources/expose-reset-bug-271619<br /> $ bzr lp-open<br /> Opening https://code.edge.launchpad.net/~jml/testresources/expose-reset-bug-271619 in web browser<br /></pre>&#8230; and it works!<br /><br />Available in Bazaar 1.12. Due to an unfortunate oversight, the NEWS file doesn&#8217;t mention it.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-02-24 06:12</span></div>
+<div class='content'>
+There&#8217;s a fix for the issues here in the Bazaar review queue: http://bundlebuggy.aaronbentley.com.</div>
+</div>
+<div class='comment'>
+<div class='author'>bialix<span class='comment-date'> on 2009-02-22 06:59</span></div>
+<div class='content'>
+IIRC, public branch settings used only by `bzr send` command, and maybe by pqm plugin (I&#8217;m not sure).<BR/><BR/>Your command just unclear in what it ought to do and why for it designed. So&#8230;</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-02-21 22:27</span></div>
+<div class='content'>
+bialix, the main use case for this was to open the pages of branches that you already have locally. The command you type ought to work though.<BR/><BR/>Do you know why having public branches set is useful in general?</div>
+</div>
+<div class='comment'>
+<div class='author'>bialix<span class='comment-date'> on 2009-02-21 11:49</span></div>
+<div class='content'>
+$ bzr lp-open lp:qbzr<BR/><BR/>bzr: ERROR: There is no public branch set for &#8220;bzr+ssh://bazaar.launchpad.net/~qbzr-dev/qbzr/trunk/&#8221;.<BR/><BR/>Your neat trick is a bit useless without public branch. Why I should have public branch for lp:qbzr branch anyway?</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-02-21 02:04</span></div>
+<div class='content'>
+https://bugs.edge.launchpad.net/bzr/+bug/332372</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-02-21 02:04</span></div>
+<div class='content'>
+Good point!<BR/><BR/>At the moment works based on the public location, which is different from the push location. I guess the push location could be used as a fallback.</div>
+</div>
+<div class='comment'>
+<div class='author'>Eduardo de Oliveira Padoan<span class='comment-date'> on 2009-02-21 02:01</span></div>
+<div class='content'>
+Don&#8217;t seem to work with local branches pushed (with &#8211;remember) to launchpad. <BR/><BR/>$ bzr lp-open<BR/>bzr: ERROR: There is no public branch set for &#8230;</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/things-every-project-needs.html">Things every project needs</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-20T00:00:00+00:00" pubdate data-updated="true">2009-02-20 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;m reviewing my checklists right now. I just came across one that I&#8217;d like some help with. It&#8217;s called &#8220;Things every project needs&#8221;, and it currently has this:<br /><ul><li>TODO system (e.g. specs, trackers, text file, bzr difftodo)</li><li>Version control</li><li>List of dependencies</li><li>One step build</li><li>One step build-and-run-tests</li><li>One step build-and-run<br /></li><li>One step build-docs (API, testdoc, general docs, sphinx)<br /></li><li>Version information</li><li>License<br /></li></ul>I hope you see the sort of thing I mean. I mean things you have to do (or at least think about) when starting any software project.<br /><br />Can you think of anything to add?</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>intellectronica<span class='comment-date'> on 2009-02-20 20:42</span></div>
+<div class='content'>
+IRC channel<BR/>Mailing list<BR/>Wiki</div>
+</div>
+<div class='comment'>
+<div class='author'>Christopher Armstrong<span class='comment-date'> on 2009-02-20 18:09</span></div>
+<div class='content'>
+One-step release.</div>
+</div>
+<div class='comment'>
+<div class='author'>Cory<span class='comment-date'> on 2009-02-20 08:58</span></div>
+<div class='content'>
+I&#8217;m not sure I agree on all of this - why does build-and-run-tests need to be one step?  Why can&#8217;t distro packagers take care of build-and-run?<BR/><BR/>Here&#8217;s a few more though.<BR/><BR/>- Documented build-run-tests-upload-release.  (Maybe this is why you need build-and-run-tests?  I still disagree that it absolutely must be one step.)<BR/><BR/>- Documented release announcement procedure.  (Unlikely to get this down to one step though because there are many places to announce a project, not all of them belong to you.)  Basically, <A HREF="http://wiki.goonmill.org/HowtoReleaseHypy" REL="nofollow">this document</A>.<BR/><BR/>Releasing should be done <I>early and often</I>.  Therefore, it must be easy.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/everything-i-ever-learned-about.html">Everything I ever learned about programming&#8230;</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-19T00:00:00+00:00" pubdate data-updated="true">2009-02-19 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+&#8230; I learned from <a href="http://twistedmatrix.com/">Twisted</a>.[1]<br /><br />Which reminds me, one of the Twisted guns is up for hire. His name is <a href="http://itamarst.org/resume.html">Itamar Shtull-Trauring</a> and he is very smart, wrote some of the best bits in Twisted and loses gracefully at <a href="http://www.sjgames.com/munchkin/game/">Munchkin</a>.<br /><br />If you want someone in to review your system, help you design out a network protocol or provide a thoughtful, independent perspective for your new application&#8217;s architecture, you should hire him. Itamar&#8217;s got bad RSI, so he can&#8217;t type much, otherwise I&#8217;d be trying to poach him.<br /><br />Note: Itamar still works for <a href="http://www.itasoftware.com/">ITA Software</a>, so it&#8217;s only short-term contracting.<br /><br /><br />[1] Well, <a href="http://mitpress.mit.edu/sicp/">SICP</a> gets a guernsey too.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/better-cloud.html">Better Cloud</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-13T00:00:00+00:00" pubdate data-updated="true">2009-02-13 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The <a href="https://code.edge.launchpad.net/">Launchpad Code home page</a> is now a little bit nicer and a little bit faster.<br /><br />For a while now, the page has had a tag cloud showing some projects that host branches on Launchpad. The tag cloud is drawn based on the following rules:<br /><ul><li>The more branches, the bigger the tag</li><li>The more recent the last commit, the less faded the tag<br /></li><li>If Launchpad is <span style="font-style: italic;">the</span> place to go for getting the project&#8217;s code, colour it green. Otherwise, blue.<br /></li></ul>Up until recently, the home page only showed some projects starting with &#8216;A&#8217; &#8211; which is a bit silly. My recent patch changed the query to show the most branch-y projects on Launchpad. It looks a lot nicer, IMO.<br /><br /><a href="https://launchpad.net/%7Ebeuno">Martin Albisetti</a> has asked me to change the colours though. Expect an update soon.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/make-your-code-testable.html">Make your code testable</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-05T00:00:00+00:00" pubdate data-updated="true">2009-02-05 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+A lot of people struggle with writing unit tests. They sit down with the noblest of intentions, ready to turn themselves around and be good little engineers, but then somehow, suddenly, everything goes horribly wrong.<br /><br />It turns out that it&#8217;s really hard to write unit tests. When we first discover this, we generally consider two options:<br /><ol><li>Give up</li><li>Work hard to write the damn test</li></ol>There is actually a third way: <span style="font-style: italic;">make the code easier to test</span>. Many of the barriers to testing are built from the design of one&#8217;s own code. Globals, hard-wired access to resources, poorly parametrized behaviour and badly encapsulated data can make it a nightmare to test things.<br /><br />The cool thing is, if you do this, your code base will actually be more fun and more productive to work with. Your application will start to look like a set of libraries that build high-level concepts, rather than like a maze of twisty passages. This is actually why the <a href="http://code.mumak.net/2009/02/bazaar-commands.html">Bazaar API is so amazingly good</a> &#8211; they&#8217;ve written their code to make it easy to test.<br /><br />Thanks to <a href="http://strongdynamic.blogspot.com/">Cory Dodt</a> for the idea for this post.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/02/having-said-that-let-me-say-this.html">Having said that, let me say this&#8230;</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-04T00:00:00+00:00" pubdate data-updated="true">2009-02-04 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a href="http://sethgodin.typepad.com/">Seth Godin</a> recently blogged the <a href="http://sethgodin.typepad.com/seths_blog/2009/02/im-sorry-were-out-of-time.html">second-most useful piece of advice</a> that technical presenters need to hear.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/17/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/15/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What&#8217;s wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

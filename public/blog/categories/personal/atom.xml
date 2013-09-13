@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Personal | Mere Code]]></title>
+  <link href="http://code.mumak.net/blog/categories/personal/atom.xml" rel="self"/>
+  <link href="http://code.mumak.net/"/>
+  <updated>2013-09-13T22:56:47+01:00</updated>
+  <id>http://code.mumak.net/</id>
+  <author>
+    <name><![CDATA[Jonathan Lange]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Living for the City]]></title>
+    <link href="http://code.mumak.net/2007/08/living-for-city.html"/>
+    <updated>2007-08-11T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2007/08/living-for-city</id>
+    <content type="html"><![CDATA[<div class='post'>
+Isn't talking shop <em>fun</em>? I know there's more to the world than computers and programming and blah blah blah. Sometimes photography, the election, real estate and the rediscovery of seventies pop music need to be set aside to make way for a serious, meaty discussion on <a href="http://xunitpatterns.com/Creation%20Method.html">anonymous creation methods</a>.<br /><br />I've been up in Sydney for a couple of weeks, working with the other Canonical guys. I hadn't realised how much I missed working with other hackers <em>in the same room</em>.<br /><br />Sydney has <a href="http://www.camposcoffee.com/">good things besides programmers</a>, of course.<br /><br />Not exactly sure when I'll be moving, but it'll happen eventually.</div>
+
+]]></content>
+  </entry>
+  
+</feed>

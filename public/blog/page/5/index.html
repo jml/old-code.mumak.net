@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="The announcement is a few days late, but I thought that you&#8217;d like to know that testtools 0.9.8 has been released.This is one of our biggest &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/blog/page/5/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/12/testtools-098-released.html">testtools 0.9.8 released</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-22T00:00:00+00:00" pubdate data-updated="true">2010-12-22 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The announcement is a few days late, but I thought that you&#8217;d like to know that <a href="http://pypi.python.org/pypi/testtools">testtools 0.9.8</a> has been released.<br /><br />This is one of our biggest releases, we have fixed <a href="https://launchpad.net/testtools/0.9/0.9.8">a lot of bugs</a>, added experimental support for running tests inside Twisted&#8217;s reactor and added a stack of new matchers and convenience methods. It&#8217;s well worth upgrading.<br /><br />We&#8217;ve also got some good stuff in the pipeline, including a full re-working of our documentation, better error messages and still more matchers.<br /><br />The &#8220;more matchers&#8221; thing is significant. More and more people are starting to use testtools because of the way our matchers let them build domain-specific assertions with rich, useful error messages. We continue to get contributions for basic matchers and for new ways of combining matchers. Also, projects like James Westby&#8217;s <a href="https://launchpad.net/soupmatchers">soupmatchers</a>&nbsp;show just how useful matchers can be. It makes me think that eventually matchers will become part of the normal way that people write tests in Python.<br /><br />Thanks to <a href="https://launchpad.net/~lifeless">Robert Collins</a>, <a href="https://launchpad.net/~gz">Martin [gz]</a>, <a href="https://launchpad.net/~jelmer">Jelmer Vernooij</a>, <a href="https://launchpad.net/~mwhudson">Michael Hudson-Doyle</a> and <a href="https://launchpad.net/~james-w">James Westby</a> for making this our best release ever.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/12/testtools-bug-update.html">testtools bug update</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-10T00:00:00+00:00" pubdate data-updated="true">2010-12-10 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Hello <a href="https://launchpad.net/testtools">testtools</a> fans.<br /><br />If you are wondering what all the recent bug mail was about, wonder no more, for I shall explain. Thus.<br /><br />We&#8217;re using only three different levels of importance for testtools bugs: Critical, Medium and Wishlist. Critical is reserved for release blockers: regressions, test failures and other disasters. Medium is for genuine defects and other things that we think are important. Wishlist is for everything else. I think of them as Critical, Important and Someday.<br /><br />All of this is in preparation for the 0.9.8 release, which promises to be a doozy. &nbsp;Stay tuned.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/testtools-manuals.html">testtools manuals</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-29T00:00:00+00:00" pubdate data-updated="true">2010-11-29 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I wrote a whole pile of documentation for <a href="https://launchpad.net/testtools">testtools</a>&nbsp;over the weekend. You can read it <a href="http://mumak.net/testtools/docs/">here</a>.<br /><br />I would very much appreciate it if you could read over the docs there and tell me if anything is unclear, wrong or otherwise unhelpful. &nbsp;Telling me what&#8217;s good would also be appreciated.<br /><br />Please leave whatever feedback you have either as comments on this post or on the <a href="https://code.launchpad.net/~jml/testtools/more-doc-improvements/+merge/42045">merge proposal</a>.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/tests-that-print-stuff.html">Tests that print stuff</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-26T00:00:00+00:00" pubdate data-updated="true">2010-11-26 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Tests that print stuff to stdout or stderr annoy me. &nbsp;They make a successful test run much less satisfying to watch, and they clutter logs when you are trying to debug a failure.<br /><br />Launchpad has quite a few tests that print stuff. &nbsp;I was going to fix them up today, but I&#8217;ve got a Launchpad branch in progress and I&#8217;ve promised myself that I&#8217;ll have only one in progress at a time. Besides, the build is broken.<br /><br />Anyway, I&#8217;ve written a quick hack that lets you analyze a <a href="http://launchpad.net/subunit">subunit</a> stream to <a href="http://paste.ubuntu.com/536731/">see which tests print stuff</a>.<br /><br />To get a subunit stream including the output itself:<br /><pre>$&nbsp;gzip -dc testtools-experiment-r11753.subunit.gz | grep -v time: | &nbsp;python tests-with-output.py</pre><br />To get a list of the tests:<br /><pre>$&nbsp;gzip -dc testtools-experiment-r11753.subunit.gz | &nbsp;python tests-with-output.py &nbsp;| subunit-ls --no-passthrough</pre><br />For those interested, Launchpad has roughly one hundred such tests.<br /><br />As with my last post, I&#8217;m left with the feeling that subunit is great but needs a lot more polish. &nbsp;I guess my next step is to figure out how to upstream these.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/boiling-kettles-unit-tests-and-data.html">Boiling kettles, unit tests and data</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-25T00:00:00+00:00" pubdate data-updated="true">2010-11-25 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The Launchpad test suite takes way too long to run: somewhere between three and four hours. &nbsp;Incidentally, <a href="http://rbtcollins.wordpress.com/">Rob</a> has just started <a href="https://dev.launchpad.net/LEP/PersistenceLayer">some work</a> that ought to make it run a lot faster, for which I am truly thankful. &nbsp;Anyway, over the last three (almost four!) years, I&#8217;ve watched the test suite run many, many times, waiting for it to finish or at least reveal a failure.<br /><br />It has been easy to see that not all tests are created equal. Some are very slow, others are very fast. <a href="http://code.mumak.net/2009/09/layers-are-terrible.html">Zope&#8217;s terrible layer mechanism</a> means that these are often grouped together: slow with slow, fast with fast. Watching the test suite churn away for the umpteenth time made me wonder, exactly how are the tests distributed over time.<br /><br />Luckily, thanks to <a href="https://launchpad.net/subunit">subunit</a>, a <a href="http://paste.ubuntu.com/536368/">bit of Python glue</a>, and OpenOffice it&#8217;s really easy to get a picture:<br /><br /><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;"><tbody><tr><td style="text-align: center;"><a href="http://people.canonical.com/~jml/Tests-finished-each-minute.png" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="427" src="http://people.canonical.com/~jml/Tests-finished-each-minute.png" width="640" /></a></td></tr><tr><td class="tr-caption" style="text-align: center;">Graph of how many Launchpad tests are run in each minute of the test run</td></tr></tbody></table>That&#8217;s a graph of the number of tests that complete within each minute of the Launchpad test suite run. &nbsp;What it means is that you are more likely to see an actual test result if you watch at a random time during the first half of the test run. It also means that we have a relatively small number of very slow tests.<br /><br />Sometimes these graphs are more useful at lower granularity, so I made this one:<br /><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;"><tbody><tr><td style="text-align: center;"><a href="http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="374" src="http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png" width="640" /></a></td></tr><tr><td class="tr-caption" style="text-align: center;">Graph of how many Launchpad tests are run in each ten minute block of the test run</td></tr></tbody></table>And this one:<br /><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;"><tbody><tr><td style="text-align: center;"><a href="http://people.canonical.com/~jml/Tests-finished-each-hour.png" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="390" src="http://people.canonical.com/~jml/Tests-finished-each-hour.png" width="640" /></a></td></tr><tr><td class="tr-caption" style="text-align: center;">Graph of how many Launchpad tests are run in each hour block of the test run</td></tr></tbody></table><br />The <a href="http://people.canonical.com/~jml/testtools-experiment-r11753.subunit.gz">raw data</a> is taken from a successful run of one of my recent branches. If you download it and open it up, you&#8217;ll see that the subunit output includes a large number of &#8220;time:&#8221; statements. Each of these indicates that all subunit statements following it should be considered as taking place at the time given in the original statement.<br /><br />I used a <a href="http://paste.ubuntu.com/536368/">small Python script </a>to generate the CSVs, running it like this:<br /><pre>gzip -dc testtools-experiment-r11753.subunit.gz | python test-distribution.py 60 &gt; /home/jml/Desktop/tests-each-minute.csv</pre><br />Where &#8220;60&#8221; is the number of seconds of granularity.<br /><br />It was about twenty minutes work all up, and subunit made much of it dead simple. subunit has its flaws, but it&#8217;s a really good idea.<br /><br />That said, I can&#8217;t help but feel that it should have been less work.&nbsp;Partly, subunit should have a way to convert data to a format more amenable to analysis by third party tools. Mostly though, those third party tools ought to exist and be known to me.<br /><br />I can easily imagine a tool where I wouldn&#8217;t have to run the script each time to get a different level of granularity, but rather I could use a slider in a UI and watch the graph update itself in real time. That would be cool, and relatively easy. How come nobody has done that yet?<br /><br />Also, although OpenOffice&#8217;s graphing thing is fairly nice, why isn&#8217;t there a better tool? One that makes it easier to share graphs as images on the web without having to take crummy screenshots.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>David Pitkin<span class='comment-date'> on 2012-02-01 18:21</span></div>
+<div class='content'>
+Closets I know of off the top of my head is the Google Chart API for interactive, animated charts.<br /><br />http://code.google.com/apis/chart/interactive/docs/gallery/controls.html</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/big-or-small.html">Big or small?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-24T00:00:00+00:00" pubdate data-updated="true">2010-11-24 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve been thinking a bit about whether it is better to have one big code base that has a lot of different components and features, or whether there should be many small code bases that each do one thing well.<br /><br />I don&#8217;t have any answers, but perhaps these half-formed thoughts will help: positive, negative and interesting things about having many small related projects. These thoughts are mostly inspired by working on a bunch of different testing-related projects.<br /><br /><b>Positive</b><br /><br /><ul><li>&#8220;Do one thing and do it well&#8221;</li><li>Enforces a certain kind of interface discipline</li><li>Avoids/postpones scaling problems with big projects</li><ul><li>test suite run times</li><li>documentation navigation</li><li>bug triage</li><li>forking mailing lists etc.</li></ul><li>Newcomers only need to &#8220;buy in&#8221; to one idea at a time</li><li>Aligns with conceptual understanding of the problem</li><li>Better separation of commit privs etc</li></ul><div><b>Negative</b></div><div><ul><li>Release overhead</li><li>Duplication of infrastructure</li><ul><li>buildbot / hudson / pqm</li><li>bug tracker</li><li>mailing list</li></ul><li>Duplication of license / copyright games</li><li>Harder for newcomers to see the big picture</li><li>Problems caused by interactions between different versions</li><li>Depending on multiple libraries is a pain on many platforms</li><li>Lag with commit privs etc</li></ul><div><b>Interesting</b></div></div><div><ul><li>Perhaps smaller &amp; self-contained means easier to upstream</li><li>Some projects like adding only small dependencies, other projects like adding few dependencies</li></ul><div>Do these make sense? What would you add?</div></div><div><br /></div><div>Twisted is in a sense the opposite of the small/many paradigm, in that it includes a great deal of extra features along with its core.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2011-01-25 21:29</span></div>
+<div class='content'>
+Good answers both! I&#39;m sorry I haven&#39;t responded earlier.<br /><br />Glyph, I wonder how things would be different if the cost of duplicating infrastructure was substantially lower.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2010-11-30 21:52</span></div>
+<div class='content'>
+I don&#39;t think that you can actually model the distinction between different types of projects as &quot;small&quot; vs. &quot;big&quot;.  Granted, it&#39;s a popular dichotomy, but that doesn&#39;t mean it&#39;s not a false one :).<br /><br />For example: for many projects, &quot;smaller&quot; is better.  But Twisted&#39;s attempt to go from &quot;big&quot; to &quot;small&quot;, as spiv notes, was a disaster (although not an unqualified one).  The further we pushed it, the more duplication of process was created.  If we had continued to really break out all the subprojects fully, I suspect that most of them would be completely moribund now.  For example: if a change to core which broke conch didn&#39;t alert us immediately to that fact, it would be <i>years</i> before anybody got around to fixing it, probably past the point where all hope would be lost that it was fixable at all.  Does this really have anything to do with big vs. small?  Not really, it&#39;s more a question of shared vs. duplicated build infrastructure.<br /><br />Another way to look at this problem is: projects aren&#39;t small or big, it&#39;s that they fit into some conceptual model and possibly also provide one themselves.  The real question of how to organize things is more about what those relationships are than about the absolute size of the project.<br /><br />For example: &quot;small tools that do one thing well&quot; is frequently extolled as a key part of the UNIX philosophy.  Yet, many of those &quot;small&quot; tools have intimate dependencies on a gigantic pile of infrastructure that the <i>huge</i> lower-level projects, such as the kernel, X.org, glibc, et. al. provide.<br /><br />The best projects are the ones which provide a firm core and strong conventions upon which may be built a wide variety of tools which follow those conventions, and be seamlessly integrated according to them.  This is what Twisted aims to be; its &#39;bigness&#39; is mostly a result of the fact that &#39;smallness&#39; requires a per-project duplication of effort which, with a small development team, we have empirically demonstrated we can&#39;t afford.</div>
+</div>
+<div class='comment'>
+<div class='author'>spiv<span class='comment-date'> on 2010-11-24 22:14</span></div>
+<div class='content'>
+Perhaps a related question is how easy is to take a many small code bases and bundle them as one later, versus separating one big code base into many small ones?  I think small has a slight advantage over big here: in general the pain I&#39;ve observed in e.g. building bzr&#39;s windows installer or various core+plugins PPAs has probably been a little less than Twisted&#39;s pain in producing releases of individual subpackages.  But I&#39;m not sure, and perhaps the tradeoffs vary quite a lot between projects.<br /><br />I&#39;m frankly deeply frightened by “scaling problems with big projects” though.  To focus on just one aspect of that, I&#39;m increasingly feeling that increased complexity brings massive, perhaps exponential, increase in cost.  Just compare how easy it is to do a quick hack <i>and feel that it is good enough</i> in a small project versus a large one.  For a mini case study, look at ControlDir.sprout in current bzrlib: over time we&#39;ve added features like separate metadirs, shared repositories, stacking policies, hardlinking, reusing transport objects, subtrees, optimisations to the way we do a fetch into a newly sprouted repository&#8230; and each of those things has taken a toll on this one function.  All nice things to have, but now it alarmingly difficult to make further improvements to this function because complexity is fragile — happily I mostly trust the test suite here, which helps, but only the full test suite.  And of course I *do* want to improve that function&#8230;<br /><br />In the case of ControlDir.sprout I&#39;m hopeful that some refactorings may ease the pain a little, but I think truly radical surgery is required if it is going to be anything other than hideous.<br /><br />So I guess I&#39;d lean towards many small over one big, but try to find ways to reduce the duplication release effort and project infrastructure.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/dont-make-me-think-thoughts-for.html">&#8220;Don&#8217;t Make Me Think&#8221;, thoughts for Launchpad</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-19T00:00:00+00:00" pubdate data-updated="true">2010-11-19 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I just read <a href="http://www.amazon.co.uk/Dont-Make-Think-Usability-Circle-Com/dp/0789723107">Don&#8217;t Make Me Think</a>, by <a href="http://www.sensible.com/">Steve Krug</a>. It&#8217;s a good book. Sadly, I read it over a fairly long chunk of time so a lot of the punch has been spread out.<br /><br />Here are my thoughts about how we can apply some of the ideas to Launchpad.<br /><br /><b>Tighten up our visual design</b><br />Launchpad doesn&#8217;t look <i>too</i>&nbsp;bad, I don&#8217;t think, but it could look a whole lot better. &nbsp;Doing that would cover over other sins, make people more comfortable and is just the right thing to do.<br /><br /><b>Error recovery &amp; undoability</b><br />We&#8217;re not great at this. You can&#8217;t rename teams, you can&#8217;t rename PPAs, you can&#8217;t rename branches that other branches &nbsp;are stacked on. You can&#8217;t delete bug tasks. Many forms just say &#8220;Invalid value&#8221; when you enter bad input.<br /><br /><b>Keep up with the user testing</b><br />We do a fair chunk of user testing, mostly thanks to Matthew Revell. We should do it more often, and more readily. &nbsp;Also, we should wave some kind of magic wand that makes it easier for developers to observe the user tests as they happen.<br /><br /><b>Home page</b><br />Make it better.<br /><br /><b>Remove more stuff</b><br />Way too often in our design discussions, we talk about adding stuff to the page: widgets, links, explanatory text. We should lean toward removing before we add. Especially with text: fewer words. Be suspicious when the solution to a usability problem is &#8220;more documentation&#8221;.<br /><br /><b>Discuss things less</b><br />Sometimes, we really do talk too much about whether a thing should be one way or it should be another. &nbsp;Krug leads me to believe that most of things we agonize about aren&#8217;t actually the things that are important to users.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>manny<span class='comment-date'> on 2010-12-12 15:29</span></div>
+<div class='content'>
+i agree with Vegan,<br /><br />&quot;Register a project&quot; URL should be more obvious.<br /><br />https://launchpad.net/projects/+new<br /><br /><br />that link should be at the bottom of every page with the other links.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-29 22:19</span></div>
+<div class='content'>
+Thomi, I wouldn&#39;t say &quot;awful&quot;, but there&#39;s definitely a lot of work to be done.  And you&#39;re right, it is hard: both because it is tricky, uncertain work that requires careful judgement and because it&#39;s simply a lot of work.<br /><br />However, without wanting to make too many promises, it&#39;s something that I&#39;d like to tackle in 2011.</div>
+</div>
+<div class='comment'>
+<div class='author'>Thomi Richards<span class='comment-date'> on 2010-11-29 20:45</span></div>
+<div class='content'>
+In my humble opinion the single biggest problem with the launchpad site is that the UI is awful. <br /><br />You frequently show way too much data on a single page, making simple tasks harder (can&#39;t find the information amongst all the clutter), and hard tasks just as hard. Think about the typical use cases for most users, and optimise for them. Hide the advanced data somehow, and make improvements for things users do all the time, rather than things a few people do rarely.<br /><br />Now, I don&#39;t want to get down on you, since I really do love launchpad - it&#39;s a great service (the best avilable, i think), but I suspect that you need to take a step back from the UI and consider how a new user might view it. It&#39;s a difficult task, especially for power users (which, almost by definition you must be) of the product.<br /><br />Oh, and when I say &quot;you&quot;, I mean&#8230; you know&#8230; launchpad developers&#8230; or whoever is responsible.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-19 19:04</span></div>
+<div class='content'>
+Thanks for the comments, Vegan.<br /><br />I&#39;m sorry you had a bad experience trying out Launchpad.<br /><br />Not sure what I can say about different projects having different interfaces.  We&#39;ve made it a bit better recently, but there&#39;s still a way to go, particularly wrt downloading files.<br /><br />On making a project, there&#39;s a &quot;Register a project&quot; link on the front page of Launchpad.  If you ever want to try again, that&#39;s the place to go to.</div>
+</div>
+<div class='comment'>
+<div class='author'>The Casual Vegan<span class='comment-date'> on 2010-11-19 18:23</span></div>
+<div class='content'>
+A couple comments about my launch pad experience.<br /><br />1. The interface changes too much from project to project.So I can never find the download link, many projects don&#39;t even have one. Which means I leave the site without the software.<br /><br />2. I tried to create my own project in Launch Pad. I&#39;ve done it in Source Forge. In Launch Pad, I literally couldn&#39;t figure out how to start a project and add my code to it.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-19 16:59</span></div>
+<div class='content'>
+I agree regarding deleting projects. We can rename &quot;+junk&quot; when we have a simple, guided process for turning junk branches into trunks of new projects.<br /><br />Yeah, having dashboard as the homepage for logged in users is the plan.</div>
+</div>
+<div class='comment'>
+<div class='author'>jelmer<span class='comment-date'> on 2010-11-19 16:57</span></div>
+<div class='content'>
+I think those are all good points.<br /><br />I think being able to Undo a project (Deleting it) is very important. Talking to various GitHub users this seems to be something that they like a lot, where Launchpad&#39;s project creation feels heavyweight. Not because it&#39;s got a larger form (it&#39;s got a few more, but not that much), but because if you create a project it&#39;ll be there forever and you need intervention from another human to get it deactivated. I realize we have +junk (worst name EVAR), but that&#39;s not quite as useful as a lightweight project.<br /><br />It&#39;d be great to have the hypothetical dashboard as the homepage for logged in users.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/reviewing-specs-rock-on.html">Reviewing specs, rock on!</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-18T00:00:00+00:00" pubdate data-updated="true">2010-11-18 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I just finished reviewing a bunch of <a href="https://dev.launchpad.net/LEP">LEP</a>s, which are the specs Launchpadders write for doing new feature work. I&#8217;ve been looking at a bunch of the <a href="https://dev.launchpad.net/LEP/PrivateProjectsAndDistributions">privacy</a> LEPs and one on <a href="https://dev.launchpad.net/Code/MergeQueues/LEP">merge queues</a>. &nbsp;It&#8217;s been great to see such good, clear thinking, and also to see people thinking and writing in terms of constraints and requirements (&#8220;What do we want? Why?&#8221;) instead of implementation or potential solutions.<br /><br />Basically I&#8217;ve got a bunch of scribbled-on bits of paper right now. Tomorrow I&#8217;m going to update the wiki &amp; schedule calls with the developers so we can kick them along.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/having-extra-feature-never-hurts.html">Having an extra feature never hurts, rebutted</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-16T00:00:00+00:00" pubdate data-updated="true">2010-11-16 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+On the Launchpad user list, we&#8217;re having a bit of a chat about whether <a href="https://lists.launchpad.net/launchpad-users/msg06098.html">or not to remove team polls</a>. &nbsp;One commenter suggested that &#8220;having an extra feature never hurts&#8221;. <a href="http://curtis.hovey.name/">Curtis</a>&#8217;s <a href="https://lists.launchpad.net/launchpad-users/msg06110.html">reply</a> is so good I want to quote it here in full:<br /><blockquote><pre>Actually, It always hurts. It is always bad:<br /><br />     1. The bad UI experience reflects poorly on all Launchpad.<br />     2. A user tried to mess with URLs to avoid the UI and caused an<br />        oops. I spent a couple days fixing an issue that I personally do<br />        not think should ever have been a priority. Certainly there are<br />        at least a 1000 more important bugs than the oops, but we<br />        believe oopses are always high priority.<br />     3. Pages are slower to load because the application looks for poll<br />        data.<br />     4. We must update the code as libraries and infrastructure changes.<br />     5. We need to triage and retriage all the poll bugs.<br />     6. We need to answer user questions on Lp Answers and IRC.<br /><br />It is better that Launchpad provides 5 really great features than to<br />provide 10 mediocre features. I prefer to remove the feature, but if the<br />community believes that it is important, we might work on this in the<br />upcoming Launchpad bugjam to close as many bugs as possible in a week. I<br />cannot foresee this feature being compelling in the net two years<br />without a contributor dedicating time to it.<br /><br />The situation is eloquently stated by Antoine de Saint-Exupéry<br /><br />        A designer knows he has achieved perfection not when there is<br />        nothing left to add, but when there is nothing left to take<br />        away.</pre></blockquote>&nbsp;That is all.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/and-then-what.html">And then what?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-16T00:00:00+00:00" pubdate data-updated="true">2010-11-16 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+By now, you know where Launchpad is at.  You know what <a href="http://code.mumak.net/2010/11/what-to-do-what-to-do.html">our top priorities</a> are, you know the <a href="http://code.mumak.net/2010/11/still-going.html">other important stuff that we&#8217;re still working on</a>, you know <a href="http://code.mumak.net/2010/11/what-else-have-you-got.html">the other bits and pieces we&#8217;ve got going</a>.  You might even know why.<br /><br />What you might not know, and what this post hopes to tell you, is what we are <i>thinking</i> about right now.  Humans are plan-making creatures, and product strategists perhaps more so than most.  What follows is a brief description of the half-formed thoughts and plans that I have for Launchpad. (Also, have I mentioned the <a href="http://dev.launchpad.net/RoadMap">roadmap</a> yet?)<br /><br />Strategically speaking, there are two major approaches we can take to our work on Launchpad.  The first is working on things that bring new users and new projects to us.  This would mean finding something that we can provide that alternatives don&#8217;t and potential users want, <i>or</i> assuming that we already have such a thing, find the blockers that stop people from using Launchpad and remove them (the blockers, not the people).<br /><br />For example, if we thought that open source developers wanted their hosting site, say, to be part of the semantic web, we could go and do that and be relatively confident that no one else will.  That would be finding a competitive advantage.<br /><br />Or, to take another example, we could say that our awesome bug tracker, our translation support and daily builds are heaps plenty good advantages, but people don&#8217;t use Launchpad because we only have full support for one VCS and we provide no place to host a project shop-front web site.  That would mean adding Git, Subversion and Mercurial support, and adding some kind of wiki / webhosting.  Personally, I find this much more appealing than semantic web shenanigans.<br /><br />All of that&#8217;s one strategic approach: attract new users.  There&#8217;s another major approach that we could take: make things better for our current users. All things considered, I think I want to take the second approach.<br /><br />There&#8217;s so much we could do here, partly because Launchpad itself is so broad.  Some key things stand out though.<br /><br />First, there is a cluster of problems related to the way that people approach the website.  Although we tout cross-project collaboration as one of our big things, we don&#8217;t make it particularly easy.  We need to provide each user and each team with a view that shows them all of the things that are interesting to them across all of Launchpad.  In fact, we probably need to give them two views: one that&#8217;s historical and chronological, and another that&#8217;s forward looking and more dashboard-like. In my head, I&#8217;ve been thinking of this as <b>walls</b> (ala Facebook) and <b>dashboards</b>.<br /><br />If we dig into this, there&#8217;ll be other changes: better, fairer karma; more social interaction; better person, project and team pages; a &#8220;waiting for&#8221; section in the dashboard so you can see who to hassle; a better experience for new users; and probably death to the home page for users who&#8217;ve got accounts. Lots of goodness here.<br /><br />Second, it&#8217;s becoming increasingly clear that blueprints are a good idea with a sub-standard implementation.  Persuaded largely by Matthew Paul Thomas, I think that we should merge&nbsp;the blueprint tracker with the bug tracker to make a <b><a href="http://dev.launchpad.net/IssueTracker">combined issue tracker</a></b>.  A lot of people get worried when I say this, because they really like blueprints and they understand that bugs and blueprints are actually two different things.  Please don&#8217;t worry.  There will almost certainly always be something in Launchpad like a blueprint or specification that is visibly different from a bug.  However, I think we ought to change what lists they appear in, what statuses they have and many other things.  The loss of distinctiveness will be more than made up for with an increase in capability.<br /><br />Third, the way we <b>search</b> and the way we display results of searches needs to be revamped to be faster and more flexible.  I want to see easy forms, a good search string mini-language, sexy URLs, searches that can be saved and shared.<br /><br />There&#8217;s so much more that we could do, that we ought to do: make mailing lists rock; inline commenting on merge proposals; eliminate all of the silly &#8220;refresh this page&#8221; business that we still have; go to series and milestones with a sharp axe and a clear conscience; provide top-notch tools for QA teams; show way more cool stuff based on our data; make filing bugs upstream a complete no-brainer; clean up the terminology we use for naming things; provide an event sending interface for launchpadlib so that people don&#8217;t have to poll. I could go on for a very long time.<br /><br />I call out the three things above – cross-project views, merging bugs and blueprints and better search – because I think they are things that will make Launchpad better for absolutely everyone who uses it.  In particular, done right, good cross-project views turns a weakness into a strength. It takes the vast, daunting size of Launchpad and instead turns it into a huge realm of opportunity.<br /><br />Now, none of this is fixed in concrete.  There&#8217;s still plenty of time to discuss, plan out, change our minds and what not.  But it&#8217;s what&#8217;s in my head right now.<br /><br />That&#8217;s it.  Right now, we&#8217;re working on <b>privacy</b>, <b>performance</b>, <b>derived archives</b> and <b>desktop integration</b> as our top priorities.  We&#8217;re still plugging away at <b>daily builds</b> and <b>making links</b> between distributions and upstreams, and we&#8217;re working on a host of useful, important things.  In the future, if my plans go as … planned, then we&#8217;ll have <b>dashboards</b>, activity <b>walls</b>, a <b>combined issue tracker</b> and excellent <b>search</b>.<br /><br />What do you think?</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>sourcefrog<span class='comment-date'> on 2010-11-19 00:39</span></div>
+<div class='content'>
+Great post!<br /><br />I&#39;d love to see a dashboard/notifications/wall type feature.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-16 17:52</span></div>
+<div class='content'>
+Sense, it&#39;ll be a long time before the Canonical team works on proper Semantic stuff for Launchpad, but we&#39;d be open to contributions. If you&#39;re interested, you might want to talk to the FusionForge guys about it.<br /><br /><i>If</i> we do the issue tracker work, we&#39;ll definitely consider those cases. Some folk want to merge Answers in too. There are a lot of traps here, so we&#39;re going to have to be careful.<br /><br />Better project roles is a longstanding issue and I agree it should be fixed.  Thanks for the reminder.<br /><br />We&#39;ve been thinking a little bit recently about how to group projects together better on Launchpad, but I don&#39;t think we had put Ubuntu into the mix. (I&#39;m reminded of <a href="http://mdzlog.alcor.net/2010/11/15/ubuntu-project-platform-products/" rel="nofollow">mdz&#39;s product, platform, project post</a>).<br /><br />Alex, glad you like it :)</div>
+</div>
+<div class='comment'>
+<div class='author'>alexlauni<span class='comment-date'> on 2010-11-16 16:19</span></div>
+<div class='content'>
+Am I dreaming? I agree 100% with the other comments with respect to vcs support. Bzr is pretty fast on top of git and svn already. Maybe a git-bzr bridge for users of git to talk to bzr repos, but keeping launchpad standardized on bzr is a good choice.<br /><br />The dashboard and issue tracker things sound like a dream come true. Please steal me from DX to work on this ;)</div>
+</div>
+<div class='comment'>
+<div class='author'>Sense Hofstede<span class='comment-date'> on 2010-11-16 16:15</span></div>
+<div class='content'>
+The first thing I think after reading this post is: great work, Launchpad Team! You&#39;ve been doing an awesome job and if you look at where Launchpad came from, so much has been improved.<br /><br />I have to admit that I am a bit of a semantic web fan, and I would love to see more semantics coming to Launchpad, but I understand there are more important things.<br /><br />The things you mention in your post look great, and I agree with your plans to (somewhat) merge Blueprints and Bugs. Changing the name of the bug tracker to Issue Tracker would already be an improvement, because it would be more inclusive and describe better the possible uses of the tracker.<br /><br />Because bug tracking is being used for more things than just plain software bugs. There is a Launchpad project that contains bug reports concerning community issues. Many LoCos, including mine, use Launchpad to manage tasks in the bug tracker. The most notable example, though, would be the One Hundred Paper Cuts project. It is used for reporting bugs that are in fact mostly usability issues. They require a bit more discussion and are not (always) exactly bugs. (More information about what constitutes a paper cut can be found at .)<br />It would be great if these other uses of the bug/issue tracker would be considered during the design of the (partial?) merge of the blueprint and bug trackers.<br /><br />Another issue we see is the fact that the Ubuntu community and Canonical created several different projects on Launchpad to manage subprojects of the Ubuntu project. It is not possible to make a link between the &#39;ubuntu&#39; distribution type project on Launchpad and its subprojects, like &#39;ubuntu-community&#39;, &#39;hundredpapercuts&#39; and others. This has the consequence that the &#39;ubuntu&#39; project on Launchpad only contains bugs and source and translations of the packages in the main repositories. But there is more to the project! It would be great if Launchpad could make the other aspects of the community more visible by allowing to link projects together.<br /><br />I think that something else that would increase clarity and make the project pages on Launchpad more useful would be displaying roles on the front and section pages. Currently Launchpad already has some roles displayed (Driver, Maintainer, Bug Supervisor and such), but these are limited and do not cover the full community. Instead, or in addition to this, Launchpad could allow projects to create roles/functions (with a unique (per-project) slug for API authentication purposes) and assign teams or persons to it. This would give visitors (and, if the proper semantics would be used, also bots ;)) a way to find out who is responsible for what and contact them and. be an authoritative source for this kind of information.<br /><br />Also, if you would do away with the set roles that give permissions, like Driver or Maintainer, you could create a much more flexible permission system by allowing project maintainers to assign capabilities to roles. Instead of the Bug Supervisor being shown at the bug tracker page, you would see the roles that have bug-related capabilities there. This would allow every project to complete customise its permissions.<br /><br />Especially now Launchpad is used more and more as a provider for authentication and permissions such a system would increase Launchpad&#39;s value as a platform to offer this information.<br /><br />These are some ideas that came up in me/I remembered. I hope you like them, or at least that they help you with getting (even more!) ideas  for Launchpad&#39;s future.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-16 15:29</span></div>
+<div class='content'>
+Hey Jelmer,<br /><br />I fully agree. If Launchpad ever provided support for other VCS clients, it would have to be in such a way that you could still use Bazaar regardless of the project.<br /><br />Supporting VCS-specific protocols on top of Bazaar repos seems like the ideal way of doing that. But you would certainly know better than I :)<br /><br />jml</div>
+</div>
+<div class='comment'>
+<div class='author'>jelmer<span class='comment-date'> on 2010-11-16 15:20</span></div>
+<div class='content'>
+To me, Launchpad provides a structured view of the very diverse free software world, with a flat namespace. No matter what the upstream project uses Launchpad can provide me the source code, the bugs, the Ubuntu packages and the translations for that project and allow me to use the same tools I use for all other projects too. This is a unique thing about Launchpad, it&#39;s what makes it so great for people who hack on multiple projects (like packagers). <br /><br />Support for other version control systems seems like a great thing to support. I&#39;m biased here, but rather than allowing plain hosting of every possible DVCS as e.g. SourceForge provides it would be nice if Launchpad could maintain its tight integration. Perhaps I&#39;m biased here, but I&#39;d like to see Launchpad e.g. support Subversion&#39;s mod_dav protocol on top of Bazaar repositories, much like GitHub does on top of Git repositories (https://github.com/blog/626-announcing-svn-support). <br /><br />Having a proper dashboard would be a really great addition I think.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What&#8217;s wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

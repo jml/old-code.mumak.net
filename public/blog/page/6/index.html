@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="One of the best things that anyone ever said was, &#8220;not enough gets said about the importance of abandoning crap&#8221;. Mr Glass was probably &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/blog/page/6/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/make-it-really-easy-to-fix-bugs-on.html">Make it really easy to fix bugs on Ubuntu</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-15T00:00:00+00:00" pubdate data-updated="true">2010-11-15 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+One of the best things that anyone ever said was, &#8220;not enough gets said about the importance of abandoning crap&#8221;. Mr Glass was probably talking about writing, but his words could well have been aimed squarely at any well-established software development process.<br /><br />Right now, it&#8217;s too hard to <a href="http://people.canonical.com/~dholbach/Fixing%20a%20bug.png">fix a bug in Ubuntu</a>. There are <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-improve-fixing-a-bug-workflow">a lot of things that we can do</a> to make it easier, let me tell you about mine.<br /><br />If you see a small bug in a program on your desktop, you want to something like this:<br /><br /><ol><li>Figure out what package it&#8217;s in</li><li>Look for an existing bug, if not file one</li><li>Get the source</li><li>Build it, try to reproduce the bug</li><li>Actually fix the bug</li><li>Test to see that it&#8217;s actually fixed</li><li>Submit it then shepherd it through whatever processes come next</li></ol><div>Much of this is monkey work if you know how to do it, or incomprehensible arcana if you don&#8217;t. Either way, it&#8217;s important that we abandon (or <i>automate</i>) this essentially uninteresting work.</div><div><br /></div><div>In that spirit, at UDS I wrote a script that a lot of us have been talking about for a long time. I called it <a href="https://launchpad.net/start-hacking">start-hacking</a>, because I am terrible at names and wanted to make a project. Right now, when you run the script on your Ubuntu desktop, your cursor becomes a cross-hair. When you click on an application, start-hacking will tell you the source package that the application belongs to and where you can get the source (both Ubuntu source and latest upstream if available). &nbsp;It&#8217;s very simple, but that&#8217;s because it builds on a very large amount of work that Canonical has done, mostly through Launchpad and Apport.</div><div><br /></div><div>Eventually, we want to make the script a much more beautiful application that gets you a built, runnable copy of any Ubuntu application or library in a test environment. &nbsp;Our goal is to make fixing a typo (or typo-level bug) as fast and as smooth as possible for any application on the desktop.</div><div><br /></div><div>All we need is a bit of time and a few volunteers.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>manny<span class='comment-date'> on 2010-12-12 15:36</span></div>
+<div class='content'>
+definitely a step in the right direction :)<br /><br />The quicker and easier the better.<br /><br />Everything step like this adds up and more bugs get fixed.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/what-else-have-you-got.html">What else have you got?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-12T00:00:00+00:00" pubdate data-updated="true">2010-11-12 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I recently mentioned some of the <a href="http://code.mumak.net/2010/11/what-to-do-what-to-do.html">very important things we&#8217;re doing on Launchpad</a> (performance, privacy, derived archives and desktop integration) and some of the equally <a href="http://code.mumak.net/2010/11/still-going.html">important things that we&#8217;re <i>still</i>&nbsp;doing</a> (making links, importing upstream translations, daily builds). We&#8217;ve also got a few other things on the hob.<br /><br />In particular, there&#8217;s some corking great work going on in making our <b>build farm more scalable</b>. The build farm is used for building <a href="http://ubuntu.com/">Ubuntu</a>, PPAs, building recipes and doing upstream translation imports, so it&#8217;s a critical part of our infrastructure. We&#8217;ve been working to make better use of the machines we have, and make sure that we don&#8217;t actually degrade in performance as we add more machines. There&#8217;s also been a lot of good work here in making the code more understandable and robust.<br /><br />Since we&#8217;re now using the build farm for more things that just building packages, we&#8217;ve had to give the UI some love, particularly in making <b><a href="https://dev.launchpad.net/LEP/GeneralBuildHistories">generalized build histories</a></b> for the builders. This just means making builder and archive pages on Launchpad show all of the builds nicely, regardless of what type of build they are. We&#8217;re kind of finished here, we just need that lousy <a href="https://launchpad.net/~jml">product strategist</a> to get around to reviewing the feature.<br /><br />On the bug tracker, we&#8217;re adding a new facility that will <b>disable the automatic duplicate detection on a package-by-package basis</b>. The dupe finder is one of my favourite parts of Launchpad, and I would never disable it for anything I do. However, the packages that take care of providing sound, graphics and networking get a lot of bugs that have the same symptoms but are actually completely different, and only an expert can tell them apart. In these cases, auto dupe detection does more harm than good, so we&#8217;re providing a way to turn it off.<br /><br />Perhaps most excitingly of all the &#8220;non-core&#8221; work, we&#8217;re working on giving you <b><a href="https://dev.launchpad.net/LEP/BetterBugSubscriptionsAndNotifications">far more control over your bug mail</a></b>. Launchpad has long been known for sending way too much email. We&#8217;re changing that.<br /><br />There&#8217;s also some great stuff being done outside the Launchpad team:<br /><ul><li><a href="https://dev.launchpad.net/LEP/DKIMAuthenticatedMail">DKIM-based mail authentication</a> (aka &#8220;Change bug statuses from GMail&#8221;)</li><li><a href="https://dev.launchpad.net/LEP/ForkingLPServe">Pre-forking lp-serve</a> (aka &#8220;Shave two seconds off every bzr push to Launchpad&#8221;)</li><li><a href="https://dev.launchpad.net/LEP/BugzillaComponents">Bugzilla components</a> (aka &#8220;One step closer to smooth upstreaming of bugs&#8221;)</li><li><a href="https://dev.launchpad.net/Code/MergeQueues/LEP"><b>Branch merge queues</b></a>&nbsp;</li></ul><div>And that&#8217;s all of the stuff that&#8217;s going on in Launchpad, as far as I know. &nbsp;Actually, there&#8217;s a fair bit of work going on to make it so we can deploy Launchpad way more often and work on features for as long as we want without exposing them to unsuspecting users. And we&#8217;re also working on simplifying our branch landing machinery. &nbsp;But that&#8217;s it.</div><div><br /></div><div>As you can see, there are a lot of things. &nbsp;That means that progress on any one thing is much slower than anyone would like. &nbsp;However, progress is being made. &nbsp;Give us a few months and we might be working on only three things at once, rather than over a dozen.</div><div><br /></div><div>As always, if you&#8217;re keen on following Launchpad development, you can join #launchpad-dev on Freenode, or our <a href="https://launchpad.net/~launchpad-dev">developer mailing list</a>.</div><div><br /></div><div>Coming soon: ideas for the not-so-distant future.<br /><br /><b>Edit:</b> Oops! Forgot merge queues.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>mwhudson<span class='comment-date'> on 2010-11-13 21:20</span></div>
+<div class='content'>
+I think the fact that the build farm is used to build Ubuntu too is perhaps worthy of a mention :-)</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/ubuntu-in-vm-on-os-x.html">Ubuntu in a VM on OS X?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-06T00:00:00+00:00" pubdate data-updated="true">2010-11-06 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;m trying to get Ubuntu 10.10 running in a VM on my iMac. It mostly works with either VirtualBox or VMWare Fusion, but I can&#8217;t get 3D acceleration working. Under VirtualBox, I can get compositing happening, but it&#8217;s very slow. Under VMWare Fusion, Ubuntu won&#8217;t even acknowledge that I have a 3D card. Help.<br /><br /><b>Edit:</b>&nbsp;If you can point me to a <i>working</i>&nbsp;guide for dual booting Ubuntu on the iMac 27&#8221;, then that would also be great.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-18 17:12</span></div>
+<div class='content'>
+Asked on http://askubuntu.com/questions/13875/how-do-i-install-ubuntu-on-an-imac-27</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-11-18 13:36</span></div>
+<div class='content'>
+Following up, I tried to boot with the Ubuntu 10.10 CD with rEFIt installed and all I got was the screen flashing to aubergine, then to 80x25 console then black, all the while the CD was spinning and being read from.<br /><br />I guess I&#39;ll have a poke around some other sites.</div>
+</div>
+<div class='comment'>
+<div class='author'>jdong<span class='comment-date'> on 2010-11-06 17:08</span></div>
+<div class='content'>
+Compositing works for me too in Parallels 6 &#8211; if you&#39;re virtualizing in OS X I strongly recommend Parallels.<br /><br />Note that when dual-booting, it actually doesn&#39;t matter if you install GRUB to the MBR or the partition &#8211; Mac EFI does the right thing (tm) in either case, and you can&#39;t break your OS X boot anyway.</div>
+</div>
+<div class='comment'>
+<div class='author'>cmsj<span class='comment-date'> on 2010-11-06 16:44</span></div>
+<div class='content'>
+(Something I&#39;ve singularly failed to do with any of VBox, Fusion or Parallels though is be able to boot my native dual-boot partition in a VM. They all try to help me boot my Windows Boot Camp partition in the VM and get confused that it&#39;s not NTFS and will give up)</div>
+</div>
+<div class='comment'>
+<div class='author'>cmsj<span class='comment-date'> on 2010-11-06 16:42</span></div>
+<div class='content'>
+Compositing works ok in Parallels.<br />As for dual booting, it should Just Work with 10.04.1 or later - the only non-standard wrinkles are:<br /> * Install GRUB to the partition not the MBR<br /> * Install rEFIt on the Mac so you can select which OS to boot.<br /><br />I&#39;d ignore the Boot Camp tools as they are rather too focussed on Windows.</div>
+</div>
+<div class='comment'>
+<div class='author'>jonathan<span class='comment-date'> on 2010-11-06 15:32</span></div>
+<div class='content'>
+Have you tried using the bootcamp assistant and just installing it the same way you&#39;d dual-boot with Windows? That works quite fine on any Mac I&#39;ve tried it out before.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/still-going.html">Still going</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-04T00:00:00+00:00" pubdate data-updated="true">2010-11-04 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Last post, I talked about the <a href="http://code.mumak.net/2010/11/what-to-do-what-to-do.html">top priorities for Launchpad development right now</a>: performance, privacy, derivative distributions and desktop integration. In this post, I want to talk about the other things that we are doing, and why we are doing them at all.<br /><br />In September last year, we decided that we needed to put a lot of work into something that is at the core of the very idea of Launchpad: bridging the gap between Linux distributions (specifically Ubuntu) and upstream open source projects. Launchpad has been intended from the very beginning to smooth out and accelerate collaboration between these two areas of endeavour.<br /><br />Much of that work has already been done, but we have three initiatives still going: <b>making links,&nbsp;</b><b>daily builds&nbsp;</b>and <b>importing upstream translations</b>.<br /><b></b><br /><br /><b>Making links</b>&nbsp;is all about making it incredibly to add useful, usable information about package / upstream relationships. Launchpad has always had the ability to store such information, but now it&#8217;s much, much easier to use because of a whole suite of changes: automatic suggestions for upstream / distro links; simplified project configuration; automatic linking to projects when marking a bug as upstream; just-in-time project registration etc. There are a few more bugs to go before we&#8217;re happy to call it done.<br /><br /><b>Daily builds</b>&nbsp;are a very cool feature that&#8217;s still in beta. You provide us with a &#8220;recipe&#8221; that tells Launchpad how to combine branches into something resembling a source package, then we take that recipe, assemble the source package, build it and then publish it into a PPA of your choice. Then, if the branches change, we&#8217;ll provide a new build each day. The feature mostly works right now – Project Neon are using it to get <a href="https://launchpad.net/~project-neon/+archive/ppa">nightly builds of Amarok</a>&nbsp;– but the UI needs polish, there are a few system-level <a href="https://bugs.launchpad.net/launchpad-code/+bug/669703">glitches</a> and we&#8217;re <a href="https://bugs.launchpad.net/launchpad-code/+bug/608450">asking questions</a> about the recipe format. I&#8217;ll be posting later about how to get involved with the beta.<br /><br /><b>Importing upstream translations</b>&nbsp;into Ubuntu makes it much easier for Ubuntu to be the best-translated Linux distribution ever. Right now it&#8217;s already possible to import translations from upstream projects into Launchpad. Soon those translations will be imported directly into the equivalent Ubuntu packages too, which means that Ubuntu translators can choose to use the upstream translation or instead provide a better one. Before we can do that, we&#8217;ll need to do some scalability work. After that&#8217;s done, we&#8217;ll also want to do some UI work to make it very easy to connect the Ubuntu package translations to the imported upstream translations.<br /><br />All in all, three very neat initiatives to bring Ubuntu and its upstreams closer together.<br /><br />So that&#8217;s it right? What with <b>performance</b>, <b>derivative distributions</b>, <b>privacy</b> and <b>desktop integration</b> as well as <b>making links,&nbsp;</b><b>daily builds&nbsp;</b>and&nbsp;<b>importing upstream translations</b>, the Launchpad team must have its plate full? Indeed not! Stay tuned, and I&#8217;ll let you know what other things we are currently working on, as well as the future plans that are bubbling away.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/what-to-do-what-to-do.html">What to do, what to do</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-03T00:00:00+00:00" pubdate data-updated="true">2010-11-03 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+One of the many things I love about going to UDS is the opportunity to talk to so many different people about &nbsp;a relatively small set of things. Having the same conversation over again from various angles helps jostle a few lazy thoughts into rank, allowing the now ordered thoughts to execute a disciplined march on the bastion of uncertainty. That is, explaining what I&#8217;m thinking makes my thinking clearer. Rather selfishly, I&#8217;d like to start explaining here what I&#8217;ve been thinking recently.<br /><br />The most important things for Launchpad development right now are <b>performance</b>, <b>derivative distributions</b>, <b>privacy</b> and <b>desktop integration</b>. Everything else we want to do is less important than any of these. I used to include <b>software center support</b>, but we&#8217;ve done that already, all the others are in progress.<br /><br />A faster and more snappy Launchpad will make the lives of all of our existing users happy, whether they are dentists hacking in their spare time or field engineers in Taipei. Improving&nbsp;<b>performance</b>&nbsp;makes the user experience better by having less of it.<br /><br />Ubuntu is being shipped by default on more and more devices. Each version of Ubuntu on those devices can quite legitimately be thought of as a <b><a href="https://dev.launchpad.net/LEP/DerivativeDistributions">derivative distribution</a></b>. We want to give our hardware enablement teams the same top-notch tools that our platform teams get to use. Also in the highly competitive world of device manufacturing, many things need to be kept secret, so Launchpad needs to get its <b><a href="https://dev.launchpad.net/LEP/BetterPrivacy">privacy</a> </b>act together.<br /><br />Finally, I&#8217;m convinced that developing apps and fixing bugs in Ubuntu needs to be as easy and smooth as possible. I&#8217;m also convinced, alongside the Ubuntu One folk, that we can do some pretty neat things when we integrate the desktop and the web. Thus I&#8217;ve been pushing for a long time to improve Launchpad&#8217;s <b><a href="https://dev.launchpad.net/LEP/DesktopWideLaunchpadIntegration">desktop integration</a></b>. Unlike the others it&#8217;s not an immediate need, but I think the work we do now will pay off very quickly.<br /><br />All of these four things are in progress right now. I&#8217;d love to write more about some of the other things we have in progress and about my own dim picture of the future, but this is enough for one post.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/launchpad-and-uds-n.html">Launchpad and UDS-N</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-02T00:00:00+00:00" pubdate data-updated="true">2010-11-02 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Yesterday I got back from the <a href="http://summit.ubuntu.com/">Ubuntu Developer Summit</a> where hundreds of people got together to plan the next release of Ubuntu, the &#8220;Natty Narwhal&#8221;.<br /><br />For Natty, the Ubuntu Platform team have five foci:<br /><br /><ol><li>Unity</li><li>2D Experience</li><li>Software Center</li><li>Testing</li><li>Community contributions</li></ol><div>If you have a problem with these, <a href="http://theravingrick.blogspot.com/2010/10/this-is-it.html">talk to the hand</a>.</div><div><br /></div><div>We on the Launchpad team want to do everything we can to help Ubuntu achieve these goals. &nbsp;Partly, this will be by continuing to make Launchpad a joy to use. &nbsp;However we&#8217;ll probably be able to offer some specific help with the last three foci: Software Center; testing and community contributions.</div><div><br /></div><div>I don&#8217;t know of any concrete actions yet – I&#8217;ve yet to trawl through the many blueprints to find them – but for the next few months, I&#8217;m hoping that Launchpad developers will be watching for opportunities to help make Natty the best release ever.</div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/art-is-long-life-short.html">The art is long, the life short</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-28T00:00:00+01:00" pubdate data-updated="true">2010-10-28 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I love the energy at UDS. &nbsp;I wish I could go away from it and sit down and do nothing but hack for three months so I could finish all of the little, awesome things that Launchpad could do.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/testtools-compatibility.html">testtools compatibility</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-25T00:00:00+01:00" pubdate data-updated="true">2010-10-25 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+We&#8217;ve recently been getting a few bugs filed on <a href="https://launchpad.net/testtools">testtools</a> about compatibility with various versions of Python. I really want to support as many versions as I can, but I simply don&#8217;t have them on my system.<br /><br />What resources are available to me if I want to set up a Hudson instance or similar that runs testtools tests against Python 2.4, 2.5, 2.6, 2.7, 3.0 and 3.1? A Windows run would also be nice.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Sidnei da Silva<span class='comment-date'> on 2010-10-29 00:19</span></div>
+<div class='content'>
+You&#39;d definitely benefit from asking that question directly to Holger.<br /><br />I think you basically need to throw tox (http://pypi.python.org/pypi/tox) at the problem and see if it sticks though.</div>
+</div>
+<div class='comment'>
+<div class='author'>Benjamin<span class='comment-date'> on 2010-10-25 18:40</span></div>
+<div class='content'>
+testrun.org perhaps</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/off-to-uds.html">Off to UDS</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-23T00:00:00+01:00" pubdate data-updated="true">2010-10-23 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I can&#8217;t believe it&#8217;s already time to depart dear old London and head across the Atlantic to participate in another <a href="http://summit.ubuntu.com/">UDS</a>. Although &#8220;participate in&#8221; doesn&#8217;t feel like the right verb, does it? UDS is a frantic, electric whirligig of meetings and conversations and decisions and on-the-spot calls, cool ideas and grand hopes, energy and exhaustion. &#8220;Almost drown in&#8221; would be closer. I&#8217;m looking forward to it, but I&#8217;m a little bit daunted. The last one took more out of me than I thought I had.<br /><br />To make my own life easier and satisfy whatever stalkers I may have been fortunate enough to accumulate, I thought I&#8217;d post now about what sessions I&#8217;m planning on going to at UDS:<br /><br /><b>Monday</b><br /><br /><ul><li>11: Linaro Roundtable / catch up with other Launchpadders</li><li>12:&nbsp;<a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/other-foundations-n-distributed-development-review-and-planning">Review and planning for Ubuntu Distributed Development</a></li><li>15:&nbsp;<a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-harvest-plans">Natty Harvest Plans</a></li><li>16:&nbsp;<a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-developer-advocacy">Ubuntu Development Advocacy</a></li></ul><div><b>Tuesday</b></div><div><ul><li>9: <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-launchpad-n-metrichooks">BOF for metrics for release and project management</a></li><li>10: Either <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/appdevs-desktop-n-software-center-ui-enhancements">Enhancements to the Software Center UI</a>&nbsp;or <a href="https://wiki.linaro.org/Platform/Infrastructure/Specs/PatchTracking">Patch tracking for Linaro</a></li></ul><div><b>Wednesday</b></div></div><div><ul><li>10: <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-launchpad-for-upstreams">Launchpad and Upstreams</a></li><li>11: <a href="https://blueprints.edge.launchpad.net/software-center/+spec/other-foundations-n-partner-repository">Replace the Partner repository with PPAs</a></li></ul><div><b>Thursday</b></div></div><div><ul><li>10: <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/other-general-n-git-for-bzr-users">Git for Bazaar users</a></li><li>11: <a href="https://wiki.canonical.com/CoP/QA/UDS-NAgenda">Discussion of topics related to Canonical-wide QA</a></li><li>12: <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-improve-fixing-a-bug-workflow">Improve the workflow for &#8220;fixing a bug&#8221;</a> or <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/appdevs-n-commercial-apps">Define the end-to-end process for commercial apps in the software center</a></li></ul><div><b>Friday</b></div></div><div><ul><li>9: <a href="https://wiki.ubuntu.com/ArchiveReorganisation/Components/Preparation">Discuss Soyuz work to be done in preparation for Archive Reorganization</a></li><li>10: Either <a href="https://wiki.linaro.org/Platform/Infrastructure/Specs/ImageBuildPolish">Improve the image-building service for Linaro</a> or <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-qa-n-handling-nonenglish-bugs">Handling non-English bugs</a></li><li>11: <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-launchpad-n-launchpad-bazaar-introduction">Launchpad/Bazaar introduction</a></li><li>12: <a href="https://wiki.linaro.org/Platform/Infrastructure/StakeholderProcess">Linaro infrastructure stakeholder process</a></li><li>15: <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-high-level-dev-overview">High-level development overview</a></li></ul><div>Of course, I&#8217;ll probably be going to sessions other than the ones I&#8217;ve mentioned above. Sessions about how to design applications well or how to write code for Ubuntu One always catch my eye.</div></div><div><br /></div><div>However, my job is about improving developer collaboration – that&#8217;s pretty much the whole point of Launchpad. So any session about development tools, development process or interactions between different groups of people always take precedence. I&#8217;m at UDS to listen and to learn, and to contribute what little I can.</div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/testtools-097-released.html">testtools 0.9.7 released</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-17T00:00:00+01:00" pubdate data-updated="true">2010-10-17 Sunday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a href="http://pypi.python.org/pypi/testtools">testtools</a> 0.9.7 has just been released.  Thanks to <a href="https://launchpad.net/~lifeless">Robert Collins</a>, <a href="http://jameswestby.net/weblog">James Westby</a>, <a href="http://bemusement.org/">Andrew Bennetts</a>, <a href="https://edge.launchpad.net/~gz">Martin [gz]</a> and <a href="http://canonical.com/">Canonical Ltd</a> for their contributions.<br /><br />testtools is pretty much the best way to write unit tests in Python.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/7/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/5/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What&#8217;s wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

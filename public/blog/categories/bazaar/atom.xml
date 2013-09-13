@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Bazaar | Mere Code]]></title>
+  <link href="http://code.mumak.net/blog/categories/bazaar/atom.xml" rel="self"/>
+  <link href="http://code.mumak.net/"/>
+  <updated>2013-09-13T22:56:47+01:00</updated>
+  <id>http://code.mumak.net/</id>
+  <author>
+    <name><![CDATA[Jonathan Lange]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Time-based releases and love]]></title>
+    <link href="http://code.mumak.net/2009/03/time-based-releases-and-love.html"/>
+    <updated>2009-03-31T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2009/03/time-based-releases-and-love</id>
+    <content type="html"><![CDATA[<div class='post'>
+I believe in time-based releases. I believe in frequent releases. I believe in a trunk branch that is always ready to be a release candidate. Many Free Software developers share my beliefs. For a long time I haven't questioned it. It's obviously good to release regularly and often.<br /><blockquote>"It is hard to argue that bzr isn't in a state of flux when a new stable version is available once a month." - Jason Earl, Bazaar mailing list.<br /></blockquote>Now I think I have to begin asking questions.<br /><br />Is it possible that time-based releases actually create negative impressions of software? Should regular releasers slow down their cadence? How should compatibility watersheds (format, API, whatever) affect a release cycle? What would Bazaar's format reputation be like if they released every six months instead of every month?</div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Eduardo de Oliveira Padoan<span class='comment-date'> on 2009-04-02 13:08</span></div>
+<div class='content'>
+@bialix: I think that point releases (especially when security fixes and fixes for major regression are involved) should be released any time if needed.<BR/><BR/>If bzr is to move to a longer release cycle (3 months, say), it can still do montly alpha/beta releases: an alpha on the end of the first month, a beta on the end of the second one (if no release critical bug id found, them is could slip some days), and a rc or two on the week before the final release.</div>
+</div>
+<div class='comment'>
+<div class='author'>Mary<span class='comment-date'> on 2009-04-02 06:12</span></div>
+<div class='content'>
+My thoughts are not as specific as other commenters, but essentially: bzr does not provide any way to judge the level of change in its releases: the number is essentially 1.X where X is the number of months since 1.0 (give or take).<BR/><BR/>While Ubuntu also uses a similar strategy, most Free Software people really are accustomed to X.Y where a change in X means big changes including likely major fixes and improvements but also to beware of breakage, and a change in Y means tweaks to what you know, breakage unlikely. (For projects with dependant projects, X.Y.Z is better where a change in Z means no ABI/API break from the previous release, as required.)<BR/><BR/>Of course, one can get this from the release notes, but one doesn't read them...</div>
+</div>
+<div class='comment'>
+<div class='author'>bialix<span class='comment-date'> on 2009-04-01 19:47</span></div>
+<div class='content'>
+I think bzr practive to release every 4 weeks is too frequent for the most users/admins. Once at 2 or 3 months is much better.<BR/><BR/>May be only point releases, e.g. 1.13.X should be released once at month.<BR/><BR/>E.g. for version X.Y.Z<BR/><BR/>Z = every month (only bugfixes)<BR/>Y = every 3 months (improvements)<BR/>X = every 9-12 months (big improvements, new formats)</div>
+</div>
+<div class='comment'>
+<div class='author'>Eduardo de Oliveira Padoan<span class='comment-date'> on 2009-04-01 13:58</span></div>
+<div class='content'>
+Also, If new formats had a big set of new features (instead of the one-format-per-new-feature-every-now-and-again like it is now), people would be more excited about upgrading. At least brisbane-core is something everybody will be really *really* excited about :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Cory<span class='comment-date'> on 2009-04-01 07:04</span></div>
+<div class='content'>
+I have to agree with Eduardo there.  One of the reasons specifically cited by Brett Cannon today when discussing Python-on-hg is the number of changes to release formats in bzr.<BR/><BR/>I think that has way more of an impact on the impression of stability than does the frequency of releases; people just want to know it will always work wherever they happen to need some code, regardless of what version is installed there.<BR/><BR/>I don't see any reason to question the basic concept of always being ready to release, but that's not the same as releasing all the time.  :-)  Every month is good for a pre-1.0, after that, 3 or 6 months is a better pace to set.  Being ready gives you the ability to do a critical bugfix release at the drop of a hat.</div>
+</div>
+<div class='comment'>
+<div class='author'>Eduardo de Oliveira Padoan<span class='comment-date'> on 2009-04-01 02:13</span></div>
+<div class='content'>
+Please keep the monthly releases. It's quite nice to have the new features on a packaged format earlier. The developer are forced to keep the project in a "releasable" state more often too. <BR/><BR/>But I'd ask, *please*, don't add new default repository formats so often. <BR/>My proposal: do time-based *major* (2.0, 3.0, ...) releases too, every 6 months for example, and add a new default format only to this releases. <BR/><BR/>The new format, accumulating all backward incompatible changes, could be developed on a branch and integrated as a --development format when its good enough (like it is now), but only released as the default on a major release.<BR/><BR/>This way, distributions can offer always a bzr with the latest (or almost) format, and teams/hosting sites/sysadmins can get prepared to upgrade their repos less often.</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[brisbane-core]]></title>
+    <link href="http://code.mumak.net/2009/03/brisbane-core.html"/>
+    <updated>2009-03-22T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2009/03/brisbane-core</id>
+    <content type="html"><![CDATA[<div class='post'>
+Up in Brisbane, while I was diligently working away on package branches in Launchpad, many of the Bazaar guys were working on their new "brisbane-core" format.<br /><br />I overheard one of them say in this new format 'log -v' is up to twenty times faster.<br /><br />Want more details? Well, perhaps someone else on Planet Bazaar can provide them.</div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Szala<span class='comment-date'> on 2009-05-11 08:42</span></div>
+<div class='content'>
+try out the real estate agency<br /><br /><br />szala<br /><br /><A HREF="http://www.fastrealestate.com.au" REL="nofollow">real estate</A></div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Another Bazaar story]]></title>
+    <link href="http://code.mumak.net/2008/06/another-bazaar-story.html"/>
+    <updated>2008-06-13T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2008/06/another-bazaar-story</id>
+    <content type="html"><![CDATA[<div class='post'>
+I'm currently hacking away on Launchpad's support for "<a href="http://jam-bazaar.blogspot.com/2008/05/this-week-in-bazaar_29.html">stacked branches</a>", something that will really make Launchpad's codehosting a joy to use.<br /><br />At the moment, I'm writing some tests that require a user to login. This was becoming a bit cumbersome, until I remembered something: Tim has recently landed some code to make this easy. But how do I get these changes without messing up all of the work I'm doing now? bzr shelve to the rescue!<br /><br />'shelve' interactively goes through each change you've made to your current working tree and allows you to decide whether to keep a change or shelve it. It comes with a twin command 'unshelve', which lets you interactively restore your changes.<br /><br />In this case, I don't even care about the interactivity, so here's what I did:<br /><pre><br /># Shelve my changes<br />bzr shelve --all<br /># Fetch the latest trunk<br />cd ../trunk<br />bzr pull<br /># Merge it into my branch<br />cd ../stacking<br />bzr merge ../trunk<br />bzr ci -m "Merge in changes from trunk to get login testing improvements."<br /># Restore my changes<br />bzr unshelve --all</pre><br /><br />The 'shelve' command comes with the <a href="http://launchpad.net/bzrtools">bzrtools</a> plugin, and I am basically in love with it.<br /><br />As a parting shot, I should mention that things like bzrtools aren't accidents. They are natural and inevitable when you have <a href="http://starship.python.net/crew/mwh/bzrlibapi/bzrlib.html">good APIs</a> in a <a href="http://python.org">high-level language</a> and a <a href="http://bazaar-vcs.org/WritingPlugins">very nice plugin system</a>.<br /><br />And now I'm off to keep working on this branch.<br /><br /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[User Experience — When Reality Attacks]]></title>
+    <link href="http://code.mumak.net/2008/03/user-experience-when-reality-attacks_12.html"/>
+    <updated>2008-03-12T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2008/03/user-experience-when-reality-attacks_12</id>
+    <content type="html"><![CDATA[<div class='post'>
+I've just got back from a hectic week in London, where members of the Bazaar community got together and thrashed out a bunch of important topics.<br /><br />We talked about "user experience" and how we all want Bazaar to be a joy to use. More than one person said that we have been focusing too much on features and performance instead of user experience. The term was never really pinned down, but it's fair to say that there are things other than convenience and speed that affect how users feel while using Bazaar and that we need to work on those things, once we figure out what they are.<br /><br />I think I might know the name of one of them: <em>errors</em>. Next post: "Notes on error".</div>
+
+]]></content>
+  </entry>
+  
+</feed>

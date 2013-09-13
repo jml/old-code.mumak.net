@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="Here&#8217;s a thing that happens a lot to me: I&#8217;m doing some work, and as part of that work I need to run a command in my terminal that takes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/blog/page/3/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/01/undistract-me.html">Undistract me</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-23T00:00:00+00:00" pubdate data-updated="true">2012-01-23 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Here&#8217;s a thing that happens a lot to me: I&#8217;m doing some work, and as part of that work I need to run a command in my terminal that takes a little while. I run the command, look at it for about a second and then switch to doing something else – checking email, perhaps. I get deeply involved in my email checking, and then about twenty minutes later I switch back to the terminal and see the command has finished.&nbsp;For all I know, it finished nineteen minutes ago, and I was just too engrossed to notice it.<br /><br />This is a big productivity sink for me, especially if the command happened to fail and need retrying. I&#8217;m not disciplined enough to just sit and watch the command, and I&#8217;m not prescient enough to add something to each invocation telling me when a command is done. What I want is something that alerts me whenever long running commands finish.<br /><br />Well, that thing now exists, thanks to <a href="http://glyph.twistedmatrix.com/">glyph</a>&#8217;s <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html">script that provides precmd and postcmd support to bash</a>&nbsp;and a lot of help from <a href="http://www.tenshu.net/">Chris Jones</a>&nbsp;of <a href="http://www.tenshu.net/p/terminator.html">Terminator</a>.<br /><br />To use it right now:<br /><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;$ bzr co lp:~jml/+junk/shell-tools</span><br /><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;$ . shell-tools/long-running.bash</span><br /><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;$&nbsp;notify_when_long_running_commands_finish_install</span><br /><span style="font-family: 'Courier New', Courier, monospace;"><br /></span><br />You&#8217;ll see that if you run a command that takes over 30 seconds to complete, it will pop up a notification, which should hopefully take you away from whatever it was you are doing and back to the task at hand.<br /><br />If you <a href="http://bazaar.launchpad.net/~jml/+junk/shell-tools/view/head:/long-running.bash">look at the code</a>, you&#8217;ll see that it installs two hooks: <span style="font-family: 'Courier New', Courier, monospace;">precmd</span> and <span style="font-family: 'Courier New', Courier, monospace;">preexec</span>. <span style="font-family: 'Courier New', Courier, monospace;">preexec</span> runs just before the shell launches a command, and <span style="font-family: 'Courier New', Courier, monospace;">precmd</span> runs just before it prompts for the next command. Our <span style="font-family: 'Courier New', Courier, monospace;">preexec</span> stores when the command was launched and the <span style="font-family: 'Courier New', Courier, monospace;">precmd</span> checks to see if it finished within a certain time frame. If not, it sends out a notification.<br /><br />Currently, you&#8217;ll get a notification when you finish reading a long document, since the command finishes a long time after the command starts. Obviously this isn&#8217;t ideal. I think the fix is to only send notifications when the shell doesn&#8217;t have focus. Unfortunately, that&#8217;s a little tricky and I think is going to be highly terminal specific.<br /><br />Anyway, I&#8217;m a total shell newbie, so I&#8217;d love to know if there&#8217;s any way this could be done better. &nbsp;Also let me know if you find this useful, or you know of someone who has already done this.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Martin Lindhe<span class='comment-date'> on 2012-01-25 14:56</span></div>
+<div class='content'>
+there is also a util called &quot;zenity&quot; that creates gnome dialogs from the shell</div>
+</div>
+<div class='comment'>
+<div class='author'>Martin Lindhe<span class='comment-date'> on 2012-01-25 14:53</span></div>
+<div class='content'>
+FYI, you could also try the &quot;beep&quot; command to sound the pc speaker from your shell script</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-01-24 09:18</span></div>
+<div class='content'>
+@jam A blacklist might not be a bad idea. As it is, I&#39;m not minding the pop ups when focused though. <br /><br />As for the &#39;; n&#39; thing.  I&#39;ve tried it before.  What happens is I tend to forget to put it on, then feel lazy <i>and</i> stupid when I get distracted again.</div>
+</div>
+<div class='comment'>
+<div class='author'>jam<span class='comment-date'> on 2012-01-24 08:44</span></div>
+<div class='content'>
+Why not just have it blacklist specific commands. For example &quot;vi/emacs/less&quot;. I don&#39;t know specifically how you are looking at text for a long time, but it seems the commands that run are going to be fairly different.<br /><br />There are also easy things if you know a command is going to be slow, like setting up a shell command to run a sound file/pop up a notification, and alias it to something short like &#39;n&#39; and then just<br /><br />command; n<br /><br />It isn&#39;t quite as auto-magical, but it does avoid false positives.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-01-24 00:22</span></div>
+<div class='content'>
+@Steve Terminator has plugins that do that.  However, what I wanted was something that I didn&#39;t have to enable or disable at all, and something that wouldn&#39;t do false positives even if the command spewed stuff all the time.<br /><br />@Tuure Good point.  My hunch is that problem is best solved at the notify-send level.</div>
+</div>
+<div class='comment'>
+<div class='author'>Tuure Laurinolli<span class='comment-date'> on 2012-01-23 22:39</span></div>
+<div class='content'>
+This seems like it would only work on local machine. Something similar for remote machine would have to have a back-channel to your local machine, e.g. with ssh -R. I think I&#39;ll hack on something along these lines tomorrow night.</div>
+</div>
+<div class='comment'>
+<div class='author'>Steve McInerney<span class='comment-date'> on 2012-01-23 22:04</span></div>
+<div class='content'>
+Hmm. I&#39;m a loooong time konsole fan, and that functionality is built in. &quot;View; Monitor for Silence&quot; or &quot;Monitor for Activity&quot;.<br />Use it quite a lot for long running commands/rollouts etc.<br />Used to be better in previous versions, that you could adjust the time before alert; but alas, that&#39;s been removed.<br /><br />I have my layout setup such that the konsole tab bar (at the bottom where it belongs) is *always* visible, so when something changes, it flashes, I see it instantly.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-01-23 18:11</span></div>
+<div class='content'>
+@Daniel_Bo: No reason, just a simple matter of patching GNOME Terminal a DBUS API that lets you ask if the current shell has focus, and getting that patch upstream.<br /><br />@glyph: Updated.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2012-01-23 17:37</span></div>
+<div class='content'>
+Interesting application!<br /><br />Please update your links, though: <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html" rel="nofollow">that post now lives here</a>.  (LiveJournal is dead to me.)</div>
+</div>
+<div class='comment'>
+<div class='author'>Daniel Bo<span class='comment-date'> on 2012-01-23 16:00</span></div>
+<div class='content'>
+Wonderful and extremely useful. Why can&#39;t this be modified so the focus issue is solved for GNOME Terminal and then be shipped by default?<br /><br />It seems like one of those polish features that Ubuntu needs and wants.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/12/what-are-my-projects.html">What are my projects?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-26T00:00:00+00:00" pubdate data-updated="true">2011-12-26 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Launchpad doesn&#8217;t really have any good mechanism for letting you review a list of &#8220;your&#8221; projects.<br /><br />That&#8217;s partly because there are a lot of different ways that it <i>could</i>&nbsp;do it. You could be the maintainer of a project, or its driver, or its bug supervisor, or you might have commit access to its trunk branch. All of this could be direct, or through membership of a team. It&#8217;s tough.<br /><br /><br />Since it&#8217;s that time of year when I review my projects, responsibilities, goals and the like and start to figure out what I want to do next year, I want to figure out what are my projects on Launchpad.<br /><br />Luckily, Launchpad has an API. I can&#8217;t use it to figure out what projects I&#8217;m the maintainer of, but I can use it to figure out <a href="http://paste.ubuntu.com/783038/">what trunk branches I have commit access to</a>. &nbsp;The link has the Python code for the script.<br /><br />Really, Launchpad should allow me to curate my own list of projects, with input to that list coming from all of the sources mentioned above, as well as arbitrarily selecting projects.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/11/pyflakes-update.html">pyflakes update</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-21T00:00:00+00:00" pubdate data-updated="true">2011-11-21 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Thanks to <a href="http://radix.twistedmatrix.com/">radix</a>, <a href="http://as.ynchrono.us/">exarkun</a> &amp; <a href="http://as.ynchrono.us/">dash</a>, my branch to <a href="http://pypi.python.org/pypi/pyflakes">pyflakes</a> to warn about duplicate definitions of classes finally landed. I did the work a year ago as an outrage-powered, opportunistic fix after I saw a co-worker struggle with tests weirdly not failing (Turned out it was a huge test module and there was another class at the bottom with the same name). I&#8217;m very happy to see it landed.<br /><br />For those who haven&#8217;t been paying attention, official pyflakes development is now taking place on <a href="https://launchpad.net/">Launchpad</a> as part of the <a href="http://launchpad.net/divmod.org">divmod.org</a> project. The trunk of that project now has the best version of pyflakes known to man.<br /><br />pyflakes is the best static Python checker. It&#8217;s fast, and has very few false positives.<br /><br /><b>Update: </b>A couple of people have asked me about <a href="https://launchpad.net/pyflakes">lp:pyflakes</a>. It&#8217;s dead. It died when the divmorg.org trac instance died ages ago. Don&#8217;t use it. To get pyflakes or any other divmod project, use <a href="https://launchpad.net/divmod.org">lp:divmod.org</a>.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2011-11-29 09:45</span></div>
+<div class='content'>
+I don&#39;t know. I&#39;m not a Pyflakes maintainer, and I only found out about the transfer of projects from the last pyflakes release announcement.</div>
+</div>
+<div class='comment'>
+<div class='author'>Michael Foord<span class='comment-date'> on 2011-11-29 01:18</span></div>
+<div class='content'>
+Where should bugs be reported? lp:divmod.org doesn&#39;t have the bug-tracker configured.<br /><br />If lp:pyflakes is dead, why is it still linked to from pypi?</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2011-11-23 09:57</span></div>
+<div class='content'>
+Yeah, pyflakes is awesome.</div>
+</div>
+<div class='comment'>
+<div class='author'>gz<span class='comment-date'> on 2011-11-22 20:55</span></div>
+<div class='content'>
+Looking at the checker code, it&#39;s actually a pretty elegant use of the python ast module, and a big improvement on the mess of string handling generally found under the covers of python lint modules.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/11/automatic-packaging-update.html">Automatic packaging update</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-10T00:00:00+00:00" pubdate data-updated="true">2011-11-10 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I just blogged on developer.ubuntu.com about <a href="http://developer.ubuntu.com/2011/11/automatic-packaging-progress/">the work we&#8217;re doing with automatic packaging</a>. Read it!</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/11/how-to-feel-better-or-some-tips-on.html">How to feel better (or, some tips on refactoring)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-04T00:00:00+00:00" pubdate data-updated="true">2011-11-04 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<span style="background-color: transparent;">A few months back I gave a lightning talk at the <a href="https://launchpad.net/">Launchpad</a> Thunderdome about how I do refactoring. &nbsp;It&#8217;s very opinionated, and mostly applies to big, old code bases, but worth writing up anyway.</span><br /><span style="background-color: transparent;"><br /></span><br /><span style="background-color: transparent;">The core idea here is that very few things make me feel as good as deleting code. I love cleaning up code and the clean code base that results, and I&#8217;m sure that many others feel like me. As such, this is a guide on how to feel better.</span><br /><br /><b>1. Know your enemy</b><br /><br />“Functionality is an asset, code is a liability”. Truer words were never spoken. Every line of code is a potential source of bugs and a barrier to understanding, and thus carries a maintenance cost.<br /><br />Maintain an awareness of things that need refactoring. Here&#8217;s a quick and incomplete list:<br /><br /><ul><li><span style="background-color: transparent;">unused code – this can be deleted</span></li><li><span style="background-color: transparent;">boilerplate – this should become a function or class</span></li><li><span style="background-color: transparent;">wrong documentation – these should be updated</span></li><li><span style="background-color: transparent;">two ways of doing something – perhaps there should be one</span></li><li><span style="background-color: transparent;">bad names – change them to something that makes you think less</span></li></ul><b>2. Keep a &#8220;yak stack&#8221;</b><br /><br /><a href="http://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html" style="background-color: transparent;">Yak shaving</a><span style="background-color: transparent;">&nbsp;is &#8220;any seemingly pointless activity which is actually necessary to solve a problem which solves a problem which, several levels of recursion later, solves the real problem you&#8217;re working on.&#8221; (<a href="http://catb.org/jargon/html/Y/yak-shaving.html">Jargon File</a>)</span><br /><br />A few of us have extended the concept beyond the &#8220;actually necessary&#8221; to include anything that&#8217;s making the task at hand more difficult and less fun but is not worth fixing <i>right</i>&nbsp;now. Hence the yak stack. Here&#8217;s how it works:<br /><br />Whenever you come across something in your code base that is difficult to understand or that slows you down: make a note of it. When you&#8217;ve finished the task at hand, fix the problem. If you encounter other things that slow you down, write them down. Work through the list.<br /><br /><b>3. Every option is wrong</b><br /><br />In a big, old code base, there are probably many, many areas that need refactoring. &nbsp;Don&#8217;t worry about which is the &#8220;best&#8221; place to start – there is no best place.<br /><br /><b>4. Start from green, stay green</b><br /><br />Never, ever refactor while your tests are failing. Refactoring is about changing the shape of code while preserving its behaviour. It&#8217;s much harder to be sure you&#8217;re keeping the behaviour if you are comparing one set of thirty tracebacks with another set of thirty tracebacks. Better to compare a passing (&#8220;green&#8221;) test run with another passing test run.<br /><br />Run tests frequently. More often then you think you should. Commit often – think of it like quick save in a tough level of a video game. It frees you up to experiment more and means you have less in your head at any one time.<br /><br /><b>5. Do not nest</b><br /><br />Don&#8217;t begin a refactoring while you are in the middle of another refactoring. If you find you must, use tools like &#8217;<a href="http://doc.bazaar.canonical.com/beta/en/user-guide/shelving_changes.html">bzr shelve</a>&#8217; to store your current diff and then work from the clean head of your branch.<br /><br /><b>6. Keep moving, leave a trail</b><br /><br />Don&#8217;t get bogged down in details, otherwise you&#8217;ll never finish. Literally. Someone will come along and distract you and before you know it, three months will pass and your refactoring branch will be full of conflicts. If you see something you are unsure of, mark it with a XXX or a FIXME or a TODO or whatever works for you and then continue with what you are doing.<br /><br />Tools like &#8217;<a href="http://launchpad.net/difftodo">bzr todo</a>&#8217; can make it really easy to check to see if you&#8217;ve added any XXX comments.<br /><br /><b>7. Translate tests with care</b><br /><br />As said above, refactoring is about changing the shape of code while preserving its behaviour. When you update tests, you risk changing your definition of the system&#8217;s behaviour – so be careful.<br /><br /><b>8. Confront uncertainty with destruction</b><br /><br />If you see some code and you are not sure if it&#8217;s needed, delete it. Doesn&#8217;t matter if it&#8217;s a whole function or just an odd line. If you have a test suite, and it was important, that will catch the failure. If you have version control, and it was important, one of your collaborators will notice and revert the change.<br /><br />If it was important and neither of these happened, then your whole project has learned something new about itself, and that&#8217;s probably worth the hassle. (Oh, add tests &amp; better docs after this happens.)<br /><br /><b>9. Good grep tools</b><br /><br />Remember that symbols aren&#8217;t only referenced from files that match *.py. &nbsp;In big code bases there are often other sorts of files that refer to symbols in the main code. In Launchpad, for example, we have ZCML and doctest files that refer to symbols. When you want to know how something is used or you want to rename something, make sure you use a grep command that actually finds everything.<br /><br />Ideally, you should be able to run this command faster than you can think about wanting to do it.<br /><br />Personally, I use &#8216;bzr grep&#8217; a lot. Others recommend &#8216;ack&#8217;.<br /><br /><b>10. There will be failures</b><br /><br />Mentally prepare yourself for the fact that the first two or three full test runs after your refactoring will fail. &nbsp;This is especially important for code bases that have multi-hour test run times.<br /><br />If you think this way, then you won&#8217;t be as discouraged when it actually happens.<br /><br /><b style="background-color: transparent;">11. Finish the job</b><br /><br />Busy people refactoring a big code base are often tempted to apply a refactoring to only a single part. &nbsp;For example, some useful function is extracted from repeated boilerplate in a few other functions. However, many, many other instances in the code base continue to use the repeated boilerplate.<br /><br />This is <i>almost</i> worse than just leaving the repeated boilerplate. &nbsp;There are now two idiomatic ways of doing the activity. &nbsp;Further, other developers who work on other parts of the code base probably won&#8217;t find out about it, and might end up repeating your refactoring. Ugh. How is anyone new expected to get to grips with this code?<br /><br />Similarly, if a class, function or concept is renamed, rename it everywhere, especially in the documentation.<br /><br />It&#8217;s difficult and often tedious, but it really is worth taking refactorings to completion. Apply them to the whole code base, or not at all.<br /><br />Note that I&#8217;m referring to completeness, not perfection. If you block on perfection, you never get anything useful done. If you aim for frequent incremental improvements, you soar.<br /><br /><b>12. Read these books</b><br /><br />I highly recommend &#8221;<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1320430812&amp;sr=1-1">Refactoring</a>&#8221; by Martin Fowler and &#8221;<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1320430812&amp;sr=1-1">TDD by Example</a>&#8221; by Kent Beck. I stole many of these ideas from them.<br /><div><br /></div><div><br /></div><div><b>Over to you</b></div><div><b><br /></b></div><div>This was very much just a dump of how I do refactoring when hacking on Launchpad. I&#8217;m always keen to learn more, and would love to hear about what works for you.</div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Michael Hudson-Doyle<span class='comment-date'> on 2011-11-05 05:27</span></div>
+<div class='content'>
+There&#39;s that Java thing that randomly mutates your code and complains if no test breaks which sounds sort of vaguely like that, but it&#39;s not quite the same I guess.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2011-11-04 18:54</span></div>
+<div class='content'>
+I think that&#39;s exactly right.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2011-11-04 18:51</span></div>
+<div class='content'>
+As to point 7, I&#39;d say that &quot;with care&quot; is not quite good enough.  Change the test, run it, it should pass; but then always go change the implementation in a way which should break the test, and make sure it still fails.<br /><br />If we had really good coverage tools which were constantly informing us in a useful way of which lines were being run, with good IDE integration, this step might not be necessary, but even the snazzier IDEs I&#39;ve seen do not seem to have this down.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/09/testtools-0912-out.html">testtools 0.9.12 out</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-14T00:00:00+01:00" pubdate data-updated="true">2011-09-14 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a href="http://pypi.python.org/pypi/testtools">testtools</a> 0.9.12 has just been released!<br /><br />It&#8217;s a huge release, this one. We normally try to release much more frequently, but for this release I wanted to wait until <a href="https://bugs.launchpad.net/testtools/+bugs?field.tag=unicode&amp;field.status=Fix+Released">all of our known unicode handling bugs were fixed</a>. Today, <a href="https://launchpad.net/~gz">Martin [gz]</a> finished off his <a href="https://code.launchpad.net/~gz/testtools/unprintable-assertThat-804127/+merge/72641">heroic branch</a> to fix up <a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers"><code>assertThat</code></a>, and I figured it was time to release.<br /><br />In addition to all of the unicode fixes, we&#8217;ve really cleaned up the way test failures are displayed. A lot of the boilerplate around the traceback has been removed, a lot of levels of the stack are gone (although you can get them back if you want), and <code>assertThat</code> is way less repetitive. This all really adds up. If you&#8217;re using an old release, you want to upgrade right now. Honest.<br /><br />For me, this release is the one where using <a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers">matchers</a> becomes really and properly fun. As such, all of our <code>assertFoo</code> methods are now implemented in terms of matchers.<br /><br />Of course, we have our usual raft of fixes, helpers and new matchers too. The <a href="https://launchpad.net/testtools/0.9/0.9.12">full changelog</a> is on Launchpad.<br /><br />In addition to Martin [gz], thanks to <a href="https://launchpad.net/~kampka">Christian Kampka</a>, <a href="https://launchpad.net/~lifeless">Robert Collins</a> and <a href="http://canonical.com/">Canonical</a> for making this release what it is.<br /><br />If you&#8217;re new to testtools, it&#8217;s basically a way to do serious, <a href="http://testtools.readthedocs.org/en/latest/overview.html">tasteful unit testing in Python</a>.<br /><br />Documentation lives at&nbsp;<a href="http://testtools.readthedocs.org/en/latest/">http://testtools.readthedocs.org/en/latest/</a>.<br />PyPI:&nbsp;<a href="http://pypi.python.org/pypi/testtools">http://pypi.python.org/pypi/testtools</a><br />All development takes place on Launchpad:&nbsp;<a href="https://launchpad.net/testtools">https://launchpad.net/testtools</a><br />Join us on #python-testing on Freenode<br /><br />We don&#8217;t currently have a release PPA, but we do have a <a href="https://launchpad.net/~testing-cabal/+archive/archive">daily builds PPA</a>. The trunk is kept stable using <a href="http://mumak.net:8080/job/testtools/">Jenkins</a>, so it&#8217;s fairly safe to use.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>gz<span class='comment-date'> on 2011-09-14 21:52</span></div>
+<div class='content'>
+Good work jml! And thanks for the mention. :)</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/09/doctest-really-isnt-very-good.html">doctest really isn&#8217;t very good</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-09T00:00:00+01:00" pubdate data-updated="true">2011-09-09 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;">I just got sick of trying to decode obtuse doctest diff errors when using NORMALIZE_WHITESPACE and ELLIPSIS options. Although doctest gives you hooks to do something about this, it&#8217;s really hard to actually write the logic.</span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;"><br /></span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;">See, NORMALIZE_WHITESPACE also normalizes line breaks, and &#8216;&#8230;&#8217; can match across multiple lines. That means that you can&#8217;t take a line-based approach, which makes it really hard to clean up a diff. Anyway, here&#8217;s my attempt:&nbsp;</span><a href="https://code.launchpad.net/~jml/testtools/better-doctest-output-checker/+merge/74842">https://code.launchpad.net/~jml/testtools/better-doctest-output-checker/+merge/74842</a><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;"><br /></span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;">It&#8217;s a pain, because both of them would be very useful without their line-spanning behaviour. I guess without the line-spanning behaviour of &#8216;&#8230;&#8217; there&#8217;d be no way to indicate multiple lines of crap in output.</span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;"><br /></span><br /><span style="font-family: Arial, sans-serif; font-size: x-small;"><span style="line-height: 18px;">My suggestion in the mean time? Don&#8217;t use doctest.</span></span></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2011-09-14 10:05</span></div>
+<div class='content'>
+I think line-based checking could be a good start.</div>
+</div>
+<div class='comment'>
+<div class='author'>gz<span class='comment-date'> on 2011-09-14 01:19</span></div>
+<div class='content'>
+I&#39;m not a fan of doctest.OutputChecker either. I don&#39;t find spelling assertions with ellipses rather than regular expressions much of an improvement, and the mismatch output nearly always confuses me. There must be some better pattern for doing checks on (potentially very) large text blocks that&#39;s easy to write and actually produces good errors. I&#39;ve not managed to come up with one though&#8230;</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/08/progress-on-auto-packaging.html">Progress on auto packaging</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-23T00:00:00+01:00" pubdate data-updated="true">2011-08-23 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Instead of a junk branch, the auto packaging code now has <a href="https://launchpad.net/pkgme-binary">a proper home on Launchpad</a>. I&#8217;ve filed bugs for all of the things that I could think of that were wrong with it. Actually, that&#8217;s a lie. When I spot something wrong in code or behaviour I make a note, usually a XXX comment. The bugs up there are the ones I got from grepping my notes.<br /><br />Anyway, minor rant on effective use of brain and the gift of literacy aside, I&#8217;ve also done a <a href="https://wiki.ubuntu.com/AutomagicBinaryPackaging">reasonably detailed specification</a>. It&#8217;s been a long time since I&#8217;ve done a spec this technical &amp; detailed, but I hope it works out.&nbsp;If you have any comments or questions, ask here or on the spec itself.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/08/how-dependency-guessing-works.html">How dependency guessing works</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-18T00:00:00+01:00" pubdate data-updated="true">2011-08-18 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Although in my <a href="http://code.mumak.net/2011/08/automagic-packaging-of-binary-apps-for.html">last post</a> I talked about our proof of concept tool, I didn&#8217;t actually explain how to use it. That&#8217;s mostly because it&#8217;s not quite ready to be used by others. There&#8217;s a good reason.<br /><br />The most interesting thing that <a href="https://code.launchpad.net/~jml/+junk/pkgme-binary">pkgme-binary</a> does is to guess the dependencies of an application given only its tarball. The way it does this is by finding all of the ELF objects (executables, shared libraries etc.), reading the symbols from them, and figuring out the packages based on those.<br /><br />Canny readers are already thinking, &#8220;Yes, that is what dpkg-shlibdeps does&#8221; – which is true. As some background, Debian packages that export symbols for linking also provide explicit metadata about those symbols and what versions they appear in, in order to allow Debian packagers to figure out dependencies easily using dpkg-shlibdeps. Fascinating reading can be found in the <a href="http://www.debian.org/doc/debian-policy/ch-sharedlibs.html">Debian policy manual</a>, a <a href="http://wiki.debian.org/Projects/ImprovedDpkgShlibdeps">spec on improving dpkg-shlibdeps</a> and <a href="http://wiki.debian.org/UsingSymbolsFiles">the guide on using the new symbol files</a>.<br /><br />Unfortunately, dpkg-shlibdeps can only query packages that are installed on your system. If you have a binary with symbols that are not provided by any library on your system, you cannot use it to calculate dependencies. Debian (or the Debian flavour of your choosing) might have a perfectly good package to satisfy that dependency, but you won&#8217;t be able to find it.<br /><br />So, to do dependency guessing properly, you need to have a database mapping symbols back to packages. Debian already has something like this in its <a href="http://qa.debian.org/cgi-bin/mole/seedsymbols/">mole database</a>. Ubuntu doesn&#8217;t have anything like this that I know about.<br /><br />Assembling and maintaining such a database is pretty much a simple matter of programming, but it&#8217;s still work that I wanted to avoid for the proof-of-concept. Instead, I used the mole database in Debian for the calculations. That means we&#8217;ll get wrong answers for Ubuntu, but it demonstrates that the concept works.<br /><br />Since I have a copy of that mole database locally, and since it&#8217;s about 1.5GB, I&#8217;m not distributing it with the branch. Which means that the <a href="https://code.launchpad.net/~jml/+junk/pkgme-binary">automagic binary packaging branch</a> won&#8217;t actually work for you.<br /><br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/08/automagic-packaging-of-binary-apps-for.html">Automagic packaging of binary apps for Ubuntu</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-18T00:00:00+01:00" pubdate data-updated="true">2011-08-18 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+For the last few weeks I&#8217;ve been working on a tool to automagically package binary applications for Ubuntu.&nbsp;The idea is that anyone who wants to distribute a binary app on Ubuntu should be able to do so without having to learn how to package it.<br /><br />I&#8217;ve used <a href="http://pkgme.net/">pkgme</a> to build a proof-of-concept: which you can look at here: <a href="https://code.launchpad.net/~jml/+junk/pkgme-binary">lp:~jml/+junk/pkgme-binary</a>.<br /><br />Or, you can watch the demo:<br /><br /><div class="separator" style="clear: both; text-align: center;"><object class="BLOGGER-youtube-video" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" data-thumbnail-src="http://i.ytimg.com/vi/4oMDo4JbxZY/0.jpg" height="266" width="320"><param name="movie" value="http://www.youtube.com/v/4oMDo4JbxZY?f=user_uploads&c=google-webdrive-0&app=youtube_gdata" /><param name="bgcolor" value="#FFFFFF" /><embed width="320" height="266"  src="http://www.youtube.com/v/4oMDo4JbxZY?f=user_uploads&c=google-webdrive-0&app=youtube_gdata" type="application/x-shockwave-flash"></embed></object></div><br /><br />Right now, the tool assumes that the tarball:<br /><ul><li>is an application</li>
+ <li>contains ELF objects that can be scanned for symbols, which determine the dependencies</li>
+ <li>has one main executable file</li>
+ <li>that its contents can be copied into <code>/opt/$PACKAGE/</code> and can be run from there by an ordinary user</li>
+ <li>comes with a JSON file specifying extra metadata</li>
+ </ul><div>Our hope is that 90% of the binary applications we get will meet these requirements.</div><div><br /></div><div>The plan is to take this proof-of-concept and turn it into something that will run server-side behind the <a href="http://developer.ubuntu.com/">Ubuntu Developer Portal</a>. Next steps are to spec it out, create a project, start filing bugs and fix the bugs I already know about.</div><div><br /></div><div>Watch this space for more updates.<br /><br />Thanks to James Westby and Adam Conrad for their help in doing the proof-of-concept and to the dozen or so people who helped me get the darn screencast out.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Elliot &#8220;statik&#8221;: Murphy<span class='comment-date'> on 2011-08-18 13:17</span></div>
+<div class='content'>
+Excellent screencast, thanks for taking the time to make this to explain your work.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What&#8217;s wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Mere Code]]></title>
+  <link href="http://code.mumak.net/atom.xml" rel="self"/>
+  <link href="http://code.mumak.net/"/>
+  <updated>2013-09-13T22:56:47+01:00</updated>
+  <id>http://code.mumak.net/</id>
+  <author>
+    <name><![CDATA[Jonathan Lange]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Deliberately being naughty]]></title>
+    <link href="http://code.mumak.net/2013/04/deliberately-being-naughty.html"/>
+    <updated>2013-04-29T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2013/04/deliberately-being-naughty</id>
+    <content type="html"><![CDATA[<div class='post'>
+I don&#8217;t get a whole lot of time to hack on things outside of work. Maybe one or two slots of about two hours in a good week. What I want is for that time to be fun, creative, and hopefully useful for others.<br /><br />When I do get such discretionary time, what I often end up doing is code review. I believe that finishing things is more important than starting them, and know how much it sucks to be waiting for someone to review your code.<br /><br />So, I&#8217;ll do a couple of code reviews (some of which might be strictly blocking on me). And then I&#8217;ll run out of time.<br /><br />This means I rarely work on anything I actually find fun. Code reviews are rarely fun.<br /><br />There&#8217;s a similar, related thing working on a project that&#8217;s got a backlog of code reviews, like, say Twisted. Twisted has forty or fifty patches right now that are waiting for someone to review them. Do I want to fix bugs in Twisted? That would be contributing to the patch problem, so probably not. Do I want to do code reviews? Well, I guess I should, but I&#8217;ll probably find something else to do instead.<br /><br />I don&#8217;t think Twisted should change its policy. I think the solution is for people like me to volunteer more time doing something they don&#8217;t necessarily enjoy for the sake of achieving some broader, nobler outcome.<br /><br />However, for me to sustain myself and keep enjoying open source and my chosen career, I&#8217;ve decided to make sure that I regularly schedule &#8220;naughty time&#8221;. That&#8217;s going to be time where I don&#8217;t work on the thing that I should be working on, but instead play with something I find interesting at the time, even if it&#8217;s not the best thing to do.</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[testtools moved to Github]]></title>
+    <link href="http://code.mumak.net/2013/02/testtools-moved-to-github.html"/>
+    <updated>2013-02-13T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2013/02/testtools-moved-to-github</id>
+    <content type="html"><![CDATA[<div class='post'>
+Those who closely follow <a href="http://pypi.python.org/pypi/testtools">testtools</a> development will notice something unusual in the 0.9.28 release: we now <a href="https://github.com/testing-cabal/testtools/">host the code on Github</a> rather than <a href="https://launchpad.net/testtools/">on Launchpad</a>.<br /><br />There are a few reasons behind the switch, but the biggest one is that the ecosystem of tools and services around Git &amp; Github is much, much larger than that around Launchpad &amp; Bazaar. &nbsp;Already, by using Travis (thanks <a href="https://github.com/kampka/">kampka</a>!), I&#8217;ve been able to kill off an old, cruddy, insecure Jenkins installation on my server, and actually get proper testing across all of the Python versions that testtools supports. &nbsp;No more, &#8220;oops, I broke 3.2&#8221; again.<br /><br />We still <a href="https://bugs.launchpad.net/testtools/+bugs">track our bugs on Launchpad</a>, because Launchpad&#8217;s bug tracker is still our favourite.<br /><br />Happy hacking!<br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Are single letter variable names evil?]]></title>
+    <link href="http://code.mumak.net/2013/02/are-single-variable-names-evil.html"/>
+    <updated>2013-02-08T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2013/02/are-single-variable-names-evil</id>
+    <content type="html"><![CDATA[<p>A colleague recently asked the question, “Are single letter variable names
+evil?”. He was trolling, and I kind of knew it, but gosh, what an excuse to
+rant about code clarity! My comments ended up being multiple pages long, so
+taking one of <a href="http://mary.gardiner.id.au/">Mary Gardiner</a>’s suggestions to
+heart (although I’m sure she regrets it now), I’ve turned it into a blog post.</p>
+
+<p>In a nutshell, I don’t think single variable names are evil. Lots of the time
+they are a bad idea though.</p>
+
+<p>The classic rule of thumb I’ve heard is that “the length of the variable name
+should be proportional to the log of the size of the scope”. I can’t find who
+said that originally. My
+<a href="http://www.jetcafe.org/jim/c-style.html">best guess is Mike Haertel</a>. It
+seems to be a good rule of thumb.</p>
+
+<p>But the corollary is that sometimes when the code is confusing, the problem
+isn’t short variable names, it’s that the scope is too large.</p>
+
+<p>Perhaps there’s also something to be said for shorter names being more useful
+for really generic code? I’m OK with an implementation of map taking either
+<code>f</code> and <code>xs</code> or <code>function</code> and <code>things</code>. I don’t think either is better or
+worse.</p>
+
+<p>And maybe single letter variable names are acceptable when they are the
+standard terms for the problem domain. <code>(x, y)</code> might be clearer than
+<code>(horizontal_position, vertical_position)</code>.</p>
+
+<p>Finally, Python’s idiomatic filtering strongly encourages short names, because
+you have to repeat it three times within the scope of one expression:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">meaningfully_named_list_of_things</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">relevance</span> <span class="o">&gt;</span> <span class="n">THRESHOLD</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>vs:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="p">[</span><span class="n">meaningful_name</span>
+</span><span class='line'> <span class="k">for</span> <span class="n">meaningful_name</span> <span class="ow">in</span> <span class="n">meaningfully_named_list_of_things</span>
+</span><span class='line'> <span class="k">if</span> <span class="n">meaningful_name</span><span class="o">.</span><span class="n">relevance</span> <span class="o">&gt;</span> <span class="n">THRESHOLD</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It’s probably subjective, but I think the second one is less clear, since it
+obscures what’s going on.﻿ Bice Dibley points out that in these list
+comprehensions, <code>x</code> functions much like a pronoun in English.</p>
+
+<p>As is the case when writing prose, being clear is hard. Rules can help –
+taking knowledge and distilling it into formal principles is one of the best
+ways for us to progress as a species! – but as Orwell said:</p>
+
+<blockquote><p>Break any of these rules sooner than say anything outright barbarous.</p><footer><strong>George Orwell</strong> <cite>Politics and the English Language</cite></footer></blockquote>
+
+
+<p>(And <a href="http://mumak.net/stuff/your-code-sucks.html">asking</a>
+<a href="http://blog.labix.org/2013/02/06/ethics-for-code-reviewers">someone</a> to
+<a href="http://www.codinghorror.com/blog/2006/01/code-reviews-just-do-it.html">look over</a>
+it soon will probably spare
+<a href="http://www.osnews.com/story/19266/WTFs_m">troubles later</a>)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Getting set up with Twisted development]]></title>
+    <link href="http://code.mumak.net/2012/12/getting-set-up-with-twisted-development.html"/>
+    <updated>2012-12-15T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/12/getting-set-up-with-twisted-development</id>
+    <content type="html"><![CDATA[<div class='post'>
+I haven&#8217;t contributed much to Twisted recently, but today I&#8217;d really like to get my <a href="http://twistedmatrix.com/trac/ticket/6180">new Deferred documentation </a>ready for review.<br /><br />To my knowledge, the only sensible way to actually work on Twisted code is using <a href="http://twistedmatrix.com/trac/wiki/Combinator">Combinator</a>. With it, I can make branches, commit to those branches, merge in updates from trunk and when my branch is approved, actually land it. All of this is described more fully in Twisted&#8217;s pioneering <a href="http://twistedmatrix.com/trac/wiki/UltimateQualityDevelopmentSystem">Ultimate Quality Development System</a>.<br /><br />Combinator works by convention, so its source <i>must</i>&nbsp;live within a <span style="font-family: Courier New, Courier, monospace;">Divmod/trunk</span> directory. Since I have the divmod.org code in a colocated Bazaar branch in <span style="font-family: Courier New, Courier, monospace;">~/src/divmod.org</span>, I created a new directory under <span style="font-family: Courier New, Courier, monospace;">~/src/</span> called Divmod and symlinked trunk to it, approximating the instructions on the <a href="http://twistedmatrix.com/trac/wiki/Combinator">Combinator page</a>.<br /><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ cd src</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ mkdir Divmod</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ cd Divmod</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ ln -s ~/src/divmod.org trunk</span><br /><br />Trying to actually use Combinator only got me stack traces and warnings though, so I poked around in the source code and now have a shell script in ~/src/combinator.sh that does this:<br /><br /><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; export COMBINATOR_PROJECTS=/home/jml/src</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; eval `python ~/src/Divmod/trunk/Combinator/environment.py`</span><br /><div><br /></div><div>Sourcing that script works:</div><div><br /></div><div><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ . &nbsp;~/src/combinator.sh</span></div><br /><span style="font-family: Helvetica Neue, Arial, Helvetica, sans-serif;">After that, I blew away my checkout of Twisted and made a newer, Combinator-friendly one:</span><br /><span style="font-family: Helvetica Neue, Arial, Helvetica, sans-serif;"><br /></span><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ rm -rf ~/src/Twisted</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ chbranch Twisted trunk \</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; &nbsp; svn+ssh://svn.twistedmatrix.com/svn/Twisted/trunk</span><br /><div><br /></div><div><span style="font-family: Helvetica Neue, Arial, Helvetica, sans-serif;">All a little bit of a hassle, but worth it to get back into the swing of contributing to Twisted.</span></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Jonathan Lange<span class='comment-date'> on 2012-12-18 09:08</span></div>
+<div class='content'>
+Thanks.  This is largely written so I can refer to it later.<br /></div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2012-12-18 07:09</span></div>
+<div class='content'>
+Thanks for posting the refresher.  I hope we can make it less necessary for people to jump through this hoop in the future, but until we do that it&#39;s nice to have people making these ad-hoc updates to the docs!</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What's wrong with ORMs]]></title>
+    <link href="http://code.mumak.net/2012/11/whats-wrong-with-orms.html"/>
+    <updated>2012-11-20T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/11/whats-wrong-with-orms</id>
+    <content type="html"><![CDATA[<div class='post'>
+I was recently reading about <a href="http://research.google.com/pubs/pub38125.html">F1, Google&#8217;s fault-tolerant distributed RDBMS</a> and came across this neat little summary of what&#8217;s wrong with ORMs.<br /><br /><ol><li>Obscured database operations</li><li>Serial reads</li><li>Implicit traversal</li></ol><div><i>Obscured database operations</i>&nbsp;essentially means that when scanning code, you cannot easily tell which code is going to kick off a network round-trip to the database. If you care about writing code that performs well, it&#8217;s pretty important to know.</div><div><br /></div><div><i>Serial reads</i> are what many in my circles know as &#8221;<a href="http://divmod.readthedocs.org/en/latest/philosophy/potato.html">potato programming</a>&#8221;. When you have a loop, and something inside that loop is doing a query, that&#8217;s potato programming. Again, disastrous for performance.</div><div><br /></div><div><i>Implicit traversal</i>&nbsp;is doing unwanted joins and loading unnecessary data. ORMs tend to load up an object with all of its instance variables, which often means traversing the graph of references.</div><div><br /></div><div>Anyway, this is a much handier answer to have than &#8216;google for &#8221;<a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">Vietnam of Computer Science</a>&#8221;&#8217;, which is fascinating but rather lengthy. (See also <a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Jeff Atwood&#8217;s summary</a>).</div><div><br /></div><div>For bonus points, these three things are also what&#8217;s wrong with&nbsp;<a href="https://help.launchpad.net/API">Launchpad&#8217;s API</a>.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Jonathan Lange<span class='comment-date'> on 2012-11-21 10:10</span></div>
+<div class='content'>
+For 1 for Launchpad&#39;s API, change &quot;database&quot; to &quot;remote&quot;.  It&#39;s really easy to accidentally do something with a launchpadlib object that makes it hit the network, giving your lucky, lucky users another roundtrip to wait on.</div>
+</div>
+<div class='comment'>
+<div class='author'>Aaron Bentley<span class='comment-date'> on 2012-11-21 04:46</span></div>
+<div class='content'>
+I agree about 2 and 3 affecting Launchpad&#39;s API.  For 1, don&#39;t all Launchpad API operations hit database?  And so how is that obscure?  Unless you mean Launchpadlib there.</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Modest Success]]></title>
+    <link href="http://code.mumak.net/2012/11/a-modest-success.html"/>
+    <updated>2012-11-09T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/11/a-modest-success</id>
+    <content type="html"><![CDATA[<div class='post'>
+Over the last few months, James Westby and I have been working on automatic packaging. I want to talk today not about the thing itself but rather how we go about making it, because I think that we have got a fairly good process going.  <br /><br />Here&#8217;s what it looks like.<br /><br /><b>Conception</b><br /><b><br /></b>We pull the work that we do from a backlog of ideas and requests. For example, a little while ago, we did some experiments that showed that if we changed the way we mapped libraries to Ubuntu packages, we could get much better results for automatically packaging binary apps. The project to change this ended up in our backlog, and we recently decided to work on it.<br /><br />Before we begin work, we like to have a definition of &#8220;done&#8221;. We also write down why we are doing this, and what our assumptions are. We then break things up into tasks. Maybe I&#8217;ll dig into this another time.<br /><br /><b>Guts</b><br /><b><br /></b>Most of what we do goes in a loop:<br /><br /><ol><li>Make a branch</li><li>Work on it</li><li>Propose for merging</li><li>Code review</li><li>Automated tests-then-land</li><li>Automatically triggered staging deploy</li><li>Manual &#8220;is it deployable&#8221; check</li><li>Request production deployment from webops&nbsp;</li></ol><div>We use Bazaar for version control and we use Launchpad for hosting code and doing code review. Here&#8217;s <a href="https://code.launchpad.net/~jml/pkgme-service/remove-django-fixture/+merge/131424">an example one</a>.</div><div><br /></div><div>Code review is quite often fairly boring. My guess is that one in ten actually provoke interesting changes. Most of our branches make small changes, all of our changes are covered with tests, and we have confidence in our test suite and our ability &amp; willingness to make follow-up improvements. Thus, rather than seeing code review as our last line of defence for ensuring code quality, it&#8217;s an opportunity to learn and to perhaps accelerate the process by spotting problems earlier.</div><div><br /></div><div>Once a merge proposal is approved, magic happens.</div><div><br /></div><div>In this case, &#8220;magic&#8221; is a Jenkins instance that uses tarmac to poll Launchpad to figure out which merge proposal are approved and thus ready to land. &nbsp;It runs our test suite, and if it passes, lands the change. If it fails, it posts the failure to the merge proposal and our IRC channel and marks it as needing more work.<br /><br />It&#8217;s important here that our test suite is fast, that it&#8217;s reliable, and that it gives useful error messages when things fail.</div><div><br /></div><div>When the change is to a dependency, then we run the tests of the things that depend on it with the latest change.</div><div><br /></div><div>After a successful change to trunk, we have a Jenkins job that triggers an automatic deployment to our staging server.</div><div><br /></div><div>All of this takes less than five minutes.</div><div><br /></div><div>Once it&#8217;s on staging, our &#8220;QA&#8221; website lists it as a revision that needs to be manually verified. What we do there isn&#8217;t really QA, but instead making sure that if we roll it out to production, we won&#8217;t break anything. As with code review, we are confident in our ability to fix things later. &nbsp;&nbsp;</div><div><br /></div><div>We tend to do these in batches, as our webops are insanely busy. Once we&#8217;ve got a group of changes that are safe to deploy to production, we ping the webops, who then (I think) run a single command that deploys to production very quickly. Sometimes because of interrupts, it can take twenty minutes to an hour to get someone to do this.</div><div><br /></div><div><b>Completion</b></div><div><br /></div><div>At this stage, we return to our definition of done and check to see if the change actually provides the value we thought.&nbsp;</div><div><br /></div><div>Because automatic packaging is an inherently fuzzy problem, we run a barrage of real world data through the new system to see if the recent changes actually help. This also generates interesting qualitative data that gives us hints on where we might want to work next.</div><div><br /></div><div><b>Principles</b></div><div><b><br /></b></div><div>This is the end result of a lot of work, mostly by James Westby with me cheerleading from the sidelines. We&#8217;ve iterated through it a lot, making things faster and more reliable, generally by going from polling to events, by cutting out unnecessary review steps, and by making visibility improvements for when things are broken.</div><div><br /></div><div>Underlying it all are a few principles that we have found to be either true or useful:</div><div><ul><li>a thing is not done until users are happily using it</li><li>more strongly, a thing is not valuable until users are happily using it, until then it is wasted effort&nbsp;</li><li>we should be able deploy any change in the main code or a dependency within minutes at any time, every time</li><li>all deployments must be from trunk, all revisions of trunk must be tested and known-good</li><li>we can avoid a lot of needless effort by asking ourselves why we are doing what we doing, and by being explicit about our assumptions</li><li>regressions are intolerable, everything else is tolerable, because we can, will and do fix it</li></ul><div>Rather than spend time shaping up this information into a pitch for why doing things our way will bring you fortune and glory, we just want to use this post to do the bare minimum of making what we are doing known more broadly.<br /><br />Do you do something similar? Is there something above that you would like to know more about? Are we making claims that seem a bit far-fetched? Are any of our principles BS? Have you tried working toward goals like these?<br /><br />We would really love to know and to hear from you. It will help us get better. Also,&nbsp;I&#8217;ve deliberately fudged some stuff, so it&#8217;d be great to get called out on that.<br /><br />Thanks to James Westby for reviewing this post. All errors are mine.<br /><br /></div></div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Undistract me (redux)]]></title>
+    <link href="http://code.mumak.net/2012/10/undistract-me-redux.html"/>
+    <updated>2012-10-04T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/10/undistract-me-redux</id>
+    <content type="html"><![CDATA[<div class='post'>
+<a href="http://code.mumak.net/2012/01/undistract-me.html">In January</a>, I told you all about a terminal hack to help me recover from the inevitable distraction that comes when I run commands that take a while to run (for me, mostly test suites).<br /><br />I&#8217;ve been using the hack since then, and it has given me a great deal of pleasure. Others have watched it and said that they very much wanted it.<br /><br />As such, you can now go to the <a href="http://mumak.net/undistract-me/">undistract-me</a>&nbsp;website to get instruction on how to download and install it. Or, if you&#8217;re using Ubuntu:<br /><blockquote class="tr_bq"><pre style="background-color: whitesmoke; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.14902); color: #333333; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 13px; line-height: 20px; margin-bottom: 10px; padding: 9.5px; white-space: pre-wrap; word-break: break-all; word-wrap: break-word;">$ sudo add-apt-repository ppa:undistract-me-packagers/daily<br />$ sudo apt-get update<br />$ sudo apt-get install undistract-me</pre></blockquote>Once you&#8217;ve done that, and have started a new login shell, then you&#8217;ll get a notification whenever a command that takes more than 10 seconds to run finally completes.<br /><br />Thanks to <a href="http://glyph.twistedmatrix.com/">Glyph Lefkowitz</a> for <a href="http://www.twistedmatrix.com/users/glyph/preexec.bash.txt">the preexec hack </a>that made this possible, and to <a href="http://www.tenshu.net/">Chris Jones</a>, <a href="http://fewbar.com/">Clint Byrum</a> and <a href="http://mvogt.wordpress.com/">Michael Vogt</a> for their help in figuring out what I should do.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Jonathan Lange<span class='comment-date'> on 2012-10-04 16:06</span></div>
+<div class='content'>
+Thanks for the bug!  I&#39;ve replied in detail there.</div>
+</div>
+<div class='comment'>
+<div class='author'>Andrew<span class='comment-date'> on 2012-10-04 14:41</span></div>
+<div class='content'>
+undistract-me doesn&#39;t work for me in Ubuntu 12.10. I&#39;ve filed a bug: https://bugs.launchpad.net/undistract-me/+bug/1061611</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rigor mortis?]]></title>
+    <link href="http://code.mumak.net/2012/08/rigor-mortis.html"/>
+    <updated>2012-08-31T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/08/rigor-mortis</id>
+    <content type="html"><![CDATA[<div class='post'>
+I&#8217;ve been on a bit of a sanity bender recently: science, logic, evidence, experimentation, clarity and things like that. Here&#8217;s a short list of some of the things I&#8217;ve been reading:<br /><br /><ul><li><a href="http://hpmor.com/">Harry Potter and the Methods of Rationality</a>&nbsp;(H/T mwhudson)</li><li><a href="http://www.amazon.co.uk/Straight-Crooked-Thinking-Robert-Thouless/dp/1444117181">Straight and Crooked Thinking</a></li><li><a href="http://www.pretotyping.org/">Pretotype It</a>&nbsp;(H/T lifeless)</li><li><a href="http://www.gbt.org/text/sayers.html">Lost Tools of Learning</a></li><li><a href="http://www.amazon.com/Facts-Dangerous-Half-Truths-Total-Nonsense/dp/1591398622/">Hard Facts, Dangerous Half-Truths and Total-Nonsense</a>&nbsp;(H/T lifeless)</li><li><a href="http://glinden.blogspot.co.uk/2012/07/puzzling-outcomes-in-ab-testing.html">Puzzling outcomes in A/B testing</a></li><li><a href="https://www.mtholyoke.edu/acad/intrel/orwell46.htm">Politics and the English Language</a></li></ul><br />If you&#8217;re writing software then I recommend &#8220;Pretotype It&#8221; first, because it&#8217;s likely to make you write <i>less</i>&nbsp;software, and that can only be a good thing. They are all great reads though.<br /><br />There are a few general themes: be explicit about your assumptions and try to verify or falsify them as soon as you may; do experiments; beware of certain mistakes or logical short-cuts; learn statistics; understand what you are saying.&nbsp;Wonderful notions all, but I&#8217;m not sure whether they are working out for me.<br /><br />Occasionally I&#8217;ll get an email that has a couple of sentences but somehow manages to squeeze in all sorts of conflations, non sequiturs, and general fudging. It&#8217;s hard to know where to begin. I can make a fair stab at analyzing the errors, but synthesizing a response that actually <i>helps</i>&nbsp;is very hard.<br /><br />Rigour also puts a restraint on rhetoric. It&#8217;s hard to say something convincingly when you have a bunch of qualifiers dangling at the end. My writing (even now!) is slowed down as I notice the unfounded assertions and unstated assumptions that lie behind it.<br /><br />Also, much of this doesn&#8217;t help you get from a vague, interesting intuition to a workable idea, from hunch to hypothesis, if you will. Sometimes a notion needs to time to grow before it&#8217;s rejected as irrational or incorrect. Something like&nbsp;<a href="http://en.wikipedia.org/wiki/Six_Thinking_Hats">Thinking Hats</a>&nbsp;can help here.<br /><br />This is all peanuts though. Do more science. Really.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2012-09-02 00:56</span></div>
+<div class='content'>
+I find that, when confronted with a muddled mess of ideas in email, friendly, direct communication is best.  Especially because people will almost always surprise you with their capacity to improve their communications, and you&#39;ll rarely have to write a &quot;these are the twenty-seven logical fallacies that you have committed in this message&quot; kind of message twice.<br /><br />It can take some practice to make this kind of communique not come off as super condescending, but it&#39;s definitely doable.  The trick is to keep the focus on the communication and not the person or the ideas.</div>
+</div>
+<div class='comment'>
+<div class='author'>Jelmer<span class='comment-date'> on 2012-09-01 15:22</span></div>
+<div class='content'>
+I just finished Pretotyping; that was an interesting and useful read. Thanks for the suggestion.</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[testtools: history and future]]></title>
+    <link href="http://code.mumak.net/2012/07/testtools-history-and-future.html"/>
+    <updated>2012-07-21T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/07/testtools-history-and-future</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br />Before I started <a href="http://testtools.rtfd.org/">testtools</a> I was switching regularly between <a href="http://bazaar.canonical.com/">bzr</a>, <a href="https://launchpad.net/launchpad">Launchpad</a> and <a href="http://twistedmatrix.com/">Twisted</a> and was sick of one excellent testing innovation being available in one and not the other. I tried submitting some of the improvements to Python. They were either ignored or rejected.<br /><br />Also, as the maintainer of Twisted&#8217;s testing framework, Trial, I had been burned several times when the standard library would change its API in backwards compatible ways, so I wanted something that would encapsulate all of that once and for all.<br /><br />So, to provide a temporary ground between big, upstream projects that are serious about testing and Python&#8217;s standard library, I made the project that was to become testtools. (It was originally called pyunit3k. Sorry.).<br /><br />Its constraints were that it should work with Python 2.4, 2.5, 2.6, 2.7 and 3.1 (Bazaar, Launchpad &amp; Twisted all cared about Python 2.4 at the time), that any code in it should be allowed to go into Python without special permission from contributors, and that it wasn&#8217;t to have any frivolous innovation, patches should be of code proven to be useful elsewhere.<br /><br />Then eventually Michael Foord started maintaining Python&#8217;s standard unittest. While we haven&#8217;t always seen eye-to-eye on the details, it&#8217;s definitely been a huge improvement, and Michael deserves props for doing a job that I was unwilling to do. Releasing <a href="http://pypi.python.org/pypi/unittest2/">unittest2</a> was a great step, and I think a good model of how any standard library maintenance should be done.<br /><br />Since then, we&#8217;ve lightened the restraint on innovation in testtools, and the last release was our last release to support Python 2.4 and 2.5. The people who use it really love it, we&#8217;ve had plenty of contributors, I use it on heaps of projects, and it certainly makes my job much, much easier. &nbsp;<span style="background-color: white;">Launchpad and Bazaar use it, but Twisted probably won&#8217;t ever, so that&#8217;s 66% success according to my original motivation.&nbsp;</span><br /><div><br /></div><div>I wish more people would use testtools. Actually, no, that&#8217;s not right. I wish more people would use the things in testtools. If people do that, it makes it easier for me to contribute to their code, and makes using their testing innovations much easier.&nbsp;</div><div><br /></div><div>As such, I&#8217;m hoping to try to get some of the most useful bits (<a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers">matchers</a> first) into upstream Python. Wish me luck.</div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Complexity and capability]]></title>
+    <link href="http://code.mumak.net/2012/07/complexity-and-capability.html"/>
+    <updated>2012-07-21T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/07/complexity-and-capability</id>
+    <content type="html"><![CDATA[<div class='post'>
+&#8220;You might think that some people are better at understanding complexity than others, but relative to the sheer scale of the complexity that we can all create, we are all about the same.&#8221;<br /><br />I think Rich Hickey said this. It&#8217;s true.</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[juju debug-hooks]]></title>
+    <link href="http://code.mumak.net/2012/06/juju-debug-hooks.html"/>
+    <updated>2012-06-26T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/06/juju-debug-hooks</id>
+    <content type="html"><![CDATA[<div class='post'>
+OK, I think I&#8217;ve figured it out.<br /><br /><a href="https://juju.ubuntu.com/docs/hook-debugging.html">juju debug-hooks</a> replaces hooks for a service unit with an interactive terminal session. You run it, it launches <a href="http://tmux.sourceforge.net/">tmux</a> (which seems to be a thing like screen or byobu), and when a hook for that service unit runs, it<i> won&#8217;t</i> run the hook in the charm, rather it opens a new window and you can then do whatever you want in that. Including manually running the hook in the charm.<br /><br />debug-hooks doesn&#8217;t actually do anything to your hooks, nor does it increase the amount of information available to you (e.g. by increasing log verbosity). It just replaces hooks with terminal sessions.<br /><br />You have to know the service unit first, e.g. libdep-service/41.<br /><br />It seems as if it&#8217;s a really common thing to want to use debug-hooks on install. There doesn&#8217;t seem to be any smooth way. As far as I can tell, you have to run &#8216;juju deploy&#8217;, run &#8216;juju status&#8217;, quickly note the unit name and then run &#8216;juju debug-hooks&#8217;.<br /><br />That aside, it&#8217;s very useful. I found myself using it to edit hooks (and puppet files used by my hooks) and re-run them until they worked.<br /><br />Still don&#8217;t know easy way of exporting changes to a charm on a unit back down to my laptop.<br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tricks for exploring new languages?]]></title>
+    <link href="http://code.mumak.net/2012/06/tricks-for-exploring-new-languages.html"/>
+    <updated>2012-06-25T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/06/tricks-for-exploring-new-languages</id>
+    <content type="html"><![CDATA[<div class='post'>
+Here&#8217;s my problem. There are a bunch of languages I want to explore more (Clojure, Haskell, Go). I&#8217;ve wanted to do this for some time. I haven&#8217;t done it. I&#8217;ve <a href="http://code.mumak.net/2012/02/bad-snake-joke.html">mentioned this before</a>.<br /><br />At it&#8217;s simplest and most fundamental, this comes down to poor self-management stemming from an inaccurate personal vision. That is, &#8220;If it&#8217;s important, you&#8217;ll find a way. If not, you&#8217;ll find an excuse.&#8221;<br /><br />But, setting aside deep-level character hacking, there&#8217;s got to be something to make this easier. Part of the problem is that Python is so smooth, I&#8217;ve been with it so long and most of the technologies I want to interact with have a strong Python component. Any time I have an itch that needs scratching, Python is the comforting abrasive of choice. I can do whatever it is about 10x faster with it than with another, new language.<br /><br />Perhaps all I need to do is gird my loins and prepare myself for the confusion and time expenditure that comes with <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html">learning </a>anything <a href="http://code.mumak.net/2012/06/unfiltered-reflections-on-my-first-juju.html">new</a>.<br /><br />Gentle reader, do you have any tips for escaping the Python gravity well and exploring languages unknown?<br /><br /></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-06-29 18:45</span></div>
+<div class='content'>
+Anand, SICP is great! I really liked &quot;Real World Haskell&quot; (O&#39;Reilly book, available for free online IIRC) as a way to learn Haskell.</div>
+</div>
+<div class='comment'>
+<div class='author'>Anand<span class='comment-date'> on 2012-06-28 05:13</span></div>
+<div class='content'>
+Building a Python-X bridge might be a good idea to understand the runtime of X, but that may not be the niche area of X.<br /><br />I don&#39;t agree with glyph that you shouldn&#39;t leave your comfort zone. In fact, you should leave your comfort zone and <a href="http://matt.might.net/articles/programmers-resolutions/" rel="nofollow">embrace the uncomfortable</a>.</div>
+</div>
+<div class='comment'>
+<div class='author'>Anand<span class='comment-date'> on 2012-06-28 05:11</span></div>
+<div class='content'>
+I&#39;ve been struggling with the same trouble. Trying to learn Haskell from long time.<br /><br />I&#39;ve learnt Scheme in the past at a quite good pace by studying <a href="http://mitpress.mit.edu/sicp/" rel="nofollow">SICP</a>. I think having incremental exercises to try makes it easier to learn a new language. I haven&#39;t found something like that for Haskell yet.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-06-26 09:09</span></div>
+<div class='content'>
+Keeping a journal, or at least a place to dump notes is something I do a lot of.  Collaborators &amp; long-time readers of this blog have my bullet-pointed reflections inflicted on them more than once.<br /><br />On G+, Gustavo recommended picking a project for which the result matters, but not necessarily the timeliness. I think that&#39;s a really good idea.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2012-06-26 07:17</span></div>
+<div class='content'>
+Perhaps don&#39;t push yourself so hard to leave the Python ecosystem entirely; if you&#39;re comfortable there, and that&#39;s what you really want to be doing with your spare time, don&#39;t fight it, embrace it.  For example, I have a reasonably good grasp of ObjC and a pretty wide breadth of ObjC APIs now due to messing with PyObjC bridging.  If you want to learn Go, and no Python-Go bridge exists, make one, and I&#39;m sure you&#39;ll learn a ton about the Go runtime :).  Then you can do some things up to the edge of your comfort zone, and when you get to something that Python isn&#39;t good at, you can switch over into the new thing and have a more concrete motivation to learn it.<br /><br />(Or, you know, just stay in Python but dive into the deep end.  I&#39;m sure you can gain complete understanding of all current and possible programming languages by working on sufficiently deep internals in PyPy&#8230;)</div>
+</div>
+<div class='comment'>
+<div class='author'>Unknown<span class='comment-date'> on 2012-06-25 13:19</span></div>
+<div class='content'>
+Deep-end. Push. Have a challenge or pet project to work on and others to keep you accountable to it. <br /><br />That said, I should probably eat my own dog food when it comes to that.</div>
+</div>
+<div class='comment'>
+<div class='author'>chrome___<span class='comment-date'> on 2012-06-25 11:14</span></div>
+<div class='content'>
+Good question &#8211; I have the same problem. <br /><br />Things that helped me in the past (eg. learning Erlang) was the (probably) usual anti-procrastination stuff: *) set aside some fixed time *) set goals eg. &quot;I&#39;ll complete this-and-this prototype by tomorrow&quot;, *) tons of external pressure *) keep a journal to reflect on the cool stuff you&#39;ve learned<br /><br />I&#39;d be very interested what other people do&#8230;</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unfiltered reflections on my first Juju charm]]></title>
+    <link href="http://code.mumak.net/2012/06/unfiltered-reflections-on-my-first-juju.html"/>
+    <updated>2012-06-22T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/06/unfiltered-reflections-on-my-first-juju</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br /><br /><div>I just finished up my first <a href="https://juju.ubuntu.com/">Juju</a> charm, designed to deploy the tiny and not-yet-useful <a href="https://launchpad.net/libdep-service/">libdep-service</a>, which is going to become a micro-service used by <a href="https://launchpad.net/pkgme-service">pkgme-service</a>, which exists to automatically package submissions by application developers to <a href="http://developer.ubuntu.com/">developer.ubuntu.com</a>.</div><div><br /></div><div>The charm works, insofar as it brings up a Django service that implements the API. It&#8217;s not really ready for others to use, as it doesn&#8217;t provide any interfaces and doesn&#8217;t make good use of Juju&#8217;s configuration system. </div><div><br /></div><div>It&#8217;s very early days for me as a Juju user. The notes below are largely about problems, but I&#8217;m actually fairly optimistic that having a charm for my service will be very useful. Two big benefits so far:</div><div><ol><li>There&#8217;s less code than in my equivalent fabric task for deploying to EC2</li><li>I can deploy to LXC on my laptop, which means a fast, clean, local, production-like environment</li></ol><div>Anyway, on with the notes.</div></div><ul><li><span style="background-color: white;">#juju is heaps better when America is awake</span></li><li><span style="background-color: white;">upgrading with apt requires a lot of options, but this is quite a standard</span><span style="background-color: white;">&nbsp;action</span></li><ul><li><span style="background-color: white;">e.g. <span style="font-family: 'Courier New', Courier, monospace;">sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -q -y</span></span></li><li>You get this by default if you don&#8217;t use sudo, and you don&#8217;t have to use sudo</li></ul><li><span style="background-color: white;">so many <a href="https://bugs.launchpad.net/juju/+bug/955209">things that are just warnings are marked as<span style="font-family: 'Courier New', Courier, monospace;"> ERROR</span></a>, makes debugging&nbsp;</span><span style="background-color: white;">much harder</span></li><li><span style="background-color: white;">perhaps this is intrinsic, but there are almost always four to six errors&nbsp;</span><span style="background-color: white;">to be debugged at once</span></li><li><span style="background-color: white;">Don&#8217;t use lp: URLs to fetch branches because it generates warnings. Use http://code.launchpad.net/ instead.</span></li><li><span style="background-color: white;">Is there a way to have a local apt mirror or something to make iterating</span><span style="background-color: white;">&nbsp;faster? &nbsp;Is this what I&#8217;ve got already?</span></li><li><span style="background-color: white;">When translating from fabric <span style="font-family: 'Courier New', Courier, monospace;">run(&#8220;cd X &amp;&amp; Y&#8221;)</span>, remember that fabric&nbsp;</span><span style="background-color: white;">restores directory after <span style="font-family: 'Courier New', Courier, monospace;">run</span></span></li><ul><li><span style="background-color: white;"><span style="font-family: inherit;">Use </span><span style="font-family: 'Courier New', Courier, monospace;">(cd X &amp;&amp; Y)</span><span style="font-family: inherit;">&nbsp;in bash instead, runs in a subshell</span></span></li></ul><li><span style="background-color: white;"><b>ACTION:</b> Look up &#8216;man 8 apt-get&#8217; for &#8211;force-yes and why it&#8217;s bad</span></li><li><span style="background-color: white;">Long-ish iteration cycle (2-5 mins) makes it a bit slow going</span></li><ul><li><span style="background-color: white;">See also&nbsp;<a href="https://bugs.launchpad.net/juju/+bug/1015644">Users not told when deploy actually completes</a></span></li><li><span style="background-color: white;">Iterating with &#8216;deploy &#8211;upgrade&#8217;, watch &#8216;debug-log&#8217;, &#8216;destroy-service&#8217;,&nbsp;</span><span style="background-color: white;">(sometimes &#8216;bzr ci&#8217;; &#8216;bzr push&#8217;)</span></li></ul><ul><li><span style="background-color: white;"><b>ACTION:</b> Poke around more with &#8216;juju debug-log&#8217; (see also&nbsp;</span><a href="https://bugs.launchpad.net/juju/+bug/1016003">&#8220;juju debug-hooks -h&#8221; doesn&#8217;t say what &#8216;debug-hooks&#8217; does</a>)</li></ul><li><span style="background-color: white;">After delegating to puppet, if that fails, the&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">install</span>&nbsp;hook doesn&#8217;t fail</span></li><li><span style="background-color: white;"><span style="background-color: white;">Ended up putting the puppet stuff should be in the charm to avoid having to commit &amp;</span><span style="background-color: white;">&nbsp;push the branch up</span></span></li><li><span style="background-color: white;">A little bit surprised that hooks run as root. &nbsp;I don&#8217;t have a credible&nbsp;</span><span style="background-color: white;">alternative to hand, but I thought that this was what we wanted to get away</span><span style="background-color: white;">&nbsp;from with .debs.</span></li><ul><li><span style="background-color: white;">How do I run things with less privilege</span></li></ul><li><span style="background-color: white;">I do server-side changes a fair bit to fix things. It&#8217;s easy to forget a&nbsp;</span><span style="background-color: white;">step when applying them back to the charm / manifest. No easy way of</span><span style="background-color: white;">&nbsp;checking either.</span></li><li><span style="background-color: white;">Bouncing on this command is heaps better:</span><span style="background-color: white;"><span style="font-family: 'Courier New', Courier, monospace;">juju deploy &#8211;repository=charms &#8211;upgrade \</span></span><span style="background-color: white; font-family: 'Courier New', Courier, monospace;">&nbsp; local:libdep-service &amp;&amp; jitsu watch libdep-service \<br />&nbsp; &nbsp; &#8211;state=started &#8211;num-units=1</span></li></ul><br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Further reflections on my first Juju charm]]></title>
+    <link href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html"/>
+    <updated>2012-06-22T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/06/further-reflections-on-my-first-juju</id>
+    <content type="html"><![CDATA[<div class='post'>
+Since I wrote the notes that appear in my previous post, I&#8217;ve had a chance to reflect further on my experience writing a Juju charm.<br /><span style="background-color: white;"><br /></span><br /><span style="background-color: white;">The thing is, even though the end result is very cool – I can just deploy this code as a new service whenever I want without having to think about it – the experience wasn&#8217;t great. I wasn&#8217;t having a fun time getting it to work. I think there are a few reasons for this.</span><br /><br /><span style="background-color: white;">First, I was on my own. I work from home and most days I sit down in my office and plug away at my laptop. I generally like it, but there are times when it&#8217;s not great. Most of the time I&#8217;m doing things I already know how to do: debugging strange production problems; deleting unnecessary Python code; encouraging people to get to the point in meetings and <a href="https://plus.google.com/115348217455779620753/posts/J8to9rW8Ef8">despairing over voice communication technologies</a>.</span><br /><span style="background-color: white;"><br /></span><br /><span style="background-color: white;">Juju is still a fairly new technology. The <a href="http://juju.ubuntu.com/docs/">published documentation</a> is still a bit raw, the website isn&#8217;t the easiest to navigate and the tools could do a better job at being self-documenting. It&#8217;s demotivating to want to do a thing, not know how to do it and not know how to find out how to do it. That&#8217;s one of the reasons I mentioned that #juju is a much better place when the US is awake: that&#8217;s when the experts are around. T</span><span style="background-color: white;">he Juju shamans know about these problems and are working now to the whole learning experience much better.</span><br /><br />Tangent: I&#8217;d very much encourage you to go to a <a href="https://juju.ubuntu.com/CharmSchool">Charm School</a> if you get the chance. The Juju guys are super-helpful, fun to be around, and the whole thing is much more pleasant when you&#8217;re with other people and not the only one asking dumb questions. I went to one, but I didn&#8217;t do the <a href="https://juju.ubuntu.com/CharmSchool#Necessary_Software">preparation</a>, and had a dodgy laptop, so I spent all of my time head-butting network issues rather than actually writing charms. <a href="https://juju.ubuntu.com/docs/getting-started.html#configuring-a-local-environment">Do the preparation</a>.<br /><br />Second, the core feedback loop wasn&#8217;t that great. I&#8217;m a bit spoiled. Most of the time, I run tests, they run very quickly, I get very nicely formatted results in colour, I fix the small, known number of failures, I run the tests, everything works and I get a visual sweetie from laptop. Automating the deploymment of pre-alpha software is not like that at all.<br /><br />The feedback loop is longish, about 2-5 minutes. By default, you have to sit watching the debug-log to tell when it&#8217;s done or when it hits a fatal error.&nbsp;<span style="background-color: white;">If you accidentally run an interactive command in your install hook, then deployment will stall.&nbsp;</span><span style="background-color: white;">You don&#8217;t get any notice of success or failure, and certainly nothing that you could integrate into your desktop (e.g. beep when done). Over two minutes is long enough for me to get distracted, but under five minutes is short enough that I won&#8217;t switch to any task that requires concentration. It doesn&#8217;t make for a pleasant day.</span><br /><span style="background-color: white;"><br /></span><br /><span style="background-color: white;">Oh, I should mention that I got stuck for a while at the very outset, redeploying the same version of my charm because I forgot to update the revision file and didn&#8217;t realize that I actually wanted to run deploy with the <span style="font-family: 'Courier New', Courier, monospace;">&#8211;upgrade</span> option.</span><br /><br /><span style="background-color: white;">When you do get errors, there are likely to be many of them, and they are messily strewn about the debug log in hard to find places, cluttered with useless stuff. This is largely not Juju&#8217;s fault: it&#8217;s the fault of the system tools that you have to call to get things set up. Juju&#8217;s debug-log does give an option to limit output to just &#8220;ERROR&#8221; level message, but that includes noise from things like GPG and Bazaar (which emit to stderr as part of normal behaviour, <a href="https://bugs.launchpad.net/juju/+bug/955209">which Juju interprets as ERROR</a>). It also doesn&#8217;t give you enough context to debug the real errors. There are also some <a href="https://bugs.launchpad.net/juju/+bug/1015655">formatting glitches</a>, and it doesn&#8217;t have colour.</span><br /><span style="background-color: white;"><br /></span><br />I mentioned these things about the feedback loop to a colleague. He rightly pointed out that I was speaking very much as a programmer, accustomed to bouncing on <span style="font-family: 'Courier New', Courier, monospace;">make check</span>. For a sysadmin, being able to redeploy on a fresh machine from scratch and see all the errors in one place in under five minutes is a huge improvement.<br /><br /><br /><span style="background-color: white;">Third, I have to pass on some of this knowledge to&nbsp;<i>my</i>&nbsp;users. Or at least, people who are contributing to my project ought to be able to quickly learn how to fire up the charm. At the moment, there are still a few too many ifs, buts, maybes and perhaps-try-thises that I&#8217;m <a href="http://paste.ubuntu.com/1054697/">compelled to include</a>. I&#8217;ll probably turn the documentation into a script at some point, as others seem to <a href="https://gist.github.com/2050525">have</a> <a href="https://gist.github.com/1406018">done</a>.</span><br /><span style="background-color: white;"><br /></span><br /><span style="background-color: white;">That&#8217;s it. It&#8217;s a <i>much </i>longer post than I expected. Sorry. I hope it helps some.</span><br /></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-06-25 10:27</span></div>
+<div class='content'>
+@clint-fewbar, thanks for the &#39;ccze&#39; tip. That&#39;s very useful, and not just for juju charming.<br /><br />@Kapil, thanks. I discovered replay and log level filtering pretty early on. The log level filtering was a bit annoying as -l ERROR didn&#39;t give me <i>all</i> the errors, included some non-errors, and didn&#39;t provide enough context for the errors that were included.<br /><br />I&#39;m not really sure what an agent is or how it matters.</div>
+</div>
+<div class='comment'>
+<div class='author'>Kapil Thangavelu<span class='comment-date'> on 2012-06-23 01:40</span></div>
+<div class='content'>
+thanks for the feedback.<br /><br />just fwiw, juju debug-log has very fine grained options for exactly targeting what your interested in, you can listen in on a particular agent or group of agents,  exclude hook output, capture logs at a particular level, replay logs, etc.</div>
+</div>
+<div class='comment'>
+<div class='author'>clint-fewbar<span class='comment-date'> on 2012-06-22 19:43</span></div>
+<div class='content'>
+Jono, thanks so much for spending time with juju, its really great to hear some fresh new thoughts (and to have a few old problems reiterated so we remember to address them.)<br /><br />For the feedback loop, I think the &#39;debug-hooks&#39; command is going to save you a lot of problems at least in terms of being able to run your hook over and over until its &quot;right&quot;. The problem is that unlike a test suite, we are changing the system state *on purpose* so iterating means getting back to the same starting state. I do think we need to make better use of LXC&#39;s ability to clone containers in the debug-hooks command, but network complexity becomes an issue, so we&#39;ll have to keep working on this.<br /><br />Also for colorized logs:<br /><br />juju debug-log | ccze -A<br /><br />The ccze tool&#39;s general rules will produce a pretty nicely highlighted log for you. The ERROR issue remains, but I think we&#39;ll solve that soon enough with the patch you submitted. :)</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Married]]></title>
+    <link href="http://code.mumak.net/2012/05/married.html"/>
+    <updated>2012-05-28T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2012/05/married</id>
+    <content type="html"><![CDATA[<div class='post'>
+I&#8217;m back online after three weeks vacation. Purpose of said vacation was to get married and go on honeymoon. Only thing to say about that is: huge success. I&#8217;m very, very happy.<br /><br />While I&#8217;ve been gone, Ubuntu has had its developer summit and decreed that Ubuntu 12.10 will have only Python 3 on the CD. As such, a few people have&nbsp;done a bunch of work on the <a href="http://pypi.python.org/pypi/testtools">testtools</a> cluster (<a href="http://pypi.python.org/pypi/fixtures">fixtures</a>, <a href="http://pypi.python.org/pypi/testscenarios">testscenarios</a>, etc.), making them Python 3 compatible, or fixing compatibility bugs where they existed. It&#8217;s such a nice feeling to come back from vacation and taste the delicious fruits of other&#8217;s labour. Well done all!<br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Local Juju]]></title>
+    <link href="http://code.mumak.net/2012/03/local-juju.html"/>
+    <updated>2012-03-02T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/03/local-juju</id>
+    <content type="html"><![CDATA[<div class='post'>
+I have a bit of a fetish for being able to hack offline. It&#8217;s becoming increasingly old-fashioned, I know, but I&#8217;d like to think that eventually it will become a quirky and charming eccentricity, such as one might find in a British amateur sleuth.<br /><br />I wanted to get up and running with <a href="https://juju.ubuntu.com/">Juju</a>, <a href="http://www.canonical.com/">Canonical</a>&#8217;s funky cloud orchestration thingy. We&#8217;re doing a lot more service-oriented stuff in recent months, and it&#8217;s very handy to be to just deploy something without having to faff about for a couple of hours. Since I&#8217;d like to stand a chance of doing this without a net connection, I set it up locally.<br /><br />With the help of the <a href="https://juju.ubuntu.com/CharmSchool">Charm School</a> page, the <a href="https://juju.ubuntu.com/docs/provider-configuration-local.html">local provider docs</a> and the kind folk at #juju on Freenode, I got something up and running. Some notes about the experience:<br /><ul><li>I did all of this in precise, and it seemed to work just fine. I substituted &#8216;precise&#8217; for &#8216;oneiric&#8217; wherever I saw it.</li><li>I had to manually add my user to the <code>libvirtd</code> group. The instructions implied that this was not necessary.</li><li><code>juju bootstrap</code> finished very quickly for me and without any actual evidence that it had debootstrapped the whole OS.</li><li>When I deployed services, I didn&#8217;t get any feedback that anything was going on. The recommended <code>debug-log</code> command showed very little output for a while. My guess is that this was while packages were downloading.</li></ul><div>All in all, pretty impressive. I&#8217;m really looking forward to mucking around with this a bit more</div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bad Snake Joke]]></title>
+    <link href="http://code.mumak.net/2012/02/bad-snake-joke.html"/>
+    <updated>2012-02-25T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/02/bad-snake-joke</id>
+    <content type="html"><![CDATA[<div class='post'>
+Just between you and me, I&#8217;m getting a bit bored of writing Python all the time. It&#8217;s a good language: I can write code that&#8217;s functional or OO as the case may be; it has lots of libraries; it has <a href="http://twistedmatrix.com/">Twisted</a>, which is incredibly useful; it&#8217;s not <i>too</i>&nbsp;hard to make <a href="https://code.launchpad.net/+branch/launchpad">a big project</a> and keep it clean. It&#8217;s the least awful programming language that I know of. That said, I&#8217;d like to do something different.<br /><br />I would like to play with something makes static typing rock (like Haskell), or that has what <a href="http://www.infoq.com/presentations/Simple-Made-Easy">Rich Hickey calls</a> &#8220;polymorphism a la carte&#8221; (again, like <a href="http://book.realworldhaskell.org/read/using-typeclasses.html">Haskell</a>, or <a href="http://clojure.org/Protocols">Clojure</a>). I would like to make something that stands a chance of feeling snappy (perhaps <a href="http://pypy.org/">PyPy</a>?), a chance to use something with richer debugging and refactoring tools, or to get a feel for doing some serious concurrency work outside of an event loop.<br /><br />But mainly, I&#8217;m just bored of Python.<br /><br />Also, I increasingly suspect that Python <a href="http://www.biblegateway.com/passage/?search=gen%203:14&amp;version=NIV">doesn&#8217;t have legs</a>. The Python 3 language change has increased the split between the core developer community and people writing code in the field. Python continues to be slow, both with start-up time and while running. The only people who seem to care are the <a href="http://speed.pypy.org/">PyPy</a> developers, but I doubt I&#8217;ll ever get to use it for commercial development. It&#8217;s tricky to write code in Python that takes advantage of multiple cores, and even my phone has multiple cores now.<br /><br />When I get the chance, I&#8217;m going to do more with Haskell and Clojure in my spare time. I&#8217;m not sure if there is something less &#8220;fringe&#8221; that I could recommend for use at Canonical. <a href="http://golang.org/">Go</a> is a possibility, if a slightly disappointing one (interfaces are cool, but why oh why didn&#8217;t they do typeclasses?).</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>John Nilsson<span class='comment-date'> on 2012-06-25 23:26</span></div>
+<div class='content'>
+I was mainly thinking of how the scala implicits implementention give you somewhat more control over type class instances.<br /><br />But in general, being an OOP/FP hybrid it gives you some tools form the OOP end of things that provides some extra options.<br /><br />Full H-M type inference had to be sacrificed to get OOP though, but the inference is still pretty good.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-06-25 10:22</span></div>
+<div class='content'>
++John, thanks, will give it a try. I have to say that of the &quot;new&quot; JVM languages, I&#39;m more tempted by Clojure. Can you explain a little how it&#39;s type system could be considered better than Haskell&#39;s in some respects?</div>
+</div>
+<div class='comment'>
+<div class='author'>John Nilsson<span class='comment-date'> on 2012-06-24 11:16</span></div>
+<div class='content'>
+You should give Scala a try. Its type system rocks (in some ways even beats haskell), has a type class mechanism (which should give you polymorphism a la carte) and compiles to Java (so is quite snappy). But most importantly its fun.</div>
+</div>
+<div class='comment'>
+<div class='author'>AmanicA<span class='comment-date'> on 2012-02-28 10:12</span></div>
+<div class='content'>
+lol. good post :)</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2012-02-26 16:28</span></div>
+<div class='content'>
+@Tom, I&#39;ll take a look at Racket.  When I last looked at PLT Scheme, my main take-away was disappointment in its module system.<br /><br />@glyph, it&#39;s <i>kind</i> of a good thing. It&#39;s arguably a great thing for the end users of my work. If the way out of Python&#39;s boredom is to run through some other language&#39;s minefield, then, umm, yeah, no thanks. However, I&#39;m not convinced that every other language will necessarily be more dangerous/frustrating/slippery/difficult.<br /><br />As for going further up the stack, it&#39;s definitely an option, but not one that immediately appeals.<br /><br />@Daniel, I haven&#39;t tried Vala. Does it do much beyond Java / C#?<br /><br />@ddaa, I&#39;m glad I&#39;m not the only one! That I&#39;m bored after twelve or so years rather than, say, consumed by loathing, is a good sign.  I look forward to hearing more about your project.</div>
+</div>
+<div class='comment'>
+<div class='author'>ddaa<span class='comment-date'> on 2012-02-26 15:03</span></div>
+<div class='content'>
+That is how I feel about Python at the moment too. As Glyph says, that probably tells something good about the language&#8230;<br /><br />Clojure and Go are the two &quot;next&quot; languages I have in mind too. I will posting something on g+ about a project I have been contemplating for a while.</div>
+</div>
+<div class='comment'>
+<div class='author'>Daniel Bo<span class='comment-date'> on 2012-02-26 03:14</span></div>
+<div class='content'>
+Learning new things is great and no one should get themselves in a rut.<br /><br />Have you tried Vala? GObject introspection in a C3/Java-like language that pre-compiles to C. It hits that start-up time problem you mentioned. Vala also has a sister language called Genie, which is much more Python-like and which uses the same libraries and compiler. You may want to start there.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2012-02-26 01:02</span></div>
+<div class='content'>
+I humbly submit that being bored with the language is kind of a good thing.  Maybe you should be looking further up the stack for some excitement?  Do something with PyGame, maybe?  Or learn something about bioinformatics and mess around with BioPython?<br /><br />To put it a different way: when I was doing C++, I felt a range of emotions about the language and my tools for dealing with it, but &quot;boredom&quot; was not one of them.<br /><br />(That said, Twisted <i>really</i> needs to make it easier to utilize multiple cores.)</div>
+</div>
+<div class='comment'>
+<div class='author'>Tom Berger<span class='comment-date'> on 2012-02-25 15:09</span></div>
+<div class='content'>
+If you&#39;re thinking of revisiting lisp, I urge you to take a look at Racket, the latest incarnation of PLT Scheme. Racket gives you the opportunity to work with pretty much all the best tools and paradigms modern programming languages can offer (dynamic typing, static typing, functional, OO, declarative), it is reasonably performant (optimizing JIT compiler, optional type declarations) and though not as hype as Clojure, it has a small but active and very mature community.<br /><br />Go is great, but I&#39;m finding it hard to give up the dynamism, especially interaction.</div>
+</div>
+<div class='comment'>
+<div class='author'>Tom Berger<span class='comment-date'> on 2012-02-25 15:07</span></div>
+<div class='content'>
+This comment has been removed by the author.</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[testtools 0.9.14 released]]></title>
+    <link href="http://code.mumak.net/2012/02/testtools-0914-released.html"/>
+    <updated>2012-02-16T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/02/testtools-0914-released</id>
+    <content type="html"><![CDATA[<div class='post'>
+<a href="http://pypi.python.org/pypi/testtools">testtools</a>&#8217;s sister project, <a href="https://launchpad.net/subunit">subunit</a>,&nbsp;was using a&nbsp;private API that we deleted in the 0.9.13 release. &nbsp;This release restores&nbsp;that API in order to smooth out the upgrade path.<br /><br />If you don&#8217;t use subunit, then this release won&#8217;t matter very much to you.<br /><div><br /></div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[testtools 0.9.13 released]]></title>
+    <link href="http://code.mumak.net/2012/02/testtools-0913-released.html"/>
+    <updated>2012-02-06T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/02/testtools-0913-released</id>
+    <content type="html"><![CDATA[<div class='post'>
+It has been a while, but <a href="http://pypi.python.org/pypi/testtools">testtools 0.9.13</a> is finally out!&nbsp;Lots more matchers and bug fixes, as well as improved error reporting. Full release notes <a href="https://launchpad.net/testtools/0.9/0.9.13">on Launchpad</a>.<br /><br />Thanks to <a href="http://jameswestby.net/weblog">James Westby</a>, <a href="http://grahambinns.com/">Graham Binns</a>, <a href="https://launchpad.net/~frankban">Francesco Banconi</a> and <a href="http://rbtcollins.wordpress.com/">Robert Collins</a> for making this release possible.</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Simple made easy]]></title>
+    <link href="http://code.mumak.net/2012/02/simple-made-easy.html"/>
+    <updated>2012-02-01T00:00:00+00:00</updated>
+    <id>http://code.mumak.net/2012/02/simple-made-easy</id>
+    <content type="html"><![CDATA[<div class='post'>
+Rich Hickey did a great talk at Strange Loop called &#8221;<a href="http://www.infoq.com/presentations/Simple-Made-Easy">Simple Made Easy</a>&#8221;. You should watch it.<br /><br />When I tried to explain the talk to someone, I stumbled a lot and it was obvious to me that I didn&#8217;t really understand it. So I&#8217;m going through it again and turning it into a blog post, purely for my own gain.<br /><br />This is roughly the first half of the talk. Not much of my own analysis or opinion is inserted, and I&#8217;ve pretty much stuck with Hickey&#8217;s illustrations and phrasings. Thus this post is pretty derivative. Oops.<br /><br /><b>Simple vs Easy</b><br /><br />&#8220;Simple&#8221; means one thing, &#8220;easy&#8221; another. Simple is the opposite of complex. A thing is simple if it has no interleaving, if it has one purpose, one concept, one dimension, one task. Being simple does not imply one instance or one operation: it&#8217;s about interleaving, not cardinality. Importantly, this means that simplicity is <i>objective</i>.<br /><br />Easy is the opposite of hard, or difficult. A thing is easy if it&#8217;s near to hand, if it&#8217;s easy to get at (location), if it&#8217;s near to our understanding (familiarity) or skill set or if it&#8217;s within our capabilities. This means that ease is<i> relative</i>.<br /><br />Speaking English is dead easy for me, but that doesn&#8217;t mean that speaking English is intrinsically simple. I find French quite difficult. Little French children speak French all the time, and there&#8217;s always a part of me that thinks, &#8220;Boy, those kids are clever, being able to speak a foreign language at that age&#8221;, but that&#8217;s silly. It&#8217;s easy for them, it lies near to them.<br /><br />This distinction between simple &amp; easy is good one, and is useful in all sorts of areas. But how does it relate to software?<br /><br /><b>Constructs vs Artefacts</b><br /><br />As programmers, when we make software we are working on <i>constructs</i>: source code, libraries, language concepts and so forth. Rich contends that we focus on the ease of use of those constructs: How many lines of code? How much boilerplate? Will new developers be familiar with our technology?<br /><br />But all of this is secondary. What actually matters is the <i>artefact</i>, the running programs that users actually use. Does it do what it&#8217;s supposed to do? Does it do it well? Can we rely on it working well? Can we fix problems when they occur? Can we change it? You know, the interesting problems.<br /><br />Thus we need to be assessing our constructs – our code, our technology choices – based on the attributes of the artefacts that we&#8217;ll create, not based on the experience of typing code in.<br /><br /><b>Limits</b><br /><br />We can&#8217;t make something reliable if we don&#8217;t understand it. And, actually, everyone&#8217;s understanding is pretty limited. We can all only hold a small number of things in our head at once.<br /><br />When things are complex, many parts are tied together by definition. You can&#8217;t pull out just one piece and consider it because it&#8217;s intertwined with other pieces. This creates an extra burden to understanding a system and thus makes it difficult to reason about the system.<br /><br />You do need to reason about a system, both to know what to change and to be able to do so without introducing defects. Tests, refactoring, rapid deployment and all that are great, but to make a change to the system safely &amp; without fear still requires you to be able to reason about it. Every bug in your product that was found in the field passed the type checker and passed all of the tests. &nbsp;Your type system doesn&#8217;t tell you what change to make next in order to get the software you want any more than guard rails on a highway tell you how to get to Grandma&#8217;s.<br /><br /><b>Speed</b><br /><br />Focusing on ease and ignoring simplicity means that you&#8217;ll go really fast in the beginning, but will become slower and slower as the complexity builds.<br /><br />Focusing on simplicity will mean that you&#8217;ll go slower in the beginning, because you&#8217;ll have to do some work to simplify the problem space, but making sure that you only have intrinsic complexity means that your rate of development will remain at a high constant.<br /><br />There are no actual numbers for this.<br /><br /><b>Complicating constructs</b><br /><br />Many complicating constructs are available, familiar, succinctly described and easy to use. But none of that matters to end users. What matters is the complexity they yield. This complexity is <i>incidental</i>, it&#8217;s not intrinsic to the problem.<br /><br />If we build things simply, then the resulting system is easier to debug, easier to change and easier to understand.<br /><br />Compare a knitted castle to a castle made of Lego. The knitted castle might have been great fun to make, and might have been really easy if knitted using a loom and cutting edge knitting tools, but there&#8217;s no way that it&#8217;s easier to change than a Lego castle. It&#8217;s not about the <i>ease of construction</i>, it&#8217;s about the <i>simplicity of the artefact</i>.<br /><br /><b>How can we make software easier?</b><br /><br />Well, we can install it to make it easier by location. We can learn it and try it to make it easier by familiarity. We can&#8217;t do much about our capabilities though. If we want software to be easier to comprehend, we are going to have to bring it down to our level. We have to make it simpler.<br /><br /><br />Take Lisp as an example. It&#8217;s hard for many people because they don&#8217;t have a Lisp installed, or their editor doesn&#8217;t support paren matching, but they can make it easier by installing a Lisp and getting a plugin for their editor. It&#8217;s also hard because it&#8217;s unfamiliar. Who&#8217;d have thought that parens could go on that side of the function? But you can gain that familiarity quickly enough.<br /><br />But parens in Lisp are used for functions and for grouping data. That&#8217;s hard to get your head around, and that&#8217;s because it&#8217;s complex. It braids together two distinct notions.</div>
+]]></content>
+  </entry>
+  
+</feed>

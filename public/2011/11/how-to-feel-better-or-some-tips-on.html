@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to feel better (or, some tips on refactoring) - Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="A few months back I gave a lightning talk at the Launchpad Thunderdome about how I do refactoring. &nbsp;It&#8217;s very opinionated, and mostly &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">How to feel better (or, some tips on refactoring)</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-04T00:00:00+00:00" pubdate data-updated="true">2011-11-04 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<span style="background-color: transparent;">A few months back I gave a lightning talk at the <a href="https://launchpad.net/">Launchpad</a> Thunderdome about how I do refactoring. &nbsp;It&#8217;s very opinionated, and mostly applies to big, old code bases, but worth writing up anyway.</span><br /><span style="background-color: transparent;"><br /></span><br /><span style="background-color: transparent;">The core idea here is that very few things make me feel as good as deleting code. I love cleaning up code and the clean code base that results, and I&#8217;m sure that many others feel like me. As such, this is a guide on how to feel better.</span><br /><br /><b>1. Know your enemy</b><br /><br />“Functionality is an asset, code is a liability”. Truer words were never spoken. Every line of code is a potential source of bugs and a barrier to understanding, and thus carries a maintenance cost.<br /><br />Maintain an awareness of things that need refactoring. Here&#8217;s a quick and incomplete list:<br /><br /><ul><li><span style="background-color: transparent;">unused code – this can be deleted</span></li><li><span style="background-color: transparent;">boilerplate – this should become a function or class</span></li><li><span style="background-color: transparent;">wrong documentation – these should be updated</span></li><li><span style="background-color: transparent;">two ways of doing something – perhaps there should be one</span></li><li><span style="background-color: transparent;">bad names – change them to something that makes you think less</span></li></ul><b>2. Keep a &#8220;yak stack&#8221;</b><br /><br /><a href="http://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html" style="background-color: transparent;">Yak shaving</a><span style="background-color: transparent;">&nbsp;is &#8220;any seemingly pointless activity which is actually necessary to solve a problem which solves a problem which, several levels of recursion later, solves the real problem you&#8217;re working on.&#8221; (<a href="http://catb.org/jargon/html/Y/yak-shaving.html">Jargon File</a>)</span><br /><br />A few of us have extended the concept beyond the &#8220;actually necessary&#8221; to include anything that&#8217;s making the task at hand more difficult and less fun but is not worth fixing <i>right</i>&nbsp;now. Hence the yak stack. Here&#8217;s how it works:<br /><br />Whenever you come across something in your code base that is difficult to understand or that slows you down: make a note of it. When you&#8217;ve finished the task at hand, fix the problem. If you encounter other things that slow you down, write them down. Work through the list.<br /><br /><b>3. Every option is wrong</b><br /><br />In a big, old code base, there are probably many, many areas that need refactoring. &nbsp;Don&#8217;t worry about which is the &#8220;best&#8221; place to start – there is no best place.<br /><br /><b>4. Start from green, stay green</b><br /><br />Never, ever refactor while your tests are failing. Refactoring is about changing the shape of code while preserving its behaviour. It&#8217;s much harder to be sure you&#8217;re keeping the behaviour if you are comparing one set of thirty tracebacks with another set of thirty tracebacks. Better to compare a passing (&#8220;green&#8221;) test run with another passing test run.<br /><br />Run tests frequently. More often then you think you should. Commit often – think of it like quick save in a tough level of a video game. It frees you up to experiment more and means you have less in your head at any one time.<br /><br /><b>5. Do not nest</b><br /><br />Don&#8217;t begin a refactoring while you are in the middle of another refactoring. If you find you must, use tools like &#8217;<a href="http://doc.bazaar.canonical.com/beta/en/user-guide/shelving_changes.html">bzr shelve</a>&#8217; to store your current diff and then work from the clean head of your branch.<br /><br /><b>6. Keep moving, leave a trail</b><br /><br />Don&#8217;t get bogged down in details, otherwise you&#8217;ll never finish. Literally. Someone will come along and distract you and before you know it, three months will pass and your refactoring branch will be full of conflicts. If you see something you are unsure of, mark it with a XXX or a FIXME or a TODO or whatever works for you and then continue with what you are doing.<br /><br />Tools like &#8217;<a href="http://launchpad.net/difftodo">bzr todo</a>&#8217; can make it really easy to check to see if you&#8217;ve added any XXX comments.<br /><br /><b>7. Translate tests with care</b><br /><br />As said above, refactoring is about changing the shape of code while preserving its behaviour. When you update tests, you risk changing your definition of the system&#8217;s behaviour – so be careful.<br /><br /><b>8. Confront uncertainty with destruction</b><br /><br />If you see some code and you are not sure if it&#8217;s needed, delete it. Doesn&#8217;t matter if it&#8217;s a whole function or just an odd line. If you have a test suite, and it was important, that will catch the failure. If you have version control, and it was important, one of your collaborators will notice and revert the change.<br /><br />If it was important and neither of these happened, then your whole project has learned something new about itself, and that&#8217;s probably worth the hassle. (Oh, add tests &amp; better docs after this happens.)<br /><br /><b>9. Good grep tools</b><br /><br />Remember that symbols aren&#8217;t only referenced from files that match *.py. &nbsp;In big code bases there are often other sorts of files that refer to symbols in the main code. In Launchpad, for example, we have ZCML and doctest files that refer to symbols. When you want to know how something is used or you want to rename something, make sure you use a grep command that actually finds everything.<br /><br />Ideally, you should be able to run this command faster than you can think about wanting to do it.<br /><br />Personally, I use &#8216;bzr grep&#8217; a lot. Others recommend &#8216;ack&#8217;.<br /><br /><b>10. There will be failures</b><br /><br />Mentally prepare yourself for the fact that the first two or three full test runs after your refactoring will fail. &nbsp;This is especially important for code bases that have multi-hour test run times.<br /><br />If you think this way, then you won&#8217;t be as discouraged when it actually happens.<br /><br /><b style="background-color: transparent;">11. Finish the job</b><br /><br />Busy people refactoring a big code base are often tempted to apply a refactoring to only a single part. &nbsp;For example, some useful function is extracted from repeated boilerplate in a few other functions. However, many, many other instances in the code base continue to use the repeated boilerplate.<br /><br />This is <i>almost</i> worse than just leaving the repeated boilerplate. &nbsp;There are now two idiomatic ways of doing the activity. &nbsp;Further, other developers who work on other parts of the code base probably won&#8217;t find out about it, and might end up repeating your refactoring. Ugh. How is anyone new expected to get to grips with this code?<br /><br />Similarly, if a class, function or concept is renamed, rename it everywhere, especially in the documentation.<br /><br />It&#8217;s difficult and often tedious, but it really is worth taking refactorings to completion. Apply them to the whole code base, or not at all.<br /><br />Note that I&#8217;m referring to completeness, not perfection. If you block on perfection, you never get anything useful done. If you aim for frequent incremental improvements, you soar.<br /><br /><b>12. Read these books</b><br /><br />I highly recommend &#8221;<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1320430812&amp;sr=1-1">Refactoring</a>&#8221; by Martin Fowler and &#8221;<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1320430812&amp;sr=1-1">TDD by Example</a>&#8221; by Kent Beck. I stole many of these ideas from them.<br /><div><br /></div><div><br /></div><div><b>Over to you</b></div><div><b><br /></b></div><div>This was very much just a dump of how I do refactoring when hacking on Launchpad. I&#8217;m always keen to learn more, and would love to hear about what works for you.</div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Michael Hudson-Doyle<span class='comment-date'> on 2011-11-05 05:27</span></div>
+<div class='content'>
+There&#39;s that Java thing that randomly mutates your code and complains if no test breaks which sounds sort of vaguely like that, but it&#39;s not quite the same I guess.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2011-11-04 18:54</span></div>
+<div class='content'>
+I think that&#39;s exactly right.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph<span class='comment-date'> on 2011-11-04 18:51</span></div>
+<div class='content'>
+As to point 7, I&#39;d say that &quot;with care&quot; is not quite good enough.  Change the test, run it, it should pass; but then always go change the implementation in a way which should break the test, and make sure it still fails.<br /><br />If we had really good coverage tools which were constantly informing us in a useful way of which lines were being run, with good IDE integration, this step might not be necessary, but even the snazzier IDEs I&#39;ve seen do not seem to have this down.</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jonathan Lange</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-04T00:00:00+00:00" pubdate data-updated="true">2011-11-04 Friday</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html" data-via="mumak" data-counturl="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2011/09/testtools-0912-out.html" title="Previous Post: testtools 0.9.12 out">&laquo; testtools 0.9.12 out</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2011/11/automatic-packaging-update.html" title="Next Post: Automatic packaging update">Automatic packaging update &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What's wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

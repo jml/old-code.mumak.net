@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="I&#8217;ve recently started contributing a little to GTG, a GTD-inspired todo list application that&#8217;s hosted on Launchpad.So far, I&#8217;ve &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/blog/page/14/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/07/documenting-python-project.html">Documenting a Python project</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-19T00:00:00+01:00" pubdate data-updated="true">2009-07-19 Sunday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve recently started contributing a little to <a href="http://gtg.fritalk.com/">GTG</a>, a GTD-inspired todo list application that&#8217;s hosted on <a href="https://edge.launchpad.net/gtg">Launchpad</a>.<br /><br />So far, I&#8217;ve made <a href="https://bugs.edge.launchpad.net/gtg/+bugs?search=Search&amp;field.assignee=jml">a few UI tweaks</a> and have done a bit of <a href="https://code.edge.launchpad.net/%7Ejml/gtg/+branches?field.lifecycle=MERGED&amp;field.lifecycle-empty-marker=1&amp;field.sort_by=most+recently+changed+first&amp;field.sort_by-empty-marker=1">infrastructural work</a>. I&#8217;m still trying to figure out how the code fits together. Since it&#8217;s such a small code base, I don&#8217;t mind writing a few docstrings for it. And if I&#8217;m going to write docstrings, I might as well generate some API docs, right?<br /><br />And so the journey begins.<br /><br /><a href="http://farmdev.com/thoughts/7/housecall-from-the-pydoctor-finally-a-doc-generator-that-works-/">Everyone knows</a> that <a href="http://codespeak.net/%7Emwh/pydoctor/">pydoctor</a> is the best way to generate API docs for Python code. So I fetched it from Launchpad and ran it according to the instructions:<br /><pre>$ bzr branch lp:pydoctor<br />$ cd GTG<br />$ ../pydoctor/bin/pydoctor --add-package GTG --make-html</pre>This failed, saying it couldn&#8217;t find zope.interfaces. I know I have zope.interfaces on my system:<br /><pre>$ sagi python-zopeinterface<br />...<br />python-zopeinterface is already the newest version.</pre>But, ah, this is karmic, and pydoctor is insisting on running with Python 2.4, which is completely broken on karmic. I tweaked the bin/pydoctor file to use the default Python and then ran the command again.<br /><pre>$ ~/src/pydoctor/trunk/bin/pydoctor --add-package GTG --make-html</pre>Success, I think. There&#8217;s a lot of output, so it&#8217;s hard to tell. Trying again with a quiet option:<br /><pre>$ ~/src/pydoctor/trunk/bin/pydoctor --add-package GTG --make-html -q<br />WARNING: guessing GTG for project name<br />/home/jml/src/Divmod/trunk/Nevow/formless/annotate.py:730: DeprecationWarning: object.__new__() takes no parameters<br />rv = cls = InterfaceClass.__new__(cls, name, bases, dct)<br />/home/jml/src/Divmod/trunk/Nevow/nevow/testutil.py:7: DeprecationWarning: The popen2 module is deprecated.  Use the subprocess module.<br />from popen2 import Popen3<br />/home/jml/src/Divmod/trunk/Nevow/nevow/guard.py:15: DeprecationWarning: the md5 module is deprecated; use hashlib instead<br />import md5<br />these 6 objects' docstrings are not proper epytext:<br />GTG.core.tagstore.Tag.__init__<br />GTG.core.tagstore.Tag.set_attribute<br />GTG.core.tagstore.Tag.get_all_attributes<br />GTG.core.requester.Requester.new_task<br />GTG.core.requester.Requester.get_tasks_list<br />GTG.core.requester.Requester.get_active_tasks_list</pre>Hmm. The WARNING sucks, but I can work around that by specifying the project name on the command line. The deprecation warnings also suck, but I&#8217;m not quite sure what to do about them. For now, I&#8217;ll invoke python with &#8216;-W ignore::DeprecationWarning&#8217;.<br /><br />This is as good a point as any to point out that I had Nevow trunk already in my PYTHONPATH. I don&#8217;t know what version of Nevow you will need.<br /><br />The &#8216;not proper epytext&#8217; warnings are more worrisome. I thought I&#8217;d been writing proper docstrings. Also, it doesn&#8217;t tell me what the actual problems are: I need to drop the &#8216;-q&#8217; option for that. This gets me too much information. Oh hello, there&#8217;s a &#8216;&#8211;verbose-about&#8217; option. Digging into the source doesn&#8217;t enlighten immediately, but bzr-grep eventually reveals &#8216;&#8211;verbose-about=epydoc2stan2&#8217;. If I repeat &#8216;-q&#8217; twice and the &#8216;&#8211;verbose-about&#8217; option twice, I get precisely the output I want.<br /><pre>python -W ignore::DeprecationWarning ~/src/pydoctor/trunk/bin/pydoctor \<br />--add-package GTG --make-html --project-name=GTG \<br />-q -q \<br />--verbose-about=epydoc2stan2 \<br />--verbose-about=epydoc2stan2</pre>What I really want is a <a href="http://www.divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a>-style checker for my docstrings that I can <a href="http://www.plope.com/Members/chrism/flymake-mode">hook up to flymake</a>. That way, I can be warned about my poorly-formed docs as I&#8217;m writing them. Looking at the pydoctor help, it doesn&#8217;t look like such a thing exists. The command above is close, but it writes too much output to disk and takes far too long to run.<br /><br />Also, it&#8217;s not quite right. It seems I&#8217;ve been writing my docstrings in the style we use in Launchpad, rather than in epytext style. So if I use &#8216;&#8211;docformat=restructuredtext&#8217;, my docstrings are formatted properly and I get fewer errors:<br /><pre>python -W ignore::DeprecationWarning ~/src/pydoctor/trunk/bin/pydoctor \<br />--add-package GTG --make-html --project-name=GTG \<br />--docformat=restructuredtext -q -q \<br />--verbose-about=epydoc2stan2 --verbose-about=epydoc2stan2</pre>This leaves only two formatting errors, both valid. It takes a full second longer to generate the docs, which sucks. Still, we&#8217;ve got doc generation, and we&#8217;ve got valid errors.<br /><br />The output is good, but it&#8217;s not great. Take a look at the <a href="http://starship.python.net/crew/mwh/apidocs/">Twisted API docs</a>, for example. I can&#8217;t quite put my finger on it, but I wish that someone with a vision and the kind of CSS skills that you have to buy from the devil at a crossroads at midnight would set themselves the task of making the API docs look great.<br /><br />So where does this leave us:<br /><ul><li>I can generate pretty good API docs easily and get told only about interesting errors</li><li>I need a pyflakes-like docstring formatting checker</li><li>I need a simple docstring coverage checker. I do <span style="font-style: italic;">not</span> want to make it part of my test suite or build process.</li><li>I had to tweak the pydoctor source before being able to run it from trunk<br /></li><li>The output is OK, but it ought to be beautiful<br /></li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/07/testresources-02.html">testresources 0.2</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-17T00:00:00+01:00" pubdate data-updated="true">2009-07-17 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+At <a href="http://www.europython.eu/">EuroPython</a> this year, I talked about <a href="http://docs.python.org/library/unittest.html">unittest</a> and how it&#8217;s misunderstood little module with it&#8217;s own problems, and that despite its rough exterior it really is a Good Thing.<br /><br />To demonstrate this, I gave examples of three pieces of software that each extended unittest to solve the same problem: sharing expensive resources between tests.<br /><br />The first two examples were Twisted&#8217;s <code>setUpClass</code> / <code>tearDownClass</code> and Zope&#8217;s layers. They are terrible and you should never use them.<br /><br />If you really want to share expensive resources between tests, you should use <a href="http://pypi.python.org/pypi/testresources/">testresources</a>. testresources makes it easy to write tests that use resources that cost a lot to set up and tear down (such as databases or SSH servers) without screwing up your test isolation.  <a href="http://www.advogato.org/person/robertc/">Robert Collins</a>, the author, cut the <a href="http://pypi.python.org/packages/source/t/testresources/testresources-0.2.tar.gz">0.2 release</a> today.<br /><br />testresources now has exactly <a href="https://bugs.launchpad.net/testresources">one known bug</a>, although Rob argues that maybe it&#8217;s one unknown bug. It&#8217;s down to the quantum level here: that&#8217;s how good testresources is.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-07-19 06:05</span></div>
+<div class='content'>
+Now posted at http://code.mumak.net/2009/07/unittest-it-aint-broke-lets-fix-it.html</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2009-07-19 05:42</span></div>
+<div class='content'>
+Yeah it did, and I will.</div>
+</div>
+<div class='comment'>
+<div class='author'>jelmer<span class='comment-date'> on 2009-07-18 01:04</span></div>
+<div class='content'>
+If your presentation had slides, could you perhaps post them?</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/07/new-gpg-key.html">New GPG key</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-13T00:00:00+01:00" pubdate data-updated="true">2009-07-13 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve published a new GPG key: 2048R/2A727997<br /><br />Details available here: http://static.mumak.net/jml-key-transition-2009-07-13.txt</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/07/angle-on-code-review.html">Angle on code review</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-07T00:00:00+01:00" pubdate data-updated="true">2009-07-07 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+You&#8217;re a core contributor to a Free Software project. Maybe you get paid to do it, maybe you don&#8217;t. You get a patch from the outside: someone whose name you don&#8217;t recognize has contributed a patch.<br /><br />You could ignore this patch, since you&#8217;ve got a lot of work to do already. Better, you could <a href="http://mumak.net/stuff/your-code-sucks.html">review</a> the patch and give the newbie some much needed feedback.<br /><br />Alternatively, you could <span style="font-style: italic;">champion</span> the change by making sure it gets the treatment that one of your own patches would. Review it or get it reviewed, help the newbie make the changes the reviewer wants, make sure it&#8217;s managed using the best systems for managing patches in your project, keep track of its progress like you would one of your own patches, be eager to see it landed, pimp it in the changelog and the release announcement, get the newbie&#8217;s name in lights.<br /><br />In practical terms: if you use a DVCS, get the patch out of whatever email attachment its in and put it in a branch; if you use a code review system like Launchpad, get it out of the bug tracker and into the code review tool; if you have a test suite, empower the newbie to write tests (normally that means knowing where to put them and how to run them).<br /><br />It&#8217;s a matter of perspective: am I here to maintain the quality of the code base and prevent bugs from being introduced, or am I here to help others in my community. Am I just a reviewer or am I a champion?</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/06/twisted-huh.html">Twisted huh?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-30T00:00:00+01:00" pubdate data-updated="true">2009-06-30 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+One of the hallway conversations I&#8217;ve had a few times so far at EuroPython goes like this:<br /><br />A: Twisted&#8217;s got some good stuff going for it, but I don&#8217;t like the way it forces me to use Zope interfaces. It&#8217;s too heavyweight?<br />B: Huh? What do you mean? It doesn&#8217;t make you do that.<br />C: Yeah, there&#8217;s lots of deep inheritance, which just feels really wrong.<br />A: Right, I have to write too much code to get something simple working.<br />B: Sorry, I have no idea what you mean. Can you give a concrete example?<br />A, C: I can&#8217;t think of one right now.<br /><br />To me, this is a very intriguing beginning to a real conversation. Do you know what A and C might mean here? I&#8217;d love to understand their points so that I can form an opinion.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-04 00:34</span></div>
+<div class='content'>
+Kilroy, I think you need to read the comments already posted here (maybe again, but reading your reply I can&#39;t help thinking for the first time).<br /><br />In particular, about HOWTOs &quot;B&quot; specifically said &quot;So you read a tutorial and you get told you have to write 10 lines of code, except you only know what 1 of those lines actually does.&quot;<br /><br />Without solid API documentation to back them up those HOWTOs are basically just crumbs thrown out to try to satisfy the hungry masses.</div>
+</div>
+<div class='comment'>
+<div class='author'>Kilroy<span class='comment-date'> on 2009-07-04 00:02</span></div>
+<div class='content'>
+I keep hearing things like this as well, and I just don&#39;t understand why so many are so intimidated by twisted. It really isn&#39;t any harder to get to grips with than any other large python project like TG IMHO. They do have some tools to kick you into gear a little faster perhaps. <br /><br />I also hear things like &quot;twisted eats your errors&quot;, &quot;twisted doesn&#39;t let me use threads&quot;, &quot;twisted can&#39;t work with my libraries&quot;, &quot;you can&#39;t use databases with twisted&quot; - all utter nonsense, but I keep hearing it over and over again. They&#39;re usually in the form of anecdotal stories &quot;twisted ate all my errors, I promise I attached errbacks&quot;.  <br /><br />Some 5 minute howtos may be the answer to some of these. If we listen to a few of these complaints and create a &quot;how to access your ${foo}sql instance&quot;, &quot;how to set up logging&quot;, &quot;how to use callInThread/callFromThread&quot;, &quot;why forgetting your errbacks is bad&quot; it could be something to point folks to.</div>
+</div>
+<div class='comment'>
+<div class='author'>europearchive<span class='comment-date'> on 2009-07-01 12:24</span></div>
+<div class='content'>
+For me the biggest issue with Twisted is the steep learning curve. It isn&#39;t helped by the documentation - although the twisted book goes some way to dealing with that. Most of what I know about Twisted I learned from the source code though. <br /><br />I wrote a large heavy duty crawler in it - including custom  DNS and HTTP protocols. And if I was honest I am still not 100% sure how the protocol/factory bits work although I obviously have made them work well (because the crawler worked really well) <br /><br />Not sure what or even if you would want to do something about this. Twisted is incredibly powerful and can do some superb stuff - but on the other hand I am unlikely to start new projects with it because either I maintain it or I have to push team members up that learning curve before they can do anything on it.</div>
+</div>
+<div class='comment'>
+<div class='author'>James Henstridge<span class='comment-date'> on 2009-07-01 02:20</span></div>
+<div class='content'>
+I think it would be a lot easier to understand Twisted if it was smaller.  I don&#39;t mean remove features, but rather reduce cases where it duplicates functionality from the standard library.<br /><br />For example, if I am trying to understand the deferred concept, I need to understand failures.  I already understand exceptions, but now need to learn about this similar but slightly different concept.<br /><br />For each of the bits of twisted.python where standard library interfaces have been extended, it would be good to consider them bugs that should eventually be fixed by getting the standard library updated.  For failures, perhaps the exception handling changes in Python 3 are enough to use directly.<br /><br />In other cases, I think it would be useful to look at pushing some of Twisted&#39;s core concepts into the standard libraries.  The deferred system is one I&#39;ve mentioned before.  The API review that would come it would likely be helpful too.</div>
+</div>
+<div class='comment'>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-01 01:01</span></div>
+<div class='content'>
+ps. I also like Twisted ;)</div>
+</div>
+<div class='comment'>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-01 01:00</span></div>
+<div class='content'>
+This comment has been removed by the author.</div>
+</div>
+<div class='comment'>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-01 01:00</span></div>
+<div class='content'>
+&quot;B&quot; said. Twisted&#39;s just too impenetrable for newbies. As a seasoned Twisted programmer (ie. I&#39;ve written a few systems using it) I&#39;m still not sure where to look in the docs for simple things like the API for deferreds and how they work. <br /><br />The inheritance tree is part of this: the API docs for a lot of classes just indicate that they inherit from some other class(es) and add some (un- or poorly-documented) new methods. To find out how to use said class you have to dig right down to the base class(es) and often their documentation is also poor/missing/too abstract.</div>
+</div>
+<div class='comment'>
+<div class='author'>B<span class='comment-date'> on 2009-06-30 22:53</span></div>
+<div class='content'>
+I like Twisted.<br /><br />But, I know where people are coming from. You get a bunch of docs that just don&#39;t seem to quite fit together and the API reference just doesn&#39;t seem quite finished, so your learning process is scattered all over the place.<br /><br />So you read a tutorial and you get told you have to write 10 lines of code, except you only know what 1 of those lines actually does. The rest is just &quot;necessary&quot;, but since you don&#39;t know what it does, it&#39;s easy to see why people think it&#39;s unnecessary boilerplate, when in fact it&#39;s a bunch of powerful tools that you can use to extend your application.<br /><br />I really believe that the only thing that creates such an unexpected number of Twisted detractors is the fact that there isn&#39;t a nice, easy, pretty, consistent documentation system that takes each part of Twisted as a clean slate, providing easy access to all the core stuff that&#39;s being used in the examples as assumed knowledge.<br /><br />Once the assumed knowledge is clearly laid out and accessable from every page I think everything will fall into place.<br /><br />Learning a new API, especially one as extensive as Twisted&#39;s, is hard enough already, without also having to juggle in your mind a kludgy and patchy documentation system.<br /><br />(I really, really do like Twisted a lot though)</div>
+</div>
+<div class='comment'>
+<div class='author'>Geekwad<span class='comment-date'> on 2009-06-30 20:27</span></div>
+<div class='content'>
+If only we *could* force them to use zope.interface.  ;-)</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/06/argh.html">Argh!</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-25T00:00:00+01:00" pubdate data-updated="true">2009-06-25 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I upgraded karmic, and now Do &amp; Banshee are broken. :(</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>RAOF<span class='comment-date'> on 2009-06-26 01:38</span></div>
+<div class='content'>
+Finish updating your Mono stack :P</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/06/pyflakes-now-warns-about-unused-local.html">pyflakes now warns about unused local variables</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-03T00:00:00+01:00" pubdate data-updated="true">2009-06-03 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I finally got around to finishing my fix for <a href="http://divmod.org/trac">Divmod</a> bug <a href="http://divmod.org/trac/ticket/2718">#2718</a> &#8211; Warn about unused variables in methods in <a href="http://www.divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a>. Last night, the magnificent <a href="http://jcalderone.livejournal.com/">Jean-Paul Calderone</a> reviewed and landed my patch. This means that if you are using pyflakes trunk (either from Subversion <a href="http://divmod.org/svn/Divmod/trunk/">trunk</a> or from the Launchpad <a href="https://code.edge.launchpad.net/%7Evcs-imports/pyflakes/main">Bazaar import</a>), pyflakes will spot code like:<br /><pre><b><span class="code-lang">def</span></b> <b><span class="code-func">foo</span></b>(bar):<br />baz = bar + 2<br /><b><span class="code-lang">return</span></b> 12<br /></pre>and generate a warning like:<br /><pre>example.py:2: local variable 'baz' is assigned to but never used<br /></pre>I use pyflakes hooked up to <a href="http://www.emacswiki.org/emacs/FlyMake">flymake</a>, so it&#8217;s always running all the time on every Python file I&#8217;m working on. Relying on it has become as second-nature as relying on syntax highlighting.  There&#8217;s a whole class of mistakes I don&#8217;t make any more, simply because it&#8217;s on.<br /><br />However, the <span style="font-style: italic;">main</span> way it helps me is when I&#8217;m refactoring code. When extracting a function or changing a variable name, pyflakes acts like a sort of todo list for me. Now that it shows unused local variables, it&#8217;s getting dangerously close to perfect.<br /><br />To get pyflakes quickly, bzr branch <a href="https://code.edge.launchpad.net/%7Evcs-imports/pyflakes/main">lp:pyflakes</a>.<br /><br />(Edit: Grammar fix)</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Celso Providelo<span class='comment-date'> on 2009-06-06 22:02</span></div>
+<div class='content'>
+Nice one! I&#39;ve packaged trunk in my <a href="https://edge.launchpad.net/~cprov/+archive/testing?field.name_filter=pyflakes&amp;field.status_filter=published&amp;field.series_filter=any" rel="nofollow">PPA</a></div>
+</div>
+<div class='comment'>
+<div class='author'>RJ Ryan<span class='comment-date'> on 2009-06-04 07:48</span></div>
+<div class='content'>
+Thanks &#8211; I use pyflakes with flymake too, and it is a godsend!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/05/landscape-on-code-review.html">Landscape on Code Review</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-25T00:00:00+01:00" pubdate data-updated="true">2009-05-25 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The Landscape guys mentioned three things that I&#8217;ve missed in <a href="http://mumak.net/stuff/your-code-sucks.html">Your Code Sucks and I Hate You</a>.<br /><br /><ul><li>The important thing about code reviews is that they are a conversation. Emphasise this in your team&#8217;s code review culture.</li><li>Don&#8217;t speak to the person, speak to the code. &#8220;Why does the code do this?&#8221; rather than &#8220;Why did you do this?&#8221;.</li><li>Remember that the person who wrote the patch is an expert in that patch.</li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/05/from-hands.html">From the Hands</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-25T00:00:00+01:00" pubdate data-updated="true">2009-05-25 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just starting at UDS after a week at Canonical&#8217;s Allhands event. Allhands was great, but one of the highlights for me was the Landscape team&#8217;s presentation on their development process:<br /><blockquote>We optimize for fun. If something works really well in theory but it makes things less fun, then we don&#8217;t do it.<br /></blockquote></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/04/stealth-feature.html">Stealth feature</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-08T00:00:00+01:00" pubdate data-updated="true">2009-04-08 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Last release, Tim added a stealth feature to Launchpad. Since it&#8217;s incomplete we didn&#8217;t announce it on the official blog, but it&#8217;s useful enough to share here.<br /><br />If you browse to https://code.launchpad.net/~$USERNAME/$PROJECT, you&#8217;ll get a list of all the branches in $PROJECT owned by $USERNAME, e.g. <a href="https://code.launchpad.net/%7Eraof/do">Chris&#8217;s Gnome Do branches</a> or <a href="https://code.edge.launchpad.net/%7Egmb/gwibber">Graham&#8217;s Gwibber branches</a>. I use this mostly to track my own branches in a project so I can make sure I haven&#8217;t let any slip through the cracks.<br /><br />We want to make it possible to get to these pages without URL hacking, of course. But if  you use both Bazaar and Launchpad quite heavily then this trick is worth knowing about even as it is.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>James Henstridge<span class='comment-date'> on 2009-05-27 11:00</span></div>
+<div class='content'>
+Unfortunately going to https://code.launchpad.net/~user/ubuntu doesn&#8217;t list source package branches yet.</div>
+</div>
+<div class='comment'>
+<div class='author'>spiv<span class='comment-date'> on 2009-04-09 06:52</span></div>
+<div class='content'>
+Heh, I&#8217;ve been using this feature for a little while without realising it wasn&#8217;t official yet.<BR/><BR/>I&#8217;m very glad to have it, it&#8217;s very useful!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/15/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/13/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What&#8217;s wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mere Code</title>
+  <meta name="author" content="Jonathan Lange">
+
+  
+  <meta name="description" content="I bought a Nexus One. I got sick of not having any decent todo applications for the Palm Pre, so I bought a shiny new Android phone. Some quick &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code.mumak.net/blog/page/9/index.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mere Code" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">(</div>
+  	<div id="logoText">jml</div>
+  	<div id="logoRight">)</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Mere Code</a></h1>
+  
+    <h2>Diverse Topics of General Interest to the Practicing Programmer</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code.mumak.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About this blog</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/05/android-fun.html">Android fun</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-03T00:00:00+01:00" pubdate data-updated="true">2010-05-03 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I bought a Nexus One. I got sick of not having any decent todo applications for the Palm Pre, so I bought a shiny new Android phone. Some quick thoughts:<div><ul><li>Android has many apps, many of which are very cool</li><li>Buying an application is way too easy, given Google Checkout</li><li>I can&#8217;t seem to get 3G data access from the Nexus One</li><li>WebOS has a much nicer UI for multi-tasking</li><li>Wonder if I can get on IRC via my SSH tunneled bip connection</li></ul><div><b>Update:</b> I now have 3G access, thanks to these instructions for <a href="http://forum.o2.co.uk/viewtopic.php?p=144262#144262">getting 3G from O2 on Android phones</a>.</div></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/i-dont-want-to-talk-about-documentation.html">I don&#8217;t want to talk about documentation</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-29T00:00:00+01:00" pubdate data-updated="true">2010-04-29 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Most of the time, I don&#8217;t like talking about documentation. I particularly don&#8217;t like talking about documenting code. There&#8217;s not much to say.<div><br /><div>I do like talking about testing though, since I enjoy writing code TDD, since tests for<a href="https://launchpad.net/launchpad"> big, big, big programs</a> are really hard and because most everyone else is doing it wrong.</div><div><br /></div><div>Thing is, every time I talk about testing in the Python world, I have to talk about documentation because <a href="http://barry.warsaw.us/">someone</a> always brings up <a href="http://docs.python.org/library/doctest.html">doctest</a> and thinks it&#8217;s a good way of testing code. It&#8217;s not. Andrew has explained clearly the problems with the <a href="http://bemusement.org/diary/2008/October/23/narrative-tests">principle</a> and with the <a href="http://bemusement.org/diary/2008/October/24/more-doctest-problems">implementation</a>. He concludes that the only thing that doctest is any good for is writing self-testing documentation about Python code, and I agree.</div></div><div><br /></div><div>However, I humbly suggest that for many projects, this is a solution in search of a problem. Which means I am going to have to talk about documenting code. Before that, a short plea.</div><div><br /></div><div>Please stop talking about documentation and testing at the same time! They are both actually quite tricky, and you can never, ever, ever effectively address both of them with the same initiative. They are different! Just stop it!</div><div><br /></div><div>OK, let&#8217;s talk about documenting code.</div><div><br /></div><div><b>Why bother?</b></div><div><br /></div><div>Before you even begin to talk about the best way to document your code, you must seriously consider why you are even bothering.</div><div><br /></div><div>Time spent documenting code is time not spent fixing bugs. Instead of writing docs you could be talking to users, making your software internationalizable, improving its website, improving the <i>user </i>documentation, making the test suite run faster or any number of things that directly help your end users or your existing developers.</div><div><br /></div><div>You might want to document your code as part of an initiative to get more contributors, or to make your existing contributors&#8217; lives happier. If so, great, but make sure that documenting code will actually achieve these goals.</div><div><br /></div><div>If not, take pride in your lack of code documentation! It is the direct fruit of you doing better things with your life. Stand up, walk out the door and skip down the street, clutch the first suit-wearing stranger you see by his lapels and shout &#8220;My code is under-documented, yippee ki-yay!&#8221;</div><div><br /></div><div>More seriously, know why you are documenting your code, don&#8217;t just do it out of guilt, and don&#8217;t feel guilty if your code is under-documented while your users are many and happy.</div><div><br /></div><div><b>Guiding principles</b></div><div><br /></div><div><i>Audience and benefit</i></div><div>Do not even bother to write a document unless you have an audience in mind and a clear benefit in mind for what they&#8217;ll get out of reading this document. And no, &#8220;help them understand the branch puller XML-RPC API&#8221; is not a clear benefit.</div><div><br /></div><div>As an example, I&#8217;m writing this blog post primarily for Python programmers at work and in the open source projects I care about. My aim is to convince them to be silent about doctest when we&#8217;re talking about testing and to see the whole picture when talking about documentation so that they&#8217;ll have good unit tests and won&#8217;t misdirect energy toward inappropriate documentation. I have a secondary aim of learning where I&#8217;m wrong by reading the comments.</div><div><br /></div><div><i>Clear code</i></div><div>If someone is reading documentation that&#8217;s about code, then they can probably read code. You can probably save everyone a lot of trouble by picking better names, adding a couple of docstrings, fixing the bits you&#8217;re embarrassed by and deleting the crap that you don&#8217;t need. </div><div><br /></div><div>To put it another way, when people say &#8220;this needs documentation&#8221; they often mean &#8220;I don&#8217;t understand this&#8221; (similarly, &#8220;we have a communication problem&#8221; often means &#8220;you are not doing what I want&#8221;). The best way to help them is not necessarily to write documentation.</div><div><br /></div><div><i>Value is in the output</i></div><div>Documentation that&#8217;s not being read is worthless and probably incorrect, much like code that is not being executed. Documentation that cannot be found cannot be read. How is your audience going to find your documentation? Is it going to be in a format they like to read? Don&#8217;t bother writing anything until you&#8217;ve figured this out.</div><div><br /></div><div><b>Different approaches</b></div><div><br /></div><div><i>No documentation, just code</i></div><div>Some people believe that no human language text should ever sully their code base. There are plenty of good sentiments behind this idea: source code is a powerful tool for describing how to think about a problem; textual documentation about code frequently goes out of date and it&#8217;s often used as a crutch for bad code.</div><div><br /></div><div>Personally, I think it&#8217;s a bad idea to have no documentation. Even the best coders read good prose faster than good code, and text has a wonderful power of summary that code lacks. Sometimes it&#8217;s impossible to communicate the intent of the code in the code itself (for example, you might be working around a POSIX insanity). Nothing wrong with using a crutch when your leg is broken.</div><div><br /></div><div><i>API reference documentation</i></div><div>Instead of having no documentation, you can use Python&#8217;s docstring feature to add a mini-document describing a class or function. This docstring can tell you how to use it, what to expect from it, and most importantly, why you should care. Because Python functions don&#8217;t have explicit type declarations, these docstrings can be <i>very</i> useful (is that <code>branch</code> parameter a Bazaar branch, a Launchpad <code>IBranch</code> object or the URL for a branch?). Also, because the docstring is so close to the code, they are much less likely to be out of date or incorrect.</div><div><br /></div><div><i>Specifications</i></div><div><a href="http://rspec.info/">Some people</a> like having specifications as part of the documentation for their code. I haven&#8217;t really seen this in practice, so I can&#8217;t comment much. I can say that I find good comments on unit tests extremely helpful, and now almost always write such a comment before I write the test.</div><div><br /></div><div><i>Guides, tutorials and howtos</i></div><div>Rather than consulting a reference, you sometimes want to be guided through a task or to be introduced to some new area of the problem domain. In these cases, it&#8217;s pretty hard to beat a solid chunk of prose with some code examples. It&#8217;s here that doctest shines, since it&#8217;s quick to write, can be rendered nicely and can be executed to guarantee the code is not hopelessly wrong.</div><div><br /></div><div><b>Summary</b></div><div><br /></div><div>Code documentation is not intrinsically valuable. It has no value unless you give careful thought to why you want to do it and how it is going to connect you to your audience. Once you&#8217;ve done that, prose documentation can be very helpful, but you can also get a lot of the same benefits by cleaning up your code base.</div><div><br /></div><div>Doctest is neither necessary nor sufficient for good code documentation. Do not use it simply because it is there. Use it when it fits.</div><div><br /></div><div>Now, please can we go back to talking about testing?</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>mbp<span class='comment-date'> on 2010-05-25 04:14</span></div>
+<div class='content'>
+I agree.  If documentation is helping you delight your customers, then add it; otherwise you are wasting your time and should feel ashamed rather than proud.<br /><br />So documentation could help you satisfy your customers by<br /><br />1- directly helping them: developers are attracted to the Apple platform because they feel it has good consistent developer-oriented documentation, whereas Ubuntu&#39;s tends to be inward-looking and patchy<br /><br />2- making you more effective, by letting people get into the code or letting them find conceptual bugs in the course of writing docs<br /><br />3- drawing in new contributors: perhaps the best way to satisfy this is to update the documentation when a would-be contributor says &quot;how do I&#8230;?&quot; or &quot;what is the &#8230;?&quot;<br /><br />So in Launchpad, perhaps the most useful kind of technical documentation is external API docs.</div>
+</div>
+<div class='comment'>
+<div class='author'>jkakar<span class='comment-date'> on 2010-05-01 12:12</span></div>
+<div class='content'>
+Code without a documented API is incomplete, in the same way that it is without tests.  Documenting the tests clearly is also important.  Like you, I typically write the docstring for a test before I write it.  On the topic of API documentation, I far too often see comments that describe what the code does, instead of what its purpose is.  I can read the code to see what it does, but often that doesn&#39;t help me understand what its purpose is.  Writing good API documentation is a skill.<br /><br />At a previous job it was mandated that a specification must be written before doing any coding.  It was ridiculous, because it wasn&#39;t really about discovering the domain, but about documenting the classes you would be implementing.  These specifications were expected to include UML diagrams to show class hierarchies, the sequence of calls that would be made to satisfy (very poorly identified) use cases.  It was horrible.  In the beginning I tried to comply but quickly realized that this was a complete waste of time: it was super boring and the code I ended up writing never matched the specification.<br /><br />I think this kind of documentation about code is pointless.  It&#39;s another artifact to maintain and inevitably it gets out of date.  That said, I do find high-level documentation useful.  In many cases these are diagrams.  For example, an architecture diagram showing, at a high-level, the components in a system and how they interact can be very enlightening.  It&#39;s often that high-level perspective that is hard to determine by reading code.  Also, documentation that describes user stories and provides context about the domain can be useful.  In most cases I find a list of &#39;As a X I want to Y so that Z&#39; stories adequate.  I just want something to help me get into the problem space, I don&#39;t need tons of prose.<br /><br />One interesting thing at the previous job where there was a push for detailed specifications is that the programmers there felt reading code was too hard.  They didn&#39;t want to do it, they weren&#39;t good at it and so they would look for documentation as a way to figure it out.  There was no review process there.  When I first got involved with reviews I realized how poor my reading skills were&#8230; having been doing it for a while, my ability to dive into code and read and comprehend it has improved immensely.<br /><br />I don&#39;t think we should be proud of a lack of documentation.  I think we should determine what kind of documentation is useful, write it and then produce no more.  Documenting everything we possibly can is a bad idea.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-04-29 17:06</span></div>
+<div class='content'>
+Yeah.<br /><br />I&#39;m a huge believer in putting code clarity above everything else, and think good code design can do a lot to reduce the amount of documentation you need, much like a well-designed product doesn&#39;t need a massive user manual.<br /><br />Still, I&#39;m simply bewildered that people can say &quot;My code is self-documenting&quot; with a straight face. Maybe if it&#39;s a really small sample of code.</div>
+</div>
+<div class='comment'>
+<div class='author'>Thomas Hervé<span class='comment-date'> on 2010-04-29 16:58</span></div>
+<div class='content'>
+I sure agree with you, I was just pointing out that telling people &quot;not to write doc is OK&quot; is not OK.<br /><br />Also, I have abandoned for long the idea that I could write code easy to understand. It may be possible for self-contained code, but any interaction with a library, an API, or an external application will result in some kind of stupid error management (like POSIX you mention). That&#39;s why you need tests too :)</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-04-29 16:26</span></div>
+<div class='content'>
+First, I&#39;m not against documenting code. I&#39;m against documenting code without knowing why you are doing it.<br /><br />Second, you are conflating &quot;documenting code&quot; with &quot;making code easy to understand&quot;. Only the second one is valuable in itself. The first is a means to that end, and only one of many.<br /><br />Did you read past there?</div>
+</div>
+<div class='comment'>
+<div class='author'>Thomas Hervé<span class='comment-date'> on 2010-04-29 16:17</span></div>
+<div class='content'>
+<i>If not, take pride in your lack of code documentation! It is the direct fruit of you doing better things with your life. Stand up, walk out the door an skip down the street, clutch the first suit-wearing stranger you see by his lapels and shout &quot;My code is under-documented, yippee ki-yay!&quot;</i><br /><br />I couldn&#39;t disagree more. Because once you&#39;re in the street, there is a good chance that you get hit by a bus. And then, the person hired to replace you (let&#39;s face it, we won&#39;t mourn you forever), will have to take over your undocumented piece of crap, and it will take him months to understand your APIs because of the lack of documentation.<br /><br />Also, admitting that yourself in 6 months is not the same person today, you&#39;re making him a big favor by documenting your code. That is, you.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/another-hacking-maxim.html">Another hacking maxim?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-29T00:00:00+01:00" pubdate data-updated="true">2010-04-29 Thursday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Kill annoyances early.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Jean-Paul Calderone<span class='comment-date'> on 2010-04-29 13:48</span></div>
+<div class='content'>
+But not too early.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/wheels-within-wheels.html">Wheels within wheels</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-27T00:00:00+01:00" pubdate data-updated="true">2010-04-27 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Software is best built incrementally. I hope everyone agrees with that. There&#8217;s quite a bit of disagreement as to what &#8220;incrementally&#8221;, of course, but it seems to have something to do with <i>iterations</i>.<br /><br />No one really agrees on what an iteration is either. There are a lot of fancy metaphors and abstract phrases that get used to describe the various bits of what people think an iteration is: customers tell &#8220;stories&#8221; that engineers then &#8220;estimate&#8221;; programmers &#8220;sprint&#8221; like children at an athletics carnival; they &#8220;release&#8221; software as if it were an insufficiently randy panda; deliverables get delivered.<br /><br />When one washes all of the metaphors and best little practices away, what&#8217;s left is this: build a little bit of software; evaluate it. Ideally, the software is evaluated by someone who stands to benefit directly from using it.<br /><br />I&#8217;m not sure there&#8217;s much more to recent software methodologies than that. Perhaps we can explore it more in the comments.<br /><br />This combination of increments and iterations spirals toward the final product, which is generally what you have left when the money runs out. Alas, if only we could draw a picture of the process with a simple spiral!  When I think of it, I fall prey to a rare attack of envy toward students of <a href="http://en.wikipedia.org/wiki/Hermeneutics">hermeneutics</a>.<br /><br />The process involves spirals within spirals, cycles made up of cycles. Going<br />inwards from the greatest wheel to the smallest, the Launchpad project has:<br /><dl><dt>planning cycles</dt><br /><dd>When we plan the major features and general direction of Launchpad. <a href="https://dev.launchpad.net/RoadMap">Road map</a> sort of<br />stuff. Approximately six months.</dd><br /><dt>feature cycles</dt><br /><dd>The repeated process of beginning a feature, developing it, releasing it,<br />fixing it, then stopping. Varies in cycle time, but usually one to three<br />months.</dd><br /><dt>release cycles</dt><br /><dd>We release whatever is in <a href="https://dev.launchpad.net/Trunk">trunk</a> each month</dd><br /><dt>branch cycles</dt><br /><dd>Branch from trunk, hack on it, push it up, get it reviewed, land it, wait<br />until it passes the test suite, check that the changes worked. Two or three<br />days.</dd><br /><dt>experiment cycles</dt><br /><dd>A developer is working on a thing and wants to actually see how it works<br />in the running code. They write many tests and a fair bit of code and then<br />fire up a development instance of Launchpad and see how it looks.</dd><br /><dt>TDD cycles</dt><br /><dd>Write a failing test. Run the tests (a subset of the whole suite). Make<br />the test pass. Run the tests. Refactor. Run the tests. Probably about<br />half-an-hour?</dd></dl>Different projects surely have different kinds of cycles. Most projects probably have a subset of the ones above. In any case, thinking in terms of nested cycles is a good way of analyzing ones development process.<br /><br />Each of these cycles has its own overhead and its own waste. One cycle being particularly slow has a different effect to another cycle being slow. For example, I contend that the slow branch cycle makes it less likely that trivial bugs get fixed.<br /><br />Lean advocates would tell me not to think this way. They would have me unroll these cycles and lay them out on a line beginning with someone wanting something and ending with that want satisfied. They would have me draw a &#8220;value stream map&#8221;.<br /><br />Bollocks to them. At least on Launchpad, we should optimize the innermost loops first.<br /><br />Have I missed some kinds of cycles? Can you think of a better name than &#8220;experiment cycle&#8221;? Is there prior literature I should read? Are you going to apply these ideas to your project?</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-05-17 13:42</span></div>
+<div class='content'>
+Dean, I&#39;ll do what I can. The short answer is that I think there&#39;s a lot of waste happening at a much finer level of granularity than we track with our Kanban board.<br /><br />Perhaps I can convince Francis (our local Kanban advocate) to say something.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-05-17 13:41</span></div>
+<div class='content'>
+Robert, I agree that taking an &quot;optimize the inner loop&quot; approach would probably yield similar results to a value-stream-driven &quot;optimize the time between request and fulfilment&quot;.<br /><br />However, I&#39;m not entirely sure it&#39;s guaranteed, and the Poppendieck&#39;s repeatedly advocate &quot;seeing the whole&quot; and optimizing for it, and frequently warn against micro-optimizing.<br /><br />By dividing things up into loops and cycles, I am explicitly ignoring their advice. I can imagine that, actually, they&#39;d approve of me doing so.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-05-17 13:36</span></div>
+<div class='content'>
+Robert Collins tried to comment on this post, but ran into technical difficulties. He emailed me his comment, which I&#39;m pasting here:<br /><br />I don&#39;t think Lean advocates would unroll everything - I wouldn&#39;t, and I think I&#39;m a Lean advocate. I&#39;d treat the users request stalling at the outside edge of each cycle, before it passes into an inner cycle,<br />as a stall, and I&#39;d try to break each cycle into little boxes so that I could talk sensibly about how much time e.g. running tests. I naively expect to see a similar conclusion if modelled this way - inner loops that don&#39;t work well consume most of the duration of the vsm.</div>
+</div>
+<div class='comment'>
+<div class='author'>Dean Goodmanson<span class='comment-date'> on 2010-05-12 22:12</span></div>
+<div class='content'>
+Looking forward to a follow-up bloag and hearing how this relates to the use of a Kanban board/tool.<br /><br />https://dev.launchpad.net/Kanban</div>
+</div>
+<div class='comment'>
+<div class='author'>jkakar<span class='comment-date'> on 2010-04-27 23:43</span></div>
+<div class='content'>
+We pretty much have the same set of cycles on the Landscape project, with some having similar timelines.  For example our planning cycle is 6 months, similar to Launchpad.  I think our TDD cycle has a much faster turn-around time than 30 minutes.  It&#39;s more like 1 or 2, which is slower than I&#39;d like.<br /><br />Something I&#39;ve been thinking about recently is a 2-3 year roadmap, a set of high-level themes for the project that we use to guide our choices when we make decisions regarding our planning cycle.  My first thought was that this was an outer ring that you didn&#39;t include in your post, but I don&#39;t think that&#39;s quite right.  It&#39;s more like the set of forces that affect the direction in which the wheel is rolling.<br /><br />Also, I&#39;ve been meaning to write this blog post for more than two years, but have procrastinated and done nothing about this desire.  Thanks for beating me to it and describing the pieces so clearly.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/python-testing-review.html">Python Testing: A review</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-24T00:00:00+01:00" pubdate data-updated="true">2010-04-24 Saturday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s1600/Python+Testing.jpg"><img style="float:right; margin:0 0 10px 10px;cursor:pointer; cursor:hand;width: 162px; height: 200px;" src="http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s200/Python+Testing.jpg" border="0" alt="" id="BLOGGER_PHOTO_ID_5463670224157992946" /></a>Quite a few weeks ago, perhaps even months, I was asked by <a href="http://www.packtpub.com/">Packt Publishing</a> to review a new book: &#8221;<a href="http://www.packtpub.com/python-testing-beginners-guide/book?utm_source=code.mumak.net&utm_medium=bookrev&utm_content=blog&utm_campaign=mdb_002509">Python Testing: Beginner&#8217;s Guide</a>&#8221; by Daniel Arbuckle. They were very nice and even sent me a physical copy of the book, and have been moderately tolerant of the long delay between me receiving the book and writing this blog post.<div><br /></div><div>Python Testing promises &#8220;an easy and convenient approach to testing your Python projects&#8221;. The book takes a tool-based approach to introducing the reader to testing in Python. It starts with <a href="http://bemusement.org/diary/2008/October/24/more-doctest-problems">doctests</a>, goes on to <a href="https://edge.launchpad.net/mocker">mocker</a>, then <a href="http://docs.python.org/library/unittest.html">unittest</a>, then <a href="http://somethingaboutorange.com/mrl/projects/nose/0.11.3/">nose</a>. Then I stopped reading.</div><div><br /></div><div>It&#8217;s not a bad book by any stretch, I just don&#8217;t know who it&#8217;s for. Bear in mind that I&#8217;m not a beginner to Python testing so I&#8217;m probably not the best judge.</div><div><br /></div><div>Taking a tool-based approach seems like an odd decision to me, especially for a printed book. The tools change all of the time, and there is a reasonable amount of documentation for each of the tools mentioned. A motivated beginner could probably make do with a blog post listing each of the tools.</div><div><br /></div><div>Many of the examples in the book are based on quite complex real-world problems. In some ways, this is great, since it could help to convince testing sceptics that testing is relevant to their project and it could help along those who have trouble applying theory. On the other hand, I think anyone who is up to following an AVL tree implementation is capable of googling for &#8221;<a href="http://www.google.co.uk/search?hl=en&amp;source=hp&amp;q=python+testing+tools&amp;meta=&amp;aq=f&amp;aqi=&amp;aql=&amp;oq=&amp;gs_rfai=">python testing tools</a>&#8221;.</div><div><br /></div><div>Reading through, I found myself wishing for advice on the principles of testing. How should I organize my tests on a Python project? How much code should I cover in each test? What are the risks in using mock objects? I sense that the author has never engaged with Gerald Meszaros&#8217; excellent work on <a href="http://xunitpatterns.com/">xUnit Test Patterns</a>, which is a must for everyone who isn&#8217;t <a href="http://rbtcollins.wordpress.com/">Robert Collins</a>.</div><div><br /></div><div>I don&#8217;t like writing such a negative review. It&#8217;s hard work writing a technical book – I tried writing one for Bazaar and gave up. Daniel Arbuckle deserves credit for tackling such an important topic, for working so hard to avoid being dry and for his obvious concern for actually helping developers with their testing situation.</div><div><br /></div><div>That said, if you are new to automated testing altogether, then you would be much better off reading Kent Beck&#8217;s <a href="http://www.amazon.com/dp/0321146530/?tag=hashemian-20">Test Driven Development by Example</a>. If you know testing well, but don&#8217;t know Python so well, then I guess you might get something out of Python Testing. </div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Michael Hudson-Doyle<span class='comment-date'> on 2010-04-25 00:44</span></div>
+<div class='content'>
+Thinking of which, can someone take the first 100 pages or so of xUnit Test Patterns and publish just that?  That part of the book is awesome and the rest is somewhat boring.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/accelerate.html">Accelerate</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-23T00:00:00+01:00" pubdate data-updated="true">2010-04-23 Friday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<div><div>The single most important thing we can do for Launchpad as a product is make our own rate of development faster. I say this as a developer and as the <q>product strategist</q>.</div><div><br /></div><div>One large chunk of my responsibilities consists in talking with development teams that use Launchpad and finding out what they need. Almost every time I talk with them, I learn that their projects flow much more quickly than Launchpad. As a developer, this makes me jealous.</div><div><br /></div><div>As a product strategist, I see all sorts of little things in Launchpad that need to be tweaked, and quite a few not-so-little things. When I don&#8217;t see them, people are often kind enough to point them out. Maybe if Launchpad were much easier to change, then we developers would spontaneously make small fixes more often. I know I would.</div><div><br /></div><div>Maybe later I&#8217;ll talk about what we can do about it, but for now I feel strongly enough about the issue that it deserves its own post.</div><div><br /></div><div>The single most important thing we can do for Launchpad as a product is make our own rate of development faster.</div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>spiv<span class='comment-date'> on 2010-04-26 12:57</span></div>
+<div class='content'>
+Jono: YES.</div>
+</div>
+<div class='comment'>
+<div class='author'>Michael Hudson-Doyle<span class='comment-date'> on 2010-04-25 00:43</span></div>
+<div class='content'>
+I think Ted has a good point there, although I think the solution is more along the lines of not having releases in the same way.  I know Bjorn has been working on this, I hope it results in something soon!<br /><br />Deryck&#39;s &quot;Websites Don&#39;t Release Anything&quot; blog post is obviously relevant here.</div>
+</div>
+<div class='comment'>
+<div class='author'>Ted<span class='comment-date'> on 2010-04-24 20:35</span></div>
+<div class='content'>
+I think one issue might be the monthly releases.  There&#39;s no reason to rush a feature in because it&#39;s easy to push for next month.  Perhaps having a *longer* release cycle would put more presure on finishing a feature for a particular release.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/shot-crop-and-share.html">Shot, crop and share</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-21T00:00:00+01:00" pubdate data-updated="true">2010-04-21 Wednesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+A thing I do all the time is:<div><ul><li>take a screenshot of a window</li><li>open up GIMP</li><li>crop to the relevant parts</li><li>share the screenshot as a bug or email attachment</li></ul><div>The &#8220;take a screenshot&#8221; step is actually:</div></div><div><ul><li>Fire up GNOME Do</li><li>Type &#8220;s c r RET&#8221;</li><li>Select &#8220;Grab the current window&#8221;</li><li>Click &#8220;Take screenshot&#8221;</li></ul><div>Is there a faster way of doing this? I particularly want to speed up the cropping and grabbing steps.</div></div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>mithrandi<span class='comment-date'> on 2010-05-16 04:58</span></div>
+<div class='content'>
+For something more lightweight, you can use `import` from ImageMagick. &quot;import screenshot.png&quot; selects the file type based on the extension, and gives you a cursor with which to click and drag to capture a region of the screen.</div>
+</div>
+<div class='comment'>
+<div class='author'>Calvin Spealman<span class='comment-date'> on 2010-04-25 14:55</span></div>
+<div class='content'>
+KSnapshot has a Region mode which takes a snapshot, immediately showing it fullscreen, and lets you crop it right there.</div>
+</div>
+<div class='comment'>
+<div class='author'>jkakar<span class='comment-date'> on 2010-04-24 12:49</span></div>
+<div class='content'>
++1 for Shutter.  The combination of &quot;Selection&quot; which allows you to draw a box around what you want to capture and &quot;Export&quot; which uploads the taken image to a publicly accessible image server are unbeatable.</div>
+</div>
+<div class='comment'>
+<div class='author'>mniess<span class='comment-date'> on 2010-04-22 13:59</span></div>
+<div class='content'>
+If you have compiz enabled just use the screenshot plugin right away. Super+click&#39;n&#39;drag to take the shot.</div>
+</div>
+<div class='comment'>
+<div class='author'>blockcipher<span class='comment-date'> on 2010-04-22 13:10</span></div>
+<div class='content'>
+The Gimp itself can take screen shots.</div>
+</div>
+<div class='comment'>
+<div class='author'>Serge van Ginderachter<span class='comment-date'> on 2010-04-21 16:00</span></div>
+<div class='content'>
+I have a script (adn a Gnome Panel Launcher pointing to it) wich executes this:<br /><br />cd ~/grabs &amp;&amp; scrot -s %Y%m%d%H%M%S.png<br /><br />- Fire the script = Clik the icon<br />- draw a rectangular on screen of the part you want to &quot;shot&quot;<br />- upload it to your bugtracker easily by having a nautilus bookmark pointing to ~/grabs</div>
+</div>
+<div class='comment'>
+<div class='author'>d0od<span class='comment-date'> on 2010-04-21 15:26</span></div>
+<div class='content'>
+Shutter, surely? I leave it open all the time. You can even set print-screen to invoke it (including just taking an area selection)<br /><br />It even has a handy &#39;redo&#39; button so you can take a snapshot of the same area/window/menu/tooltip over and over&#8230; <br /><br />http://shutter-project.org/</div>
+</div>
+<div class='comment'>
+<div class='author'>zpletan<span class='comment-date'> on 2010-04-21 14:45</span></div>
+<div class='content'>
+Use your take screenshot steps, but use &quot;Select area to grab&quot; instead of &quot;Grab the current window&quot;.</div>
+</div>
+<div class='comment'>
+<div class='author'>Josh Blount<span class='comment-date'> on 2010-04-21 14:40</span></div>
+<div class='content'>
+My steps look like this: <br /><br />1. Invoke gnome-do and type &#39;take&#39;<br />2. Down arrow twice, tab three times, enter (this selects &#39;select area to grab&#39; and completes the screenshot dialog)<br />3. Left click and drag to select area for screenshot<br />4. Name file / save somewhere in the dialog.</div>
+</div>
+<div class='comment'>
+<div class='author'>Aurélien Naldi<span class='comment-date'> on 2010-04-21 14:13</span></div>
+<div class='content'>
+scrot is a great command-line tool for such use.<br />In particular, scrot -s allows to capture a full window by clicking on it or a zone if you move before releasing the button.<br />You can easilly make a small script to launch scrot with this option and open the resulting file in a viewer. It can still be launched using gnome-do if the script is in your $PATH :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Thomas Hervé<span class='comment-date'> on 2010-04-21 14:09</span></div>
+<div class='content'>
+If your windows happens to be Firefox, there are some handy extensions to do that.</div>
+</div>
+<div class='comment'>
+<div class='author'>Guilherme Salgado<span class='comment-date'> on 2010-04-21 13:37</span></div>
+<div class='content'>
+Alt+PrtScn takes a screenshot of the focused window</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/dude-abides.html">The Dude Abides</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-20T00:00:00+01:00" pubdate data-updated="true">2010-04-20 Tuesday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Last one on this topic.<br /><br />After I <a href="http://code.mumak.net/2010/04/plane-has-crashed-into-mountain.html">broke the rollout</a> by <a href="http://code.mumak.net/2010/04/all-dude-wanted-was-his-rug-back.html">switching the subunit dependency</a> from being managed in a branch to being managed with Ubuntu packages, I thought my patch had to be reverted.<br /><br />But no! <a href="https://launchpad.net/~flacoste">Francis</a> got angry enough to fix the underlying problem. He split the <a href="https://code.edge.launchpad.net/~flacoste/launchpad/bug-559128/+merge/23504">script authentication out of our <code>lp.testing</code> package</a>, so we no longer use <code>lp.testing</code> – or subunit – in production. The patch <a href="https://code.edge.launchpad.net/~jml/launchpad/no-testing-on-prod-bug-559128-devel/+merge/23655">missed a spot</a>, but that was easily fixed.<br /><br />Launchpad is rolling out regularly as ever, and my <a href="http://pypi.python.org/pypi/zope.testing">zope.testing</a> upgrade is lying snug in the trunk.<br /><br />Lessons? I guess that anger is a powerful and <a href="http://life.mumak.net/2008/10/truth.html">constructive</a> force in programming. That help from someone else is valuable for both the help itself and for the boost in motivation that it brings. That software is plain hard. That crying &#8220;Lean, Lean&#8221; isn&#8217;t enough.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/launchpad-road-ahead.html">Launchpad: The Road Ahead</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-19T00:00:00+01:00" pubdate data-updated="true">2010-04-19 Monday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I know that many of you follow the <a href="https://dev.launchpad.net/RoadMap">Launchpad Road Map</a> with an interest so keen and passionate that it can only be described as obsessive. Some of you might fail to penetrate through its crusty, bureaucratic exterior to its swirling, luminous core, and thus stumble blindly into the future, heedless of the glancing rays that this document triumphantly casts on <i>the road ahead</i>. If you are one of these benighted souls, then take my arm and allow me to guide you on.<div><br /></div><div>We&#8217;re starting to get a picture of <a href="https://dev.launchpad.net/RoadMap#road-ahead">what we want to do in the second half of 2010</a>. In particular, lots of people within the team and within Canonical are starting to get fed up with our privacy and permissions model, which is quite patchy. It&#8217;s currently tangled up with the way we send emails to people, and we&#8217;d love to untangle them.</div><div><br /></div><div>The <a href="http://launchpad.net/launchpad-foundations">Foundations</a> team are already at work making Launchpad faster, and that&#8217;s something we want work on even more in the coming months. Derivative distributions – that is, a Linux distribution that extends or customizes another one, generally Ubuntu – have always been a key part of the vision for Launchpad, and they are finally going to get the effort they deserve.</div><div><br /></div><div>Finally, we want to do whatever we can to make the <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu Software Center</a> rock harder than it does already. Launchpad occupies a special place in the Software Center world, since it can help make it easier to get applications for your desktop <i>and </i>make it easier to develop those applications.</div><div><br /></div><div>Glorious and radiant though it is, the light of the road map shines onto the ever-changing territory of the future. We might discover new twists, valleys might open up before us, vast emergences could … emerge. We&#8217;ll keep the map current, but it <i>will</i> change.  If you wish to stay as up-to-date as possible, <a href="https://dev.launchpad.net/RoadMap?action=subscribe">subscribe now</a>.</div><div><br /></div><div>Strategist out.</div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/tests-and-documentation-good-but.html">Tests and documentation good but different</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T00:00:00+01:00" pubdate data-updated="true">2010-04-18 Sunday</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve long held that doctests are no way to test code. Andrew Bennetts explains the problems with <a href="http://bemusement.org/diary/2008/October/23/narrative-tests">narrative tests</a> and why <a href="http://bemusement.org/diary/2008/October/24/more-doctest-problems">tests are better written in code rather than text</a>.<div><br /></div><div>Recently, the Zope developer community has started taking these ideas seriously, and is <a href="https://mail.zope.org/pipermail/zope-dev/2010-April/040160.html">starting to change its testing strategy</a>. This can only be a win for them: better test coverage and documentation driven by user needs.</div><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/10/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/8/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/deliberately-being-naughty.html">Deliberately being naughty</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/testtools-moved-to-github.html">testtools moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/are-single-variable-names-evil.html">Are single letter variable names evil?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/getting-set-up-with-twisted-development.html">Getting set up with Twisted development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/whats-wrong-with-orms.html">What&#8217;s wrong with ORMs</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jml">@jml</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jml',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/jonathan.lange?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jonathan Lange -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

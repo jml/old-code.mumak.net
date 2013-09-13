@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ubuntu | Mere Code]]></title>
+  <link href="http://code.mumak.net/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://code.mumak.net/"/>
+  <updated>2013-09-13T22:56:47+01:00</updated>
+  <id>http://code.mumak.net/</id>
+  <author>
+    <name><![CDATA[Jonathan Lange]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu metahelp required]]></title>
+    <link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html"/>
+    <updated>2010-05-18T00:00:00+01:00</updated>
+    <id>http://code.mumak.net/2010/05/ubuntu-metahelp-required</id>
+    <content type="html"><![CDATA[<div class='post'>
+I just got back from UDS-M. If you've never been to a UDS, you probably don't know what an intense, inspiring, fun, draining time it can be.<div><br /></div><div>Anyway, I got back and started mucking around on my Ubuntu 10.04 LTS laptop on my home network. Everything was great until – suddenly – the wireless connection drops out. I have two other devices (Android, OS X) that are connected just fine, so I know it's probably not a network configuration issue.</div><div><br /></div><div>I also have noticed this behaviour all the way through Karmic and since the Lucid beta.</div><div><br /></div><div>I want to fix this bug. I want this to be my personal contribution to Maverick. I'm inspired, I'm <i>pumped</i>, but I don't really know where to begin. I don't even know how to file a good bug about this.</div><div><br /></div><div>That's where I need your help.</div></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-06-16 17:40</span></div>
+<div class='content'>
+Maybe!<br /><br />That bug points to <a href="https://bugzilla.redhat.com/show_bug.cgi?id=493018" rel="nofollow">Redhat bug 493018</a>, which claims to be recently fixed.</div>
+</div>
+<div class='comment'>
+<div class='author'>rbtcollins<span class='comment-date'> on 2010-06-15 22:53</span></div>
+<div class='content'>
+Is it https://launchpad.net/bugs/352228 ?</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-05-20 10:41</span></div>
+<div class='content'>
+Well, I&#39;ve got the relevant chunk of the syslog.<br />http://static.mumak.net/syslog-from-disconnect.log<br /><br />Dan, I&#39;d feel uncomfortable trying out a new version of the kernel without having a way of reproducing the bug or any understanding of what is actually causing it.<br /><br />Mary, at UDS I sat in rooms full of those people. They really are quite nice once you get to know them. I&#39;m hoping that with this bug, I can understand it deeply enough that the calls to retest won&#39;t seem as arbitrary.</div>
+</div>
+<div class='comment'>
+<div class='author'>Mary<span class='comment-date'> on 2010-05-18 23:23</span></div>
+<div class='content'>
+Just don&#39;t file the bug somewhere where those &quot;you haven&#39;t reconfirmed this bug in the last two seconds! please retest!&quot; people can get at it.</div>
+</div>
+<div class='comment'>
+<div class='author'>Dan<span class='comment-date'> on 2010-05-18 14:33</span></div>
+<div class='content'>
+I&#39;d begin by testing the latest mainline build at http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.34-lucid/ (2.6.34 has a sufficiently more interesting WiFi stack). See also http://wireless.kernel.org/en/users/Documentation/Reporting_bugs (note that the kernel wiki pointing to Ubuntu doesn&#39;t really contain useful information if you&#39;re already testing 2.6.34 as recommended).</div>
+</div>
+<div class='comment'>
+<div class='author'>Jason<span class='comment-date'> on 2010-05-18 14:31</span></div>
+<div class='content'>
+First you need to debunk the Funcrapulators. Quickly, before the Unlogger kicks in and makes its way into the Codestand. You don&#39;t want the Leggings to fall off that one or you&#39;ll be <i>in</i>. In <i>real</i>. Real <i>trouble</i>.</div>
+</div>
+<div class='comment'>
+<div class='author'>soren<span class='comment-date'> on 2010-05-18 12:07</span></div>
+<div class='content'>
+I have the same driver and the same problem, actually. I usually blame the binary blob firmware and go on my merry way.<br /><br />Let me know if you find a way to trigger it. Without a way to do that, I&#39;m really not clued enough to guess where it might be getting stuck.</div>
+</div>
+<div class='comment'>
+<div class='author'>mniess<span class='comment-date'> on 2010-05-18 11:43</span></div>
+<div class='content'>
+I&#39;ve got the same problem. I&#39;m in ;-)<br />For me this only happends with Atheros Chipsets. Especially the AR5001X. Compiling madwifi and blacklisting ath5k/9k only helps a little. I also tried ditching NetworkManager and using /etc/network/interfaces for configuration. That didn&#39;t help either (wireless performance/stability still way below jaunty).<br /><br />That leaves me with the conclusion that this a kernel issue. The exact same drivers (madwifi) work nicely in jaunty.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml<span class='comment-date'> on 2010-05-18 11:07</span></div>
+<div class='content'>
+Reloading the driver (rmmod iwlagn; modprobe iwlagn) works.<br /><br />Will check in syslog next time it happens.<br /><br />Thanks!</div>
+</div>
+<div class='comment'>
+<div class='author'>soren<span class='comment-date'> on 2010-05-18 10:57</span></div>
+<div class='content'>
+Blogger claims you posted this almost 7 hours from now. Is it perhaps set to show timestamps in Tasmanian time?<br /><br />Anyways, first step is to identify the culprit: you could try looking through syslog to see if the driver&#39;s making a fuss about anything, if NetworkManager got fed up, dhclient not getting enough love, etc. <br /><br />Does restarting NetworkManager help anything? (sudo restart network-manager)<br /><br />Does reloading the driver help?</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>
