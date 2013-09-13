@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Better than a pie chart"
+date: 2010-06-25
+comments: false
+---
+
+<div class='post'>
+The bugs page for projects on Launchpad used to have a really ugly pie chart on them. It was a strange little graph, &nbsp;useful because it helped you feel like you were making progress as you pushed bugs from New to Triaged to In-progress to Fix Committed and then off the chart completely with Fix Released.<br /><br />Pie charts suck though. They use two dimensions to represent one dimension of data, and they are always 100% full. In the case of bugs, there was no way to tell from the pie chart whether there were more or fewer bugs than last week.<br /><br />Inspired by some sketches from mpt, I decided to implement what I think would be a nice graph to have on Launchpad, but to do so using the <a href="https://help.launchpad.net/API">webservice API</a>. I've put some code up on <a href="https://edge.launchpad.net/everyday">lp:everyday</a>, and there's <a href="http://people.canonical.com/~jml/convergence/">an example of the graph for the whole Launchpad project</a>.<br /><br />The code works by sucking down all of the bug tasks associated with a project over the API, then storing them in a desktopcouch database, then using that to generate some timeline data. The graph is made using <a href="http://code.google.com/p/flot/">flot</a>, which is excellent.<br /><br />For those of you who care about Launchpad API details, I've recently added a parameter to <span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;"><a href="https://edge.launchpad.net/+apidoc/devel.html#bug_target">searchTasks</a></span> called <span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;">modified_since</span> that lets you <a href="https://bugs.edge.launchpad.net/malone/+bug/590535">fetch only bug tasks for bugs that have changed since a particular date</a>. It makes syncing so much faster.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>mdzlog</div>
+<div class='content'>
+Thanks for modified_since.  I was trying to do something similar last year (syncing bug data into couchdb) and the lack of this feature made things difficult and eventually stalled my (spare time) project.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Use the graph at the bottom.</div>
+</div>
+<div class='comment'>
+<div class='author'>Gary van der Merwe</div>
+<div class='content'>
+How do you zoom out once you have zoomed in? (I end up reloading the page each time I zoom out...)<br /><br />Looks good otherwise. I&#39;m going to install it so I can look at qbzr&#39;s bugs.</div>
+</div>
+</div>

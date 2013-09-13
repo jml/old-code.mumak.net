@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Another Bazaar story"
+date: 2008-06-13
+comments: false
+categories:
+ - Bazaar
+---
+
+<div class='post'>
+I'm currently hacking away on Launchpad's support for "<a href="http://jam-bazaar.blogspot.com/2008/05/this-week-in-bazaar_29.html">stacked branches</a>", something that will really make Launchpad's codehosting a joy to use.<br /><br />At the moment, I'm writing some tests that require a user to login. This was becoming a bit cumbersome, until I remembered something: Tim has recently landed some code to make this easy. But how do I get these changes without messing up all of the work I'm doing now? bzr shelve to the rescue!<br /><br />'shelve' interactively goes through each change you've made to your current working tree and allows you to decide whether to keep a change or shelve it. It comes with a twin command 'unshelve', which lets you interactively restore your changes.<br /><br />In this case, I don't even care about the interactivity, so here's what I did:<br /><pre><br /># Shelve my changes<br />bzr shelve --all<br /># Fetch the latest trunk<br />cd ../trunk<br />bzr pull<br /># Merge it into my branch<br />cd ../stacking<br />bzr merge ../trunk<br />bzr ci -m "Merge in changes from trunk to get login testing improvements."<br /># Restore my changes<br />bzr unshelve --all</pre><br /><br />The 'shelve' command comes with the <a href="http://launchpad.net/bzrtools">bzrtools</a> plugin, and I am basically in love with it.<br /><br />As a parting shot, I should mention that things like bzrtools aren't accidents. They are natural and inevitable when you have <a href="http://starship.python.net/crew/mwh/bzrlibapi/bzrlib.html">good APIs</a> in a <a href="http://python.org">high-level language</a> and a <a href="http://bazaar-vcs.org/WritingPlugins">very nice plugin system</a>.<br /><br />And now I'm off to keep working on this branch.<br /><br /></div>

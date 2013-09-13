@@ -1,0 +1,62 @@
+---
+layout: post
+title: "To do: To dos (Palm Prē)"
+date: 2009-11-26
+comments: false
+---
+
+<div class='post'>
+You might already know that I have a lot of <span style="font-style: italic;">lists</span> on my computer. I may have mentioned once or twice that I have such lists. These lists are connected to a certain popular productivity system which isn't really about productivity and is a little bit like a cult.<br /><br />I might have also mentioned that I've been longing for a "smart" phone, partly so I can have these lists with me at all times, to clutch at reflexively like some Popish talisman.<br /><br />Now that I have a Palm Prē I have lists and a smart phone, and yet one does not know the other. I am at a loss as to how to get my lists — line-separated text files on my laptop — onto the Tasks application on the Palm. Even then, once they are on the Palm, I have no idea as to how to get them synchronized with something I can edit from my laptop.<br /><br />Any ideas?</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+@intellectronica, EverNote is on the Palm, but AFAICT it isn&#39;t a task list manager, it&#39;s more of a note gathering application. Am I missing something?<br /><br />@drewpca, Cool! Although, I think I&#39;m interested in getting stuff *into* Tasks, not out of it.<br /><br />@thomasvs, I hadn&#39;t heard of yagtd, I&#39;ll have a quick play with it. May I suggest taking a look at GTG? Someone has a desktopcouch branch of that -- it might be worth combining efforts rather than making yet another GTD app.</div>
+</div>
+<div class='comment'>
+<div class='author'>thomasvs</div>
+<div class='content'>
+I&#39;m in the same cult.  I don&#39;t know if the Palm Pre is a device that allows you to install whatever you want, but I&#39;m in the same situation with my N800 and soon N900, plus my various laptops/desktops.<br /><br />I started writing a couchdb-based GTD manager (currently command-line only, inspired on yagtd which I&#39;ve used for the last two years).  I plan to port it to the N900, which should be doable given there are couchdb packages.<br /><br />Not entirely what you&#39;re looking for, but let me know if you are interested (or anyone else here, like tekNico)</div>
+</div>
+<div class='comment'>
+<div class='author'>drewpca</div>
+<div class='content'>
+<a href="http://bigasterisk.com/darcs/?r=palmpre2rdf;a=tree" rel="nofollow">palmpre2rdf</a><br /><br />I started writing stuff to export those sqlite databases to RDF, such that the shared sql key ids become URIs that you could link to even more data sources.<br /><br />I didn&#39;t care about todo at the time, but that might be easy to add.</div>
+</div>
+<div class='comment'>
+<div class='author'>intellectronica.net</div>
+<div class='content'>
+I&#39;m using (on the iphone and PC) a service/product called Evernote which allows you to edit notes on the phone, on the PC (windows software but works fine with wine) and on the web. I don&#39;t know if they have a Palm version, but it they do you should give it a try.</div>
+</div>
+<div class='comment'>
+<div class='author'>intellectronica.net</div>
+<div class='content'>
+I&#39;m using (on the iphone and PC) a service/product called Evernote which allows you to edit notes on the phone, on the PC (windows software but works fine with wine) and on the web. I don&#39;t know if they have a Palm version, but it they do you should give it a try.</div>
+</div>
+<div class='comment'>
+<div class='author'>AmanicA</div>
+<div class='content'>
+mmm.. maybe somebody can port Bazaar to the Palm Prē :)<br /><br />I have a similar problem with my G1 (also a thinkingrock user). Thinking about it, it should be possible to do the version control part from my laptop when my phone is mounted. TODO: find a text editor which can edit files in a branch on my phone.</div>
+</div>
+<div class='comment'>
+<div class='author'>Michael Hudson-Doyle</div>
+<div class='content'>
+&gt; Interestingly, the &#39;Task&#39; table <br />&gt; (com_palm_pim_Task) has a column called<br />&gt; &#39;extraCrap&#39;.<br /><br />Thank you for helping me wake up with a good laugh :-)</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Hey Dustin,<br /><br />That sounds like a good idea. What command do you use to rsync, exactly? I get a lot of permission denied errors when I try.<br /><br />A little poking around shows that the Tasks app is backed on to an sqlite3 database. As best as I can tell, the schema lives in /usr/lib/luna/PalmDatabase.db3 and the db itself in /var/luna/data/dbdata/PalmDatabase.db3. That last one wasn&#39;t rsynced when I tried with &#39;rsync -avPx&#39;.<br /><br />Looks like tables for a bunch of apps are in there. <br /><br />Interestingly, the &#39;Task&#39; table (com_palm_pim_Task) has a column called &#39;extraCrap&#39;.</div>
+</div>
+<div class='comment'>
+<div class='author'>Dustin Kirkland</div>
+<div class='content'>
+Jono-<br /><br />I installed sshd on my Pre, and I rsync the entire filesystem to my laptop to back it up daily.<br /><br />I haven&#39;t looked for the backing files of the task list, if they&#39;re cleartext and edit-able.  If they are readable, then I think rsync+sshd+vi might solve this for you?<br /><br />:-Dustin</div>
+</div>
+<div class='comment'>
+<div class='author'>tekNico</div>
+<div class='content'>
+&gt; These lists are connected to a certain popular<br />&gt; productivity system which isn&#39;t really about<br />&gt; productivity and is a little bit like a cult.<br /><br />Sure, brother, just say the word: GTD. ;-) I&#39;m no David Allen follower, anyway, I just own the book in both English and Italian languages. ;-P<br /><br />&gt; Any ideas?<br /><br />Nope, I&#39;m in a similar predicament. I&#39;ve been using Thinking Rock for a few years now, but it&#39;s a big, hairy Java beast, no way to put that on my Nokia N800 (nor on a N900, I guess).</div>
+</div>
+</div>

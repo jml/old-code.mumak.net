@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Useful, unpolished Bazaar plugin"
+date: 2009-02-25
+comments: false
+---
+
+<div class='post'>
+I've just pushed <a href="http://code.edge.launchpad.net/%7Ejml/+junk/bzr-difftodo">lp:~jml/+junk/bzr-difftodo</a> to Launchpad. It's a Bazaar plugin that:<br /><ul><li>Finds the diff between your current branch and the submit branch</li><li>Looks in that diff for any Python comments that you've added or modified</li><li>Shows all the TODO or XXX items in Emacs "compile" format.</li></ul>So the output looks something like this:<br /><br />$ bzr todo<br />Using submit branch /home/jml/repos/someproject/trunk<br />lib/somefile.py:167:<br /> XXX: JonathanLange 2009-02-23: This matches the old search algorithm that used to live in foobar.py. It's not actually very good -- really it should match based on substrings of the unique name and sort based on relevance.<br /><br />lib/otherfile.py:680:<br /> XXX: This is using _cromulateSplonks -- a private method that no longer exists.<br /><br />lib/anotherfile:779:<br /> XXX: I think that this can be moved into IAmAwesome.<br /><br />Things to do: 3<br /><br />The branch comes with an Emacs module bzr-todo.el. If you load this module, you can just go "M-x branch-todo" in any file in a branch and have the todo list come up in a compile buffer. Then you can just click on any item to jump straight to it.<br /><br />The core code is pretty well tested, but everything around is really, really rough. It works for me.<br /><br />I'd love some patches for it.</div>

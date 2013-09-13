@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Cool Launchpad/Bazaar hack"
+date: 2008-07-25
+comments: false
+---
+
+<div class='post'>
+If you push a lot of Bazaar branches to Launchpad, you might want to add something like this to your .bazaar/locations.conf:<pre>[/home/jml/Code]<br />public_branch = lp:~jml<br />public_branch:policy = appendpath<br />push_location = lp:~jml<br />push_location:policy = appendpath<br /></pre>Once it's there, 'bzr push' will Just Work... as long as you want it to do something like:<pre>jml@rhino:~$ cd ~/Code/<a href="https://launchpad.net/pyunit3k" title="What is pyunit3k?">pyunit3k</a>/trunk<br />jml@rhino:~/Code/pyunit3k/trunk$ bzr push<br />Using saved location: lp:~jml/pyunit3k/trunk<br />No new revisions to push.<br /></pre>So if I've got a branch in <code>~/Code/&lt;project-name&gt;/&lt;branch-name&gt;</code>, it'll be published at <code>https://launchpad.net/~jml/&lt;project-name&gt;/&lt;branch-name&gt;</code>. This is only a default, of course: you can override it for a given branch by doing:<pre>bzr push --remember &lt;new_location&gt;</pre>Or you can override it for a bunch of branches by hacking locations.conf.<br /><br />Neat huh?</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Aaron Bentley</div>
+<div class='content'>
+Actually, I'd expect that push --remember does nothing if you already have a setting in locations.conf.</div>
+</div>
+</div>

@@ -1,0 +1,17 @@
+---
+layout: post
+title: "testtools 0.9.12 out"
+date: 2011-09-14
+comments: false
+---
+
+<div class='post'>
+<a href="http://pypi.python.org/pypi/testtools">testtools</a> 0.9.12 has just been released!<br /><br />It's a huge release, this one. We normally try to release much more frequently, but for this release I wanted to wait until <a href="https://bugs.launchpad.net/testtools/+bugs?field.tag=unicode&amp;field.status=Fix+Released">all of our known unicode handling bugs were fixed</a>. Today, <a href="https://launchpad.net/~gz">Martin [gz]</a> finished off his <a href="https://code.launchpad.net/~gz/testtools/unprintable-assertThat-804127/+merge/72641">heroic branch</a> to fix up <a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers"><code>assertThat</code></a>, and I figured it was time to release.<br /><br />In addition to all of the unicode fixes, we've really cleaned up the way test failures are displayed. A lot of the boilerplate around the traceback has been removed, a lot of levels of the stack are gone (although you can get them back if you want), and <code>assertThat</code> is way less repetitive. This all really adds up. If you're using an old release, you want to upgrade right now. Honest.<br /><br />For me, this release is the one where using <a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers">matchers</a> becomes really and properly fun. As such, all of our <code>assertFoo</code> methods are now implemented in terms of matchers.<br /><br />Of course, we have our usual raft of fixes, helpers and new matchers too. The <a href="https://launchpad.net/testtools/0.9/0.9.12">full changelog</a> is on Launchpad.<br /><br />In addition to Martin [gz], thanks to <a href="https://launchpad.net/~kampka">Christian Kampka</a>, <a href="https://launchpad.net/~lifeless">Robert Collins</a> and <a href="http://canonical.com/">Canonical</a> for making this release what it is.<br /><br />If you're new to testtools, it's basically a way to do serious, <a href="http://testtools.readthedocs.org/en/latest/overview.html">tasteful unit testing in Python</a>.<br /><br />Documentation lives at&nbsp;<a href="http://testtools.readthedocs.org/en/latest/">http://testtools.readthedocs.org/en/latest/</a>.<br />PyPI:&nbsp;<a href="http://pypi.python.org/pypi/testtools">http://pypi.python.org/pypi/testtools</a><br />All development takes place on Launchpad:&nbsp;<a href="https://launchpad.net/testtools">https://launchpad.net/testtools</a><br />Join us on #python-testing on Freenode<br /><br />We don't currently have a release PPA, but we do have a <a href="https://launchpad.net/~testing-cabal/+archive/archive">daily builds PPA</a>. The trunk is kept stable using <a href="http://mumak.net:8080/job/testtools/">Jenkins</a>, so it's fairly safe to use.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>gz</div>
+<div class='content'>
+Good work jml! And thanks for the mention. :)</div>
+</div>
+</div>

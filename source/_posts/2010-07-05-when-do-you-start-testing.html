@@ -1,0 +1,32 @@
+---
+layout: post
+title: "When do you start testing?"
+date: 2010-07-05
+comments: false
+---
+
+<div class='post'>
+Although I love TDD, I don't always use it for everything. I wrote a Python script the other day to clean up my music collection, and I didn't write any tests for it.<br /><br />Someone asked me, what's the trade-off? At what point do you start writing tests?<br /><br />For me, it's at one of a few points:<br /><br /><ul><li>Somewhere between 100-200 lines of code I start feeling the need for tests</li><li>When I start feeling unclear in my head, I reach to tests to make them clear</li><li>If someone wants to work with me, tests instantly become mandatory</li><li>When I come back to some code after a while</li><li>When I notice my first bug</li></ul><div>What about you? Do you always do TDD? Do you have any rules-of-thumb for when you do?</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jelmer</div>
+<div class='content'>
+Usually not at the right time.<br /><br />Sometimes I start too early (before I write my first line of code) and it slows down my progress too much, causing me to get distracted before I have a working initial version that would keep me interested.<br /><br />Sometimes I start too late and that means I have to do a lot of refactoring and after-the-fact writing of tests. Often this is at a point where I have spent more time then necessary in a debugger trying to figure out which layer of my code is buggy.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph</div>
+<div class='content'>
+When a program gets big enough that I have to perform more than 2 manual actions (commands, clicks, hits to an URL).<br /><br />If I can get ~100% coverage and instant repeatability by simply re-running the program (script) then there&#39;s no point to an automated test suite; the program is effectively testing itself.  But, once I need to do five, six, or seven things in order to start testing it comprehensively, I will start forgetting some of the steps, doing some of them wrong, or occasionally skipping them, and maintenance difficulties set in.<br /><br />Pretty much any non-trivial program fits into this category, of course.  But many trivial programs of the &quot;rename a bunch of audio files&quot; variety are easy to test just by having some stub input and re-running it until the output looks right.</div>
+</div>
+<div class='comment'>
+<div class='author'>Benjamin</div>
+<div class='content'>
+Whenever I have to show things I wrote to the wider world.</div>
+</div>
+<div class='comment'>
+<div class='author'>Michał Pasternak</div>
+<div class='content'>
+&quot;Before anything&quot; :-) (I wish I would!)</div>
+</div>
+</div>

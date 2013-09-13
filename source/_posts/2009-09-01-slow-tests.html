@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Slow tests"
+date: 2009-09-01
+comments: false
+---
+
+<div class='post'>
+<a href="http://www.advogato.org/person/robertc/">Robert Collins</a> of <a href="http://bazaar-vcs.org">Bazaar</a>, recently blogged about the <a href="http://www.advogato.org/person/robertc/diary/113.html">cost of slow tests</a>. I couldn't agree more.<br /><br /><a href="http://launchpad.net">Launchpad</a> has a very slow test suite. It takes upwards of five hours to get a change into <a href="https://code.launchpad.net/%7Elaunchpad-pqm/launchpad/stable">our "known good" branch</a>. It's been a source of pain for the team for years, and now that Launchpad is Free Software, it's becoming a pain to new contributors.<br /><br />We've tried a few things to deal with it, none of them great. First up, we've got  a tool for running the test suite on EC2 instances. It's nice, but it's still too slow. I've written a "<a href="https://dev.launchpad.net/FasterTests">faster tests</a>" spec outlining some of the options we have; but specs never got software written. Likewise, there are a bunch of bugs flagged as <a href="https://bugs.edge.launchpad.net/launchpad-project/+bugs?field.tag=build-infrastructure">build-infrastructure</a>, many of which address the slow test sped. We also have a rotating "<a href="https://dev.launchpad.net/BuildEngineer">Build Engineer</a>" position within the team to address those bugs.<br /><br /><span style="display: block;" id="formatbar_Buttons"><span class=" on down" style="display: block;" id="formatbar_CreateLink" title="Link" onmouseover="ButtonHoverOn(this);" onmouseout="ButtonHoverOff(this);" onmouseup="" onmousedown="CheckFormatting(event);FormatbarButton('richeditorframe', this, 8);ButtonMouseDown(this);">It's probably not enough though. From watching Rob's blog posts, and the emails to the Bazaar mailing list, I think that what Launchpad really needs is someone with a passion for solving the problem (i.e. making Launchpad hacking fun) who is willing to lead the way, and a full commitment from the rest of the team for getting the runtime down and keeping it there.<br /><br />More on this later.<br /></span></span></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Michael Hudson</div>
+<div class='content'>
+We&#39;re not completely stupid, of course we have a way to limit the tests we run between code edits :)  Although this tends to also be too slow because of excessively general fixture setup...</div>
+</div>
+<div class='comment'>
+<div class='author'>Cory</div>
+<div class='content'>
+5 hours! Wow!<br /><br />5 minutes is too much.  To run some tests between code edits, 50s is really pushing it.<br /><br />My preferred method of development is to run the one test or TestCase that exercises the code I&#39;m working on, and trial has no problems doing that.  When I think I&#39;m fine with that, then run the entire test suite.  Does Launchpad lack a good way to do that?<br /><br />If I can&#39;t make-a-change-run-a-test in about a 10 second cycle, there&#39;s something wrong with my development environment and I won&#39;t rest until it&#39;s fixed ...</div>
+</div>
+</div>

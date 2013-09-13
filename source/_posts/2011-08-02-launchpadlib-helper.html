@@ -1,0 +1,22 @@
+---
+layout: post
+title: "launchpadlib helper"
+date: 2011-08-02
+comments: false
+---
+
+<div class='post'>
+I often need to muck around in a Python interpreter to figure out what I need to do with <a href="https://help.launchpad.net/API">Launchpad's API</a>. As it is, I write out the same commands over and over.<br /><br />Since repetition is a stupid boring job that we should force machines to do while they are still subservient, I wrote <a href="http://paste.ubuntu.com/657088/">a harness</a> that, when run, gives you a Python interpreter and a few useful objects for playing with the Launchpad API.<br /><br />For example:<br /><br /><pre>$ ./lpharness.py <br />lp:     authenticated Launchpad object<br />me:     logged in user<br />anon:   anonymous Launchpad object<br />errors: launchpadlib.errors<br />uris:   launchpadlib.uris<br /><br />pprint: pretty printer<br />&gt;&gt;&gt; pprint(list(me.searchTasks(status='In Progress')))<br />[&lt;bug_task at https://api.launchpad.net/1.0/launchpad/+bug/240067&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/launchpad/+bug/418932&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/hydrazine/+bug/535414&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/hydrazine/+bug/574981&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/hydrazine/+bug/612641&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/tarmac/+bug/683351&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/wikkid/+bug/695232&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/launchpad/+bug/721166&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/ensemble/+bug/728320&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/bughugger/+bug/731075&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/tarmac/+bug/807785&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/pkgme/+bug/809447&gt;,<br /> &lt;bug_task at https://api.launchpad.net/1.0/ubuntu-archive-tools/+bug/805634&gt;]<br /></pre><div><br /></div>Script:&nbsp;<a href="http://paste.ubuntu.com/657088/">http://paste.ubuntu.com/657088/</a><br /><br />You are free to do whatever you like with it. I hope that someone puts it into some useful, <i>maintained</i>, centralized place for doing stuff with Launchpad. Perhaps launchpadlib itself.<br /><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Oh, thanks for that. Would never have guessed to look for a generic Launchpad helper in ubuntu-dev-tools.</div>
+</div>
+<div class='comment'>
+<div class='author'>bac</div>
+<div class='content'>
+This script looks nice but did you consider adding it to lp-shell which is packaged in ubuntu-dev-tools and originally written by Pitti?</div>
+</div>
+</div>

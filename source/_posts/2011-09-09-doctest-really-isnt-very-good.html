@@ -1,0 +1,22 @@
+---
+layout: post
+title: "doctest really isn't very good"
+date: 2011-09-09
+comments: false
+---
+
+<div class='post'>
+<span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;">I just got sick of trying to decode obtuse doctest diff errors when using NORMALIZE_WHITESPACE and ELLIPSIS options. Although doctest gives you hooks to do something about this, it's really hard to actually write the logic.</span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;"><br /></span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;">See, NORMALIZE_WHITESPACE also normalizes line breaks, and '...' can match across multiple lines. That means that you can't take a line-based approach, which makes it really hard to clean up a diff. Anyway, here's my attempt:&nbsp;</span><a href="https://code.launchpad.net/~jml/testtools/better-doctest-output-checker/+merge/74842">https://code.launchpad.net/~jml/testtools/better-doctest-output-checker/+merge/74842</a><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;"><br /></span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;">It's a pain, because both of them would be very useful without their line-spanning behaviour. I guess without the line-spanning behaviour of '...' there'd be no way to indicate multiple lines of crap in output.</span><br /><span style="background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;"><br /></span><br /><span style="font-family: Arial, sans-serif; font-size: x-small;"><span style="line-height: 18px;">My suggestion in the mean time? Don't use doctest.</span></span></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+I think line-based checking could be a good start.</div>
+</div>
+<div class='comment'>
+<div class='author'>gz</div>
+<div class='content'>
+I&#39;m not a fan of doctest.OutputChecker either. I don&#39;t find spelling assertions with ellipses rather than regular expressions much of an improvement, and the mismatch output nearly always confuses me. There must be some better pattern for doing checks on (potentially very) large text blocks that&#39;s easy to write and actually produces good errors. I&#39;ve not managed to come up with one though...</div>
+</div>
+</div>

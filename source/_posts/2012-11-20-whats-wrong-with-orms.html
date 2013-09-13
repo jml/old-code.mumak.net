@@ -1,0 +1,22 @@
+---
+layout: post
+title: "What's wrong with ORMs"
+date: 2012-11-20
+comments: false
+---
+
+<div class='post'>
+I was recently reading about <a href="http://research.google.com/pubs/pub38125.html">F1, Google's fault-tolerant distributed RDBMS</a> and came across this neat little summary of what's wrong with ORMs.<br /><br /><ol><li>Obscured database operations</li><li>Serial reads</li><li>Implicit traversal</li></ol><div><i>Obscured database operations</i>&nbsp;essentially means that when scanning code, you cannot easily tell which code is going to kick off a network round-trip to the database. If you care about writing code that performs well, it's pretty important to know.</div><div><br /></div><div><i>Serial reads</i> are what many in my circles know as "<a href="http://divmod.readthedocs.org/en/latest/philosophy/potato.html">potato programming</a>". When you have a loop, and something inside that loop is doing a query, that's potato programming. Again, disastrous for performance.</div><div><br /></div><div><i>Implicit traversal</i>&nbsp;is doing unwanted joins and loading unnecessary data. ORMs tend to load up an object with all of its instance variables, which often means traversing the graph of references.</div><div><br /></div><div>Anyway, this is a much handier answer to have than 'google for "<a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">Vietnam of Computer Science</a>"', which is fascinating but rather lengthy. (See also <a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Jeff Atwood's summary</a>).</div><div><br /></div><div>For bonus points, these three things are also what's wrong with&nbsp;<a href="https://help.launchpad.net/API">Launchpad's API</a>.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Jonathan Lange</div>
+<div class='content'>
+For 1 for Launchpad&#39;s API, change &quot;database&quot; to &quot;remote&quot;.  It&#39;s really easy to accidentally do something with a launchpadlib object that makes it hit the network, giving your lucky, lucky users another roundtrip to wait on.</div>
+</div>
+<div class='comment'>
+<div class='author'>Aaron Bentley</div>
+<div class='content'>
+I agree about 2 and 3 affecting Launchpad&#39;s API.  For 1, don&#39;t all Launchpad API operations hit database?  And so how is that obscure?  Unless you mean Launchpadlib there.</div>
+</div>
+</div>

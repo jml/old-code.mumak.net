@@ -1,0 +1,9 @@
+---
+layout: post
+title: "The Dude Abides"
+date: 2010-04-20
+comments: false
+---
+
+<div class='post'>
+Last one on this topic.<br /><br />After I <a href="http://code.mumak.net/2010/04/plane-has-crashed-into-mountain.html">broke the rollout</a> by <a href="http://code.mumak.net/2010/04/all-dude-wanted-was-his-rug-back.html">switching the subunit dependency</a> from being managed in a branch to being managed with Ubuntu packages, I thought my patch had to be reverted.<br /><br />But no! <a href="https://launchpad.net/~flacoste">Francis</a> got angry enough to fix the underlying problem. He split the <a href="https://code.edge.launchpad.net/~flacoste/launchpad/bug-559128/+merge/23504">script authentication out of our <code>lp.testing</code> package</a>, so we no longer use <code>lp.testing</code> – or subunit – in production. The patch <a href="https://code.edge.launchpad.net/~jml/launchpad/no-testing-on-prod-bug-559128-devel/+merge/23655">missed a spot</a>, but that was easily fixed.<br /><br />Launchpad is rolling out regularly as ever, and my <a href="http://pypi.python.org/pypi/zope.testing">zope.testing</a> upgrade is lying snug in the trunk.<br /><br />Lessons? I guess that anger is a powerful and <a href="http://life.mumak.net/2008/10/truth.html">constructive</a> force in programming. That help from someone else is valuable for both the help itself and for the boost in motivation that it brings. That software is plain hard. That crying "Lean, Lean" isn't enough.</div>

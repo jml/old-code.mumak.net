@@ -1,0 +1,22 @@
+---
+layout: post
+title: "More bzr hacking"
+date: 2008-10-06
+comments: false
+---
+
+<div class='post'>
+I've extended bzr-establish to give it a new command: hack.<br /><br />'bzr hack lp:foo' will create a repository with working trees called 'foo' and fetch the lp:foo branch into that repository.<br />'bzr hack --repository ~/repos lp:foo' will create a repository in '~/repos/foo', a working tree area in 'foo', fetch the branch into the repo and make a light-weight checkout in the working tree area.<br /><br />You can also specify a non-Launchpad branch, e.g. 'bzr hack http://example.com/some/branch/trunk foo'. This will make a repository called 'foo', put the branch in there and... well, you get the picture.<br /><br />The plugin lives at lp:~jml/+junk/bzr-establish. It's buggy, not particularly well tested and rough as guts. Still, it's worth a play.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Bugger that!<BR/><BR/>I want someone to tell me it's not a terrible idea first. (Also, I'm thinking about petitioning abentley to add them to bzrtools)</div>
+</div>
+<div class='comment'>
+<div class='author'>spiv</div>
+<div class='content'>
+Tell you what: make a real Launchpad project out of it so that I have somewhere to report bugs, then I'll have a play ;)</div>
+</div>
+</div>

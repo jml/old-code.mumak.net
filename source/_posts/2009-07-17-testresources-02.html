@@ -1,0 +1,27 @@
+---
+layout: post
+title: "testresources 0.2"
+date: 2009-07-17
+comments: false
+---
+
+<div class='post'>
+At <a href="http://www.europython.eu/">EuroPython</a> this year, I talked about <a href="http://docs.python.org/library/unittest.html">unittest</a> and how it's misunderstood little module with it's own problems, and that despite its rough exterior it really is a Good Thing.<br /><br />To demonstrate this, I gave examples of three pieces of software that each extended unittest to solve the same problem: sharing expensive resources between tests.<br /><br />The first two examples were Twisted's <code>setUpClass</code> / <code>tearDownClass</code> and Zope's layers. They are terrible and you should never use them.<br /><br />If you really want to share expensive resources between tests, you should use <a href="http://pypi.python.org/pypi/testresources/">testresources</a>. testresources makes it easy to write tests that use resources that cost a lot to set up and tear down (such as databases or SSH servers) without screwing up your test isolation.  <a href="http://www.advogato.org/person/robertc/">Robert Collins</a>, the author, cut the <a href="http://pypi.python.org/packages/source/t/testresources/testresources-0.2.tar.gz">0.2 release</a> today.<br /><br />testresources now has exactly <a href="https://bugs.launchpad.net/testresources">one known bug</a>, although Rob argues that maybe it's one unknown bug. It's down to the quantum level here: that's how good testresources is.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Now posted at http://code.mumak.net/2009/07/unittest-it-aint-broke-lets-fix-it.html</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Yeah it did, and I will.</div>
+</div>
+<div class='comment'>
+<div class='author'>jelmer</div>
+<div class='content'>
+If your presentation had slides, could you perhaps post them?</div>
+</div>
+</div>

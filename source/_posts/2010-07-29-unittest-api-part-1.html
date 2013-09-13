@@ -1,0 +1,42 @@
+---
+layout: post
+title: "unittest API, part 1"
+date: 2010-07-29
+comments: false
+---
+
+<div class='post'>
+It's a little known fact, but unittest actually has an API.<br /><br />This isn't the API that you deal with when you write tests, but rather an API that unittest itself uses when running tests. You could think of it as two interfaces: one for test frameworks and one for test authors. Both APIs are real, but both are poorly documented and often misunderstood or abused.<br /><br /><b><code>TestCase</code></b><br /><br />An instance of <code>TestCase</code> represents a single test. What you think of as a single test is up to you, but most of the time it's a unit test.<br /><br />A <code>TestCase</code> object <i>must</i> provide the following methods.<br /><br />This first list of methods can be thought of as a single interface, which these blog posts will call <b><code>ITest</code></b> given the lack of any better name.<br /><dl><dt><code>countTestCases()</code></dt><dd>A method that returns the number of test cases this represents. It should always return 1.  </dd><dt><code>run(result=None)</code></dt><dd>Calling this method actually runs the test. <code>result</code> is a <code>TestResult</code> object. <code>run</code> must call <code>result.startTest(self)</code> when it commences running the test and <code>result.stopTest(self)</code> when it is finished. Between these calls it must call a method on <code>result</code> to signal the result of the test. <code>run</code> must never raise an exception, and its return value is ignored. If <code>result</code> is not provided, the <code>TestCase</code> is obliged to make one.  </dd><dt><code>__call__(result)</code></dt><dd>Identical to <code>run(result)</code>, provided for backwards compatibility.  </dd><dt><code>debug()</code></dt><dd>Calling this method runs the test without collecting its results. It may raise exceptions. This method is rarely called by test frameworks.</dd></dl><br />The following methods are specific to individual test case objects. We call this interface <b><code>ITestCase</code></b>.<br /><br /><dl><dt><code>id()</code></dt><dd>Should return a string that uniquely identifies the test. For Python tests, the fully-qualified Python name works well. The uniqueness of the id is not enforced.  </dd><dt><code>shortDescription()</code></dt><dd>Should return a string that describes the test. Many test frameworks use this value to display test results.  </dd><dt><code>__str__</code></dt><dd>Should return a string that describes the test. Frequently the same as either <code>shortDescription()</code> or <code>id()</code>. Many test frameworks use this value to display test results.</dd></dl>There is also a second interface, one that matters to code that subclasses <code>TestCase</code>. We'll deal with that in a later post.<br /><br /><b><code>TestSuite</code></b><br /><br />A <code>TestSuite</code> represents nothing more or less than a bunch of tests.<br /><br />A <code>TestSuite</code> must provide the <code>ITest</code> interface described above, with the differences that you would expect from something that represents many tests: <code>countTestCases</code> returns the number of tests in the suite; <code>run</code> runs many tests and thus calls <code>result.startTest</code> and kin many times over; <code>debug</code> is the same and can explode anywhere.<br /><br />One difference is that <code>TestSuite.run</code> must stop running tests as soon as it detects that <code>result.shouldStop</code> is true.<br /><br />In addition, <code>TestSuite</code> implements the following interface, which I'm giving the completely arbitrary non-existent name of <code><b>ITestSuite</b></code>.<br /><dl><dt><code>addTest(test)</code></dt><dd>Takes an <code>ITest</code> and adds it to the suite.  </dd><dt><code>addTests(tests)</code></dt><dd>Takes an iterable of <code>ITest</code>s and adds them to the suite. Normally equivalent to <code>[suite.addTest(test) for test in tests]</code>.  </dd><dt><code>__iter__</code></dt><dd>All test suites must be iterable. Iterating over a test suite yields <code>ITest</code>s. These may differ from the <code>ITest</code>s provided to <code>addTest</code> and <code>addTests</code>.</dd> </dl>In later posts, I hope to document <code>TestResult</code>, the subclassing interface of <code>TestCase</code> and tell you exactly what I think about test loaders, test runners and the like.<br /><br />I'm blogging this partly because I don't know where else to write this up, but mostly because I need your help to make sure that I'm being clear and correct. Please comment with questions and corrections, and let me know if you find this at all helpful.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Aaron, an <i>instance</i> of TestCase is a single test.<br /><br />When you have many test_ methods on a TestCase, what actually happens is that one TestCase object gets constructed for each test method.<br /><br />Say you&#39;ve got:<br /><br />class TestFoo(TestCase):<br />  def test_a(self):<br />    pass<br />  def test_b(self):<br />    pass<br /><br />(please forgive the lack of indentation.)<br /><br />Then the default test loader will construct something like:<br />[TestFoo(&quot;test_a&quot;), TestFoo(&quot;test_b&quot;)]<br /><br />Thanks for asking the question. It&#39;s a common point of confusion. Indeed, it tripped me up the first year or so I was writing Trial.</div>
+</div>
+<div class='comment'>
+<div class='author'>Aaron</div>
+<div class='content'>
+I don&#39;t understand how a TestCase can be a single test when the test suites I use all have multiple test cases per TestCase.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Thanks for the comments all. I&#39;m glad you like it.<br /><br />Michael, once I&#39;m finished with the series and have a chance to get some more feedback – particularly from other framework authors – I&#39;ll try to turn these into patches. (And also try to get over the fact that I won&#39;t be able to use zope.interface to do so).<br /><br />Your plugin proposal is up there on my list of things to respond to, but I likely won&#39;t get a chance until the weekend.</div>
+</div>
+<div class='comment'>
+<div class='author'>Michael Foord</div>
+<div class='content'>
+Great stuff Jonathan. If you want to formulate these as patches to the unittest docs then please feel free. :-)<br /><br />Would be interested in your feedback on my unittest plugin proposal too.</div>
+</div>
+<div class='comment'>
+<div class='author'>jam</div>
+<div class='content'>
+I think it is quite useful.<br />We&#39;ve certainly had our share of unittest issues in bzr, so it is nice to have a fairly easy-to-read explanation of how it is at least <i>supposed</i> to work.</div>
+</div>
+<div class='comment'>
+<div class='author'>Kevin H</div>
+<div class='content'>
+Heck yeah, it&#39;s useful!<br /><br />Please keep it up!</div>
+</div>
+</div>

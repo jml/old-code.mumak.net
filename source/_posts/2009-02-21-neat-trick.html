@@ -1,0 +1,47 @@
+---
+layout: post
+title: "Neat trick"
+date: 2009-02-21
+comments: false
+---
+
+<div class='post'>
+In Argentina I hacked up a little command for the 'launchpad' Bazaar plugin. It's a command line tool to open the Launchpad page for your branch in your web browser.<br /><pre>  $ cd ~/src/testresources/expose-reset-bug-271619<br /> $ bzr lp-open<br /> Opening https://code.edge.launchpad.net/~jml/testresources/expose-reset-bug-271619 in web browser<br /></pre>... and it works!<br /><br />Available in Bazaar 1.12. Due to an unfortunate oversight, the NEWS file doesn't mention it.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+There's a fix for the issues here in the Bazaar review queue: http://bundlebuggy.aaronbentley.com.</div>
+</div>
+<div class='comment'>
+<div class='author'>bialix</div>
+<div class='content'>
+IIRC, public branch settings used only by `bzr send` command, and maybe by pqm plugin (I'm not sure).<BR/><BR/>Your command just unclear in what it ought to do and why for it designed. So...</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+bialix, the main use case for this was to open the pages of branches that you already have locally. The command you type ought to work though.<BR/><BR/>Do you know why having public branches set is useful in general?</div>
+</div>
+<div class='comment'>
+<div class='author'>bialix</div>
+<div class='content'>
+$ bzr lp-open lp:qbzr<BR/><BR/>bzr: ERROR: There is no public branch set for "bzr+ssh://bazaar.launchpad.net/~qbzr-dev/qbzr/trunk/".<BR/><BR/>Your neat trick is a bit useless without public branch. Why I should have public branch for lp:qbzr branch anyway?</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+https://bugs.edge.launchpad.net/bzr/+bug/332372</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Good point!<BR/><BR/>At the moment works based on the public location, which is different from the push location. I guess the push location could be used as a fallback.</div>
+</div>
+<div class='comment'>
+<div class='author'>Eduardo de Oliveira Padoan</div>
+<div class='content'>
+Don't seem to work with local branches pushed (with --remember) to launchpad. <BR/><BR/>$ bzr lp-open<BR/>bzr: ERROR: There is no public branch set for ...</div>
+</div>
+</div>

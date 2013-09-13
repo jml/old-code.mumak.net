@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Neat Bazaar feature"
+date: 2008-06-02
+comments: false
+categories:
+ - Uncategorized
+---
+
+<div class='post'>
+Ever find yourself working away on a branch, enjoying yourself and getting just a little carried away? Maybe you're working on a feature and you notice and fix a bug that's not strictly related to that feature.<br /><br />If you catch yourself in time, there's a nice little feature in Bazaar that can help with this: <code>bzr merge --uncommitted</code>. It will merge in the changes that you've made to your working tree but haven't committed yet.<br /><br />e.g.<br /><pre><br />$ cd some-feature-branch<br /><br />... hack hack hack ... oops!<br /><br />$ cd ..<br /><br />$ bzr branch trunk bug-fix-2357<br /><br />$ cd bug-fix-2357<br /><br />$ bzr merge --uncommitted ../some-feature-branch<br /><br />$ bzr ci -m "Fix up bug 2357. Found this while working on some-feature."<br /><br />$ bzr send</pre><br /><br />Don't know what <code>bzr send</code> does? Trust me, you want to find out.</div>

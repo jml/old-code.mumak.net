@@ -1,0 +1,22 @@
+---
+layout: post
+title: "testresources: fresh blood"
+date: 2008-08-18
+comments: false
+---
+
+<div class='post'>
+Last weekend I spent a bunch of timing hacking on <a href="https://launchpad.net/testresources">testresources</a> with <a href="http://robertcollins.net/">Rob</a> over at <a href="https://launchpad.net/%7Eraof">Chris</a>'s place. testresources is an extension to unittest that allows tests to specify the resources they use declaratively, so that these resources can be cleanly shared between tests. On Saturday, we talked a bit about direction and decided on some goals. On Sunday, <a href="https://code.launchpad.net/%7Ejml/testresources/tests-meaning-cleanup/+merge/767">I got busy</a>.<br /><br />The idea isn't particularly new: zope.testing has had "layers" for a long time. The key differences between testresources and Zope layers are:<br /><ul><li>You can use more than one TestResource. You can only use one layer. Allowing tests to specify many resources makes it easier to use only the resources that you need, which in turn makes for a faster test suite.<br /></li><li>A test that uses testresources can be used independently of other testresources machinery. With layers, you pretty much need the whole shebang. This means that you can use testresources with trial, bzr, nose, tribunal or unittest.TextTestRunner.<br /></li><li>Layers have magical inheritance stuff. testresources has no magic.</li><li>Layers do some work in subprocesses to accommodate some setUps that can have no tearDown. testresources doesn't know what a process is.<br /></li></ul>That said, I'm mainly familiar with layers from Zope 3.2—they may have changed since then.<br /><br />testresources itself is somewhat old. Rob hacked up the first version about three years ago and little has happened to it since. I've always agreed with the approach, but have also had a few qualms about implementation details that made me reluctant to use it or to recommend it. Now, it's well on its way to being something that I can trust and perhaps, love.<br /><br />If you are interested, check out <a href="https://code.launchpad.net/%7Ejml/testresources/tests-meaning-cleanup">my branch</a> or at least flick through the <a href="http://bazaar.launchpad.net/%7Ejml/testresources/tests-meaning-cleanup/annotate/77?file_id=todo-20080817122443-kaikqdedcg57lr4v-1">TODO</a> file.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Thanks for the comments John.<BR/><BR/>1) The way to run the testresources tests is 'make check'. I guess test_all can be tweaked to do PYTHONPATH setup.<BR/><BR/>2) The dependency is on zope.interfaces -- available separately from the main zope. I guess I don't really need to use it, and could use an abstract class instead.</div>
+</div>
+<div class='comment'>
+<div class='author'>jam</div>
+<div class='content'>
+I thought I'd give a look at the testresources code. I've peeked at it before, and I'm generally interested in both testresources and your pyunit3k work.<BR/><BR/>Some quick comments:<BR/><BR/>1) There is a 'test_all.py' file in the root directory, but running it fails because the actual library is under 'lib/'. So you have to do something like "PYTHONPATH='lib' ./test_all.py" which seems a bit odd.<BR/><BR/>2) In grabbing pyunit3k, I figured I'd run *its* test suite as well. However that seems to depend on 'Zope' being installed. Which is a rather huge dependency for a small library. Is it truly dependent? Is it only the test suite? Could you something like the bzr 'Feature' work to make it a soft-dependency? (Test if it is available, else skip and warn)</div>
+</div>
+</div>

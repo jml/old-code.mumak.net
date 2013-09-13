@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Doctests"
+date: 2008-11-21
+comments: false
+---
+
+<div class='post'>
+<a href="http://andrew.puzzling.org/">Andrew</a> has written about why <a href="http://andrew.puzzling.org/diary/2008/October/23/narrative-tests">narrative tests make lousy unit tests</a> and <a href="http://andrew.puzzling.org/diary/2008/October/24/more-doctest-problems">problems with the doctest format</a>. In summary:<br /><ul><li>Unit tests work better if each one has a name that identifies it.</li><li>Specific, isolated tests give clearer failures, and are easier to debug.</li><li>Specific, narrow tests are better at communicating intended behaviour.</li><li>Comparing two objects in doctests is hard.</li><li>It's hard to get an overview of what's tested in a particular doctest file.</li><li>Doctest is a mini-language that's worse than Python. It's got corner-cases and outright bugs.</li><li><span style="font-weight: bold;">Tests are code, and code works better in .py files than .txt files.</span> In particular:<ul><li>Python has better tool support. Syntax highlighting, code folding, pyflakes, 2to3 etc.<br /></li><li>It's easier to build test infrastructure in Python.</li><li>Test code benefits from refactoring as much as regular code, but doctests make it hard to do this.</li></ul></li></ul>Of course, in the end, it comes down to this:<br /> <blockquote>It is just as possible to write incomprehensible tests using doctest as it is using <code>TestCase</code> classes with test methods.<br /></blockquote></div>

@@ -1,0 +1,32 @@
+---
+layout: post
+title: "Releasing Twisted, and procedure in general"
+date: 2010-07-04
+comments: false
+---
+
+<div class='post'>
+I'm in the middle of releasing <a href="http://twistedmatrix.com/">Twisted</a> 10.1, following the <a href="http://twistedmatrix.com/trac/wiki/ReleaseProcess">procedure document</a> that I wrote when I released <a href="http://labs.twistedmatrix.com/2010/03/twisted-1000-released.html">Twisted 10.0</a>. Having everything written down has been a wonderful aide so far, but doing the release twice has made me think about what it takes to breathe life into old procedure.<br /><br />The very first step has already been taken, <i>figure out what the process is and write it down.</i>&nbsp;There are still some bits that are unknown and hazy, but I expect they'll be clear by the time we're done. Anyway, writing things down is only the beginning, after that, there are two things that I think we ought to do roughly concurrently.<br /><br />The first is <i>automate the existing procedure </i>for which here are already <a href="http://twistedmatrix.com/trac/query?status=assigned&amp;status=new&amp;status=reopened&amp;group=status&amp;milestone=regular-releases">many tickets filed</a>, and the second is <i>simplify the process itself</i>. Are all of the steps in the process really needed? Why do we have so many tarballs? Why upload the tarballs to a server that is only periodically mirrored by the actual official download location? Why generate a PDF?<br /><br />I don't want to start a discussion on the details here, but rather raise the need for Twisted to begin considering this simplification, and for myself to begin articulating some of my own thoughts about process in general.<br /><br />The final, on-going step in revitalizing procedure is to <i>delegate the task</i>, either to another human being or better yet a machine. I wonder if it would be possible to have the Twisted release done by a monthly cronjob?<br /><br />In summary, to revive an existing process:<br /><br /><ul><li>Figure out what the process is and write it down</li><li>Simplify the process itself, reducing the number of steps</li><li>Automate as many of the steps as possible, thus combining them</li><li>Delegate the execution of the process</li></ul><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Glyph, that&#39;s a good idea. I wonder if a reason per artifact would be more useful than a reason per step, though.<br /><br />Cory, definitely. There&#39;s always going to be human steps involved. The trick is not eliminating them but reducing their number and making each step easy to do and hard to screw up.<br /><br />Steve, I have no idea what you mean. I was thinking like a programmer when I did this :)</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph</div>
+<div class='content'>
+<em>Are all of the steps in the process really needed?  Why do we have so many tarballs? ... Why generate a PDF?</em><br /><br />As a step along the way to simplification, I think that perhaps we should answer these questions explicitly, and not just as a rhetorical device where &quot;why...&quot; means &quot;let&#39;s not...&quot;. :).<br /><br />In fact, generally speaking, <em>every</em> step in the release process should include an explanation of why it&#39;s necessary.  Why do we run `change-versions`?  To update the version number in a mechanical way so that we won&#39;t miss any instances of it.  Why do we sign the tarballs?  To provide a way for distributors to verify that the release they&#39;ve got was the same release we released securely.  Even the &quot;quote of the release&quot; ought to serve a purpose, if it involves work for the release manager!  That way, if something else in the process changes, we have a good way of looking at any particular step and saying &quot;in light of these changes, does it still serve its intended purpose?&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Steve McInerney</div>
+<div class='content'>
+we&#39;ll make a sysadmin of you yet jml...</div>
+</div>
+<div class='comment'>
+<div class='author'>Cory</div>
+<div class='content'>
+One thing that I&#39;ve found useful in release automation is *not* to try too hard to automate things that should be done by a human.  In places there will be parts of your process such as &quot;post the release announcement to a newsgroup&quot; or &quot;comb through the bug list for notable release notes&quot;.<br /><br />In those places, just make it as easy as possible for a human to do it.  For example, when I&#39;m looking for release notes, I wrote a script that extracts changesets and groups them by bug number, dumps that into a text file and then shows me an xterm with the summary, and another window where I can type in my release notes.<br /><br />Not automated, but *easy*.</div>
+</div>
+</div>

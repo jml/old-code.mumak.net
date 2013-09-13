@@ -1,0 +1,62 @@
+---
+layout: post
+title: "Undistract me"
+date: 2012-01-23
+comments: false
+---
+
+<div class='post'>
+Here's a thing that happens a lot to me: I'm doing some work, and as part of that work I need to run a command in my terminal that takes a little while. I run the command, look at it for about a second and then switch to doing something else – checking email, perhaps. I get deeply involved in my email checking, and then about twenty minutes later I switch back to the terminal and see the command has finished.&nbsp;For all I know, it finished nineteen minutes ago, and I was just too engrossed to notice it.<br /><br />This is a big productivity sink for me, especially if the command happened to fail and need retrying. I'm not disciplined enough to just sit and watch the command, and I'm not prescient enough to add something to each invocation telling me when a command is done. What I want is something that alerts me whenever long running commands finish.<br /><br />Well, that thing now exists, thanks to <a href="http://glyph.twistedmatrix.com/">glyph</a>'s <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html">script that provides precmd and postcmd support to bash</a>&nbsp;and a lot of help from <a href="http://www.tenshu.net/">Chris Jones</a>&nbsp;of <a href="http://www.tenshu.net/p/terminator.html">Terminator</a>.<br /><br />To use it right now:<br /><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;$ bzr co lp:~jml/+junk/shell-tools</span><br /><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;$ . shell-tools/long-running.bash</span><br /><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;$&nbsp;notify_when_long_running_commands_finish_install</span><br /><span style="font-family: 'Courier New', Courier, monospace;"><br /></span><br />You'll see that if you run a command that takes over 30 seconds to complete, it will pop up a notification, which should hopefully take you away from whatever it was you are doing and back to the task at hand.<br /><br />If you <a href="http://bazaar.launchpad.net/~jml/+junk/shell-tools/view/head:/long-running.bash">look at the code</a>, you'll see that it installs two hooks: <span style="font-family: 'Courier New', Courier, monospace;">precmd</span> and <span style="font-family: 'Courier New', Courier, monospace;">preexec</span>. <span style="font-family: 'Courier New', Courier, monospace;">preexec</span> runs just before the shell launches a command, and <span style="font-family: 'Courier New', Courier, monospace;">precmd</span> runs just before it prompts for the next command. Our <span style="font-family: 'Courier New', Courier, monospace;">preexec</span> stores when the command was launched and the <span style="font-family: 'Courier New', Courier, monospace;">precmd</span> checks to see if it finished within a certain time frame. If not, it sends out a notification.<br /><br />Currently, you'll get a notification when you finish reading a long document, since the command finishes a long time after the command starts. Obviously this isn't ideal. I think the fix is to only send notifications when the shell doesn't have focus. Unfortunately, that's a little tricky and I think is going to be highly terminal specific.<br /><br />Anyway, I'm a total shell newbie, so I'd love to know if there's any way this could be done better. &nbsp;Also let me know if you find this useful, or you know of someone who has already done this.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Martin Lindhe</div>
+<div class='content'>
+there is also a util called &quot;zenity&quot; that creates gnome dialogs from the shell</div>
+</div>
+<div class='comment'>
+<div class='author'>Martin Lindhe</div>
+<div class='content'>
+FYI, you could also try the &quot;beep&quot; command to sound the pc speaker from your shell script</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+@jam A blacklist might not be a bad idea. As it is, I&#39;m not minding the pop ups when focused though. <br /><br />As for the &#39;; n&#39; thing.  I&#39;ve tried it before.  What happens is I tend to forget to put it on, then feel lazy <i>and</i> stupid when I get distracted again.</div>
+</div>
+<div class='comment'>
+<div class='author'>jam</div>
+<div class='content'>
+Why not just have it blacklist specific commands. For example &quot;vi/emacs/less&quot;. I don&#39;t know specifically how you are looking at text for a long time, but it seems the commands that run are going to be fairly different.<br /><br />There are also easy things if you know a command is going to be slow, like setting up a shell command to run a sound file/pop up a notification, and alias it to something short like &#39;n&#39; and then just<br /><br />command; n<br /><br />It isn&#39;t quite as auto-magical, but it does avoid false positives.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+@Steve Terminator has plugins that do that.  However, what I wanted was something that I didn&#39;t have to enable or disable at all, and something that wouldn&#39;t do false positives even if the command spewed stuff all the time.<br /><br />@Tuure Good point.  My hunch is that problem is best solved at the notify-send level.</div>
+</div>
+<div class='comment'>
+<div class='author'>Tuure Laurinolli</div>
+<div class='content'>
+This seems like it would only work on local machine. Something similar for remote machine would have to have a back-channel to your local machine, e.g. with ssh -R. I think I&#39;ll hack on something along these lines tomorrow night.</div>
+</div>
+<div class='comment'>
+<div class='author'>Steve McInerney</div>
+<div class='content'>
+Hmm. I&#39;m a loooong time konsole fan, and that functionality is built in. &quot;View; Monitor for Silence&quot; or &quot;Monitor for Activity&quot;.<br />Use it quite a lot for long running commands/rollouts etc.<br />Used to be better in previous versions, that you could adjust the time before alert; but alas, that&#39;s been removed.<br /><br />I have my layout setup such that the konsole tab bar (at the bottom where it belongs) is *always* visible, so when something changes, it flashes, I see it instantly.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+@Daniel_Bo: No reason, just a simple matter of patching GNOME Terminal a DBUS API that lets you ask if the current shell has focus, and getting that patch upstream.<br /><br />@glyph: Updated.</div>
+</div>
+<div class='comment'>
+<div class='author'>glyph</div>
+<div class='content'>
+Interesting application!<br /><br />Please update your links, though: <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html" rel="nofollow">that post now lives here</a>.  (LiveJournal is dead to me.)</div>
+</div>
+<div class='comment'>
+<div class='author'>Daniel Bo</div>
+<div class='content'>
+Wonderful and extremely useful. Why can&#39;t this be modified so the focus issue is solved for GNOME Terminal and then be shipped by default?<br /><br />It seems like one of those polish features that Ubuntu needs and wants.</div>
+</div>
+</div>

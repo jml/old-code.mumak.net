@@ -1,0 +1,22 @@
+---
+layout: post
+title: "pyflakes now warns about unused local variables"
+date: 2009-06-03
+comments: false
+---
+
+<div class='post'>
+I finally got around to finishing my fix for <a href="http://divmod.org/trac">Divmod</a> bug <a href="http://divmod.org/trac/ticket/2718">#2718</a> -- Warn about unused variables in methods in <a href="http://www.divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a>. Last night, the magnificent <a href="http://jcalderone.livejournal.com/">Jean-Paul Calderone</a> reviewed and landed my patch. This means that if you are using pyflakes trunk (either from Subversion <a href="http://divmod.org/svn/Divmod/trunk/">trunk</a> or from the Launchpad <a href="https://code.edge.launchpad.net/%7Evcs-imports/pyflakes/main">Bazaar import</a>), pyflakes will spot code like:<br /><pre><b><span class="code-lang">def</span></b> <b><span class="code-func">foo</span></b>(bar):<br />baz = bar + 2<br /><b><span class="code-lang">return</span></b> 12<br /></pre>and generate a warning like:<br /><pre>example.py:2: local variable 'baz' is assigned to but never used<br /></pre>I use pyflakes hooked up to <a href="http://www.emacswiki.org/emacs/FlyMake">flymake</a>, so it's always running all the time on every Python file I'm working on. Relying on it has become as second-nature as relying on syntax highlighting.  There's a whole class of mistakes I don't make any more, simply because it's on.<br /><br />However, the <span style="font-style: italic;">main</span> way it helps me is when I'm refactoring code. When extracting a function or changing a variable name, pyflakes acts like a sort of todo list for me. Now that it shows unused local variables, it's getting dangerously close to perfect.<br /><br />To get pyflakes quickly, bzr branch <a href="https://code.edge.launchpad.net/%7Evcs-imports/pyflakes/main">lp:pyflakes</a>.<br /><br />(Edit: Grammar fix)</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Celso Providelo</div>
+<div class='content'>
+Nice one! I&#39;ve packaged trunk in my <a href="https://edge.launchpad.net/~cprov/+archive/testing?field.name_filter=pyflakes&amp;field.status_filter=published&amp;field.series_filter=any" rel="nofollow">PPA</a></div>
+</div>
+<div class='comment'>
+<div class='author'>RJ Ryan</div>
+<div class='content'>
+Thanks -- I use pyflakes with flymake too, and it is a godsend!</div>
+</div>
+</div>

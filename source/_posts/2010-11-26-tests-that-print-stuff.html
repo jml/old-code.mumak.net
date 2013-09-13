@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Tests that print stuff"
+date: 2010-11-26
+comments: false
+categories:
+ - subunit data
+---
+
+<div class='post'>
+Tests that print stuff to stdout or stderr annoy me. &nbsp;They make a successful test run much less satisfying to watch, and they clutter logs when you are trying to debug a failure.<br /><br />Launchpad has quite a few tests that print stuff. &nbsp;I was going to fix them up today, but I've got a Launchpad branch in progress and I've promised myself that I'll have only one in progress at a time. Besides, the build is broken.<br /><br />Anyway, I've written a quick hack that lets you analyze a <a href="http://launchpad.net/subunit">subunit</a> stream to <a href="http://paste.ubuntu.com/536731/">see which tests print stuff</a>.<br /><br />To get a subunit stream including the output itself:<br /><pre>$&nbsp;gzip -dc testtools-experiment-r11753.subunit.gz | grep -v time: | &nbsp;python tests-with-output.py</pre><br />To get a list of the tests:<br /><pre>$&nbsp;gzip -dc testtools-experiment-r11753.subunit.gz | &nbsp;python tests-with-output.py &nbsp;| subunit-ls --no-passthrough</pre><br />For those interested, Launchpad has roughly one hundred such tests.<br /><br />As with my last post, I'm left with the feeling that subunit is great but needs a lot more polish. &nbsp;I guess my next step is to figure out how to upstream these.</div>

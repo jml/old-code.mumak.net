@@ -1,0 +1,22 @@
+---
+layout: post
+title: "testtools 0.9.2 released"
+date: 2009-12-15
+comments: false
+---
+
+<div class='post'>
+I've just released <a href="http://pypi.python.org/pypi/testtools/0.9.2">testtools 0.9.2</a>, which I firmly believe is the best <a href="https://launchpad.net/testtools">testtools</a> release ever. Thanks very much to <a href="http://rbtcollins.wordpress.com/">Robert Collins</a> and <a href="http://pybites.blogspot.com/">Benjamin Peterson</a> for making it so.<div><br /></div><div>For the last few releases, we've been working on being more than just a simple aggregation of existing unit testing best practices and tried to do our own experimental extensions.</div><div><br /></div><div>These extensions aren't actually all that exciting by themselves. We haven't added better logging support or new types of outcomes or test replay or smart rendering of error results or anything like that. I'm pretty sure testtools will never do those sorts of things.</div><div><br /></div><div>Rather, the extensions we've added are designed to let <i>you</i> do that, and then share <i>your</i> extensions with other people without getting them into the standard library's base <code>unittest</code> classes.</div><div><br /></div><div>If you are using testtools, you can change the way <code>TestCase.run()</code> works without overriding run and without figuring out how to safely call user code. You can handle exceptions raised from tests however you'd like — again not needing to change <code>TestCase.run()</code>. You can add new, rich types of assertions without having to modify some base class somewhere. You can store information on a test object that can be used by a sufficiently smart <code>TestResult</code>, which can be handy if you want to see, say, access logs for all failed tests.</div><div><br /></div><div>Of course, all this starts to get really powerful when testtools is in the standard library, and all of the other major Python test frameworks inherit from it: nose, py.test, zope.testing and Twisted Trial.</div><div><br /></div><div>Even so, it's worth switching to testtools today, just for the assertion logic alone. All it takes is changing the base class of your test cases to <code>testtools.TestCase</code>. If your test framework supports running standard Python unit tests, it'll support testtools.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>hs</div>
+<div class='content'>
+thanks for information plz u give me newely latest information.<br /><br />hs<br />http://www.softwaretestingnet.com</div>
+</div>
+<div class='comment'>
+<div class='author'>spiv</div>
+<div class='content'>
+Woo!</div>
+</div>
+</div>

@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Make it really easy to fix bugs on Ubuntu"
+date: 2010-11-15
+comments: false
+---
+
+<div class='post'>
+One of the best things that anyone ever said was, "not enough gets said about the importance of abandoning crap". Mr Glass was probably talking about writing, but his words could well have been aimed squarely at any well-established software development process.<br /><br />Right now, it's too hard to <a href="http://people.canonical.com/~dholbach/Fixing%20a%20bug.png">fix a bug in Ubuntu</a>. There are <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-improve-fixing-a-bug-workflow">a lot of things that we can do</a> to make it easier, let me tell you about mine.<br /><br />If you see a small bug in a program on your desktop, you want to something like this:<br /><br /><ol><li>Figure out what package it's in</li><li>Look for an existing bug, if not file one</li><li>Get the source</li><li>Build it, try to reproduce the bug</li><li>Actually fix the bug</li><li>Test to see that it's actually fixed</li><li>Submit it then shepherd it through whatever processes come next</li></ol><div>Much of this is monkey work if you know how to do it, or incomprehensible arcana if you don't. Either way, it's important that we abandon (or <i>automate</i>) this essentially uninteresting work.</div><div><br /></div><div>In that spirit, at UDS I wrote a script that a lot of us have been talking about for a long time. I called it <a href="https://launchpad.net/start-hacking">start-hacking</a>, because I am terrible at names and wanted to make a project. Right now, when you run the script on your Ubuntu desktop, your cursor becomes a cross-hair. When you click on an application, start-hacking will tell you the source package that the application belongs to and where you can get the source (both Ubuntu source and latest upstream if available). &nbsp;It's very simple, but that's because it builds on a very large amount of work that Canonical has done, mostly through Launchpad and Apport.</div><div><br /></div><div>Eventually, we want to make the script a much more beautiful application that gets you a built, runnable copy of any Ubuntu application or library in a test environment. &nbsp;Our goal is to make fixing a typo (or typo-level bug) as fast and as smooth as possible for any application on the desktop.</div><div><br /></div><div>All we need is a bit of time and a few volunteers.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>manny</div>
+<div class='content'>
+definitely a step in the right direction :)<br /><br />The quicker and easier the better.<br /><br />Everything step like this adds up and more bugs get fixed.</div>
+</div>
+</div>

@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Automagic packaging of binary apps for Ubuntu"
+date: 2011-08-18
+comments: false
+---
+
+<div class='post'>
+For the last few weeks I've been working on a tool to automagically package binary applications for Ubuntu.&nbsp;The idea is that anyone who wants to distribute a binary app on Ubuntu should be able to do so without having to learn how to package it.<br /><br />I've used <a href="http://pkgme.net/">pkgme</a> to build a proof-of-concept: which you can look at here: <a href="https://code.launchpad.net/~jml/+junk/pkgme-binary">lp:~jml/+junk/pkgme-binary</a>.<br /><br />Or, you can watch the demo:<br /><br /><div class="separator" style="clear: both; text-align: center;"><object class="BLOGGER-youtube-video" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" data-thumbnail-src="http://i.ytimg.com/vi/4oMDo4JbxZY/0.jpg" height="266" width="320"><param name="movie" value="http://www.youtube.com/v/4oMDo4JbxZY?f=user_uploads&c=google-webdrive-0&app=youtube_gdata" /><param name="bgcolor" value="#FFFFFF" /><embed width="320" height="266"  src="http://www.youtube.com/v/4oMDo4JbxZY?f=user_uploads&c=google-webdrive-0&app=youtube_gdata" type="application/x-shockwave-flash"></embed></object></div><br /><br />Right now, the tool assumes that the tarball:<br /><ul><li>is an application</li>
+ <li>contains ELF objects that can be scanned for symbols, which determine the dependencies</li>
+ <li>has one main executable file</li>
+ <li>that its contents can be copied into <code>/opt/$PACKAGE/</code> and can be run from there by an ordinary user</li>
+ <li>comes with a JSON file specifying extra metadata</li>
+ </ul><div>Our hope is that 90% of the binary applications we get will meet these requirements.</div><div><br /></div><div>The plan is to take this proof-of-concept and turn it into something that will run server-side behind the <a href="http://developer.ubuntu.com/">Ubuntu Developer Portal</a>. Next steps are to spec it out, create a project, start filing bugs and fix the bugs I already know about.</div><div><br /></div><div>Watch this space for more updates.<br /><br />Thanks to James Westby and Adam Conrad for their help in doing the proof-of-concept and to the dozen or so people who helped me get the darn screencast out.</div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Elliot "statik": Murphy</div>
+<div class='content'>
+Excellent screencast, thanks for taking the time to make this to explain your work.</div>
+</div>
+</div>

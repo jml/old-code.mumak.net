@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Getting set up with Twisted development"
+date: 2012-12-15
+comments: false
+---
+
+<div class='post'>
+I haven't contributed much to Twisted recently, but today I'd really like to get my <a href="http://twistedmatrix.com/trac/ticket/6180">new Deferred documentation </a>ready for review.<br /><br />To my knowledge, the only sensible way to actually work on Twisted code is using <a href="http://twistedmatrix.com/trac/wiki/Combinator">Combinator</a>. With it, I can make branches, commit to those branches, merge in updates from trunk and when my branch is approved, actually land it. All of this is described more fully in Twisted's pioneering <a href="http://twistedmatrix.com/trac/wiki/UltimateQualityDevelopmentSystem">Ultimate Quality Development System</a>.<br /><br />Combinator works by convention, so its source <i>must</i>&nbsp;live within a <span style="font-family: Courier New, Courier, monospace;">Divmod/trunk</span> directory. Since I have the divmod.org code in a colocated Bazaar branch in <span style="font-family: Courier New, Courier, monospace;">~/src/divmod.org</span>, I created a new directory under <span style="font-family: Courier New, Courier, monospace;">~/src/</span> called Divmod and symlinked trunk to it, approximating the instructions on the <a href="http://twistedmatrix.com/trac/wiki/Combinator">Combinator page</a>.<br /><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ cd src</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ mkdir Divmod</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ cd Divmod</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ ln -s ~/src/divmod.org trunk</span><br /><br />Trying to actually use Combinator only got me stack traces and warnings though, so I poked around in the source code and now have a shell script in ~/src/combinator.sh that does this:<br /><br /><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; export COMBINATOR_PROJECTS=/home/jml/src</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; eval `python ~/src/Divmod/trunk/Combinator/environment.py`</span><br /><div><br /></div><div>Sourcing that script works:</div><div><br /></div><div><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ . &nbsp;~/src/combinator.sh</span></div><br /><span style="font-family: Helvetica Neue, Arial, Helvetica, sans-serif;">After that, I blew away my checkout of Twisted and made a newer, Combinator-friendly one:</span><br /><span style="font-family: Helvetica Neue, Arial, Helvetica, sans-serif;"><br /></span><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ rm -rf ~/src/Twisted</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; $ chbranch Twisted trunk \</span><br /><span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; &nbsp; svn+ssh://svn.twistedmatrix.com/svn/Twisted/trunk</span><br /><div><br /></div><div><span style="font-family: Helvetica Neue, Arial, Helvetica, sans-serif;">All a little bit of a hassle, but worth it to get back into the swing of contributing to Twisted.</span></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Jonathan Lange</div>
+<div class='content'>
+Thanks.  This is largely written so I can refer to it later.<br /></div>
+</div>
+<div class='comment'>
+<div class='author'>glyph</div>
+<div class='content'>
+Thanks for posting the refresher.  I hope we can make it less necessary for people to jump through this hoop in the future, but until we do that it&#39;s nice to have people making these ad-hoc updates to the docs!</div>
+</div>
+</div>

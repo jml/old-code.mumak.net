@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Get Xchat-Gnome completing with colon"
+date: 2010-09-27
+comments: false
+---
+
+<div class='post'>
+Since the late nineties, I've had my IRC clients configured to complete nicks with a colon. For example:<br /><br /><pre>&lt;jml&gt; dash: there's an otherwise normal guy at work who uses tcl as his scripting language of choice</pre><br />But during some Ubuntu upgrade at some point in the last couple of years, Xchat-Gnome changed my settings without telling me. Now it completes nicks like this:<br /><br /><pre>&lt;jml&gt; itamar, a cunning, enviable balance between argument and unsupported assertion</pre><br />Which is so clearly inferior to a colon-based nick-completion that I do not have to list the reasons. There are many.<br /><br />In any case, today I figured out how to change it:<br /><br /><pre>/set completion_suffix :<br /></pre><br />That's it. Xchat will take care of saving the configuration for you. I'm so happy.<br /><br /><b>Update:</b>&nbsp;Actually, no, Xchat does <i>not</i> take care of saving the configuration for you.<br /><br />You must open <code>~/.xchat2/xchat.conf</code>, find the line that says <code>completion_suffix = ,</code> and change it to say <code>completion_suffix = :</code> and then, crucially, <i>save</i> your changes to that file. You'll probably have to restart Xchat as well.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Gary van der Merwe</div>
+<div class='content'>
+Nice - You made me happy too!</div>
+</div>
+</div>

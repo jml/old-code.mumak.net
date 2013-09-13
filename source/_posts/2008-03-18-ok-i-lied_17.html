@@ -1,0 +1,11 @@
+---
+layout: post
+title: "OK I lied"
+date: 2008-03-18
+comments: false
+categories:
+ - Uncategorized
+---
+
+<div class='post'>
+The next post is actually about a Bazaar plugin that I've now got ready to share. To get it, 'bzr branch lp:~jml/+junk/merged-branches'.<br /><br />Once you've got it, run 'bzr merged-branches' in the trunk of your project. It will then show you all branches in sibling directories that are safe to delete.  That is,<br /><ul><br />	<li>They have no uncommitted changes.</li><br />	<li>They have no "unknown" files. (Files outside of version control that haven't been explicitly ignored.)</li><br />	<li>They have no shelved changes. The plugin will only check for this if it can find bzrtools.</li><br /></ul><br />The branch is now at the point where it works for me, but it still belongs in '+junk' — here's why:<br /><ul><br />	<li>It assumes that you have a trunk branch in the same directory as all of your other branches.</li><br />	<li>It assumes that branches and working trees are the same thing.</li><br />	<li>It's called 'merged-branches' when it really means 'safe-to-delete'.</li><br />	<li>It doesn't make it easy to see why a branch is <em>not</em> safe to delete.</li><br />	<li>It doesn't let you customize the conditions of the search. Maybe you want to see all branches with uncommitted changes.</li><br /></ul><br />Still, if you are like me and make a lot of branches, it's quite useful. I'll tolerate bugs, accept patches and welcome encouragement.</div>

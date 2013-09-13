@@ -1,0 +1,37 @@
+---
+layout: post
+title: "Command line apps"
+date: 2009-10-15
+comments: false
+---
+
+<div class='post'>
+Back in the day, I used to want to use <a href="http://twistedmatrix.com/projects/core/documentation/howto/options.html">twisted.python.usage</a> for all of my command-line apps. It's a fairly nice <a href="http://twistedmatrix.com/documents/8.2.0/api/twisted.python.usage.html">API</a> &amp; a good way of writing code.<br /><div><br /></div><div>Since I started writing Bazaar plugins though, I've fallen in love with Bazaar's command interface. <a href="https://code.edge.launchpad.net/~jkakar">Jamu</a> has too, so he wrote <a href="https://edge.launchpad.net/commandant">Commandant</a>. I don't really understand it though, which is mostly for lack of trying.</div><div><br /></div><div>Michael turned our internal EC2-using testing tool into a bzr-a-like app <a href="http://bazaar.launchpad.net/~launchpad-pqm/launchpad/stable/annotate/head:/lib/devscripts/ec2test/builtins.py">using the Bazaar APIs</a>. There's a bit of duplication, but it works pretty well.</div><div><br /></div><div>The Bazaar developers are aware that their command-line interface code rocks and that it's too closely bound to Bazaar. I'm not sure whether anyone has filed bugs about it or not, but here's what I actually want:</div><div><ul><li>The subcommand interface, e.g. "bzr foo"</li><li>Option parsing</li><li>Help</li><li>Command aliasing</li><li>Error handling</li><li>Progress display</li><li>Verbosity control&nbsp;</li><li>Logging</li><li>Debug helpers (e.g. The way bzr handles Ctrl-\)</li></ul><div>There's also a bunch of cool stuff in Bazaar that's useful for a lot of applications, command-line or not.</div><div><ul><li>Registries</li><li>Transports</li><li>Hooks</li><li>Configuration files</li><li>Oh yeah, <b>plugins</b>. (How could I have forgotten this?)</li></ul><div>Sometimes I wish projects like Bazaar and Twisted split this sort of stuff out into separate packages. That would probably change the way the packages are maintained, and I don't know whether it would be for better or for worse.</div><div><br /></div><div>Sadly, no moral or action for this post. Just stuff that's been on my mind that I wanted to write down and publish. I'd very much welcome input.<br /><br /><b>Update: </b>Was rewriting this post, then realized that, umm, well, it was a rewrite.</div></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Thanks bignose, I hadn&#39;t heard of that one. I&#39;ll take a look at it.<br /><br />I agree that a progress bar is separate from a command-line parser, but it&#39;s not separate from a command-line app toolkit. I could have made my point better, but what I meant is that Bazaar has a great command-line app toolkit begging to be separated from the dvcs bits.</div>
+</div>
+<div class='comment'>
+<div class='author'>bignose</div>
+<div class='content'>
+Most of the features you list are available with the popular <a href="http://pypi.python.org/pypi/argparse" rel="nofollow">argparse</a> library.<br /><br />As for “progress bar”, I don&#39;t think that belongs much in a command-line parser library; a separate facility for progress bar output seems more suitable.</div>
+</div>
+<div class='comment'>
+<div class='author'>jml</div>
+<div class='content'>
+Dammit. I wrote a reply which then got lost.<br /><br />Here it is again, from memory.<br /><br />Jamu, as I said, I&#39;ve only ever had a fairly shallow look at Commandant. Here are a few things from skimming the README:<br /><br /> * I don&#39;t want to have to use shell aliases to have my program be called by its proper name.<br /><br /> * I dislike the idea of putting files in a directory to get commands. I&#39;d much rather an explicit registry.<br /><br /> * I don&#39;t want the word &quot;Commandant&quot; appearing in the output of my program.<br /><br />Maybe what all of this means is that I was looking for a library, and the README makes it look more like a framework. This is all rather shallow, of course, since I still haven&#39;t actually tried to use it in anger.<br /><br />Hope this helps.<br /><br />jml</div>
+</div>
+<div class='comment'>
+<div class='author'>Jamu Kakar</div>
+<div class='content'>
+I want to add support to Commandant for command aliasing (which implies some kind of configuration file handling), progress display and plugins.  I&#39;m not sure what you mean by &#39;error handling&#39;, but at present Commandant displays str(exception) when an exception is raised by a command.<br /><br />If you have any advice on how to make it easier to figure out what Commandant is for, I&#39;d love to hear it.  Also, thanks for publicizing Commandant!</div>
+</div>
+<div class='comment'>
+<div class='author'>Mary</div>
+<div class='content'>
+This seems like the kind of thing a bounty would be good for, actually.<br /><br />I&#39;m generally pretty sceptical of bounties: &quot;here&#39;s $200 to do $3000 worth of software development, oh, and we&#39;ll haggle over standards just as much as we would if we were paying $3000.&quot; But this sort of task strikes me as fairly well defined, unlikely to blow out significantly in estimates, a bit low priority and unexciting for core volunteers, potentially high impact in terms of users.</div>
+</div>
+</div>

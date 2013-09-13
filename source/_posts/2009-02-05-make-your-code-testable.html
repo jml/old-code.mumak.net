@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Make your code testable"
+date: 2009-02-05
+comments: false
+---
+
+<div class='post'>
+A lot of people struggle with writing unit tests. They sit down with the noblest of intentions, ready to turn themselves around and be good little engineers, but then somehow, suddenly, everything goes horribly wrong.<br /><br />It turns out that it's really hard to write unit tests. When we first discover this, we generally consider two options:<br /><ol><li>Give up</li><li>Work hard to write the damn test</li></ol>There is actually a third way: <span style="font-style: italic;">make the code easier to test</span>. Many of the barriers to testing are built from the design of one's own code. Globals, hard-wired access to resources, poorly parametrized behaviour and badly encapsulated data can make it a nightmare to test things.<br /><br />The cool thing is, if you do this, your code base will actually be more fun and more productive to work with. Your application will start to look like a set of libraries that build high-level concepts, rather than like a maze of twisty passages. This is actually why the <a href="http://code.mumak.net/2009/02/bazaar-commands.html">Bazaar API is so amazingly good</a> -- they've written their code to make it easy to test.<br /><br />Thanks to <a href="http://strongdynamic.blogspot.com/">Cory Dodt</a> for the idea for this post.</div>

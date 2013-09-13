@@ -1,0 +1,17 @@
+---
+layout: post
+title: "pyunit3k renamed to testtools"
+date: 2008-10-04
+comments: false
+---
+
+<div class='post'>
+After thinking and talking about it for ages, I've renamed 'pyunit3k' to 'testtools'. You can now find it at https://launchpad.net/testtools or get your copy by running 'bzr branch lp:testtools'.<br /><br />This is the only major API change I plan to do without introducing some sort of formal release process. The code as it stands is highly stable, well tested and in use on production systems. Download it, use it, send me patches.<br /><br /><span style="font-weight: bold;">Addendum</span><br />I forgot to mention that ITestResult has been removed, and thus the undocumented dependency on zope.interfaces. If this matters to you, please let me know.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>James Henstridge</div>
+<div class='content'>
+Doesn't testresources now depend on the old name of this library?  That'd be a good thing to get fixed.<BR/><BR/>The new name seems better: after all, the library isn't "pyunit for Python 3000" ...</div>
+</div>
+</div>

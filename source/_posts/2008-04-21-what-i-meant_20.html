@@ -1,0 +1,11 @@
+---
+layout: post
+title: "What I meant"
+date: 2008-04-21
+comments: false
+categories:
+ - Uncategorized
+---
+
+<div class='post'>
+<a href="http://z3p.tumblr.com/">z3p</a> recently <a href="http://z3p.tumblr.com/post/32324725">blogged about</a> a comment I made in <a href="http://twistedmatrix.com/trac/ticket/2710">a code review</a>. In the review, I linked to:<br /><br /><img src="http://74.54.212.169/2ERcULhJC81alpg64P4WN7Of_400.jpg" alt="The only measure of code quality is WTFs / minute" /><br /><br />That's a negative and grumpy way of phrasing an idea that I've come to value a lot: <em>good code expresses its intent clearly.</em><br /><br />When looking at a patch, the reviewer needs to understand two things: the intent of the code and the intent of each <em>change</em> to the code. To be clear on the former, you need:<br /><ul><br />	<li>intent-revealing names.</li><br />	<li>good abstractions / interfaces.</li><br />	<li>good, small tests.</li><br />	<li>simple implementations where possible.[1]</li><br />	<li>docstrings where appropriate</li><br />	<li>comments where appropriate.</li><br /></ul><br />That's not exhaustive, but it's in a rough order.<br /><br />To be clear on the intent of your change to code, you need:<br /><ul><br />	<li>Small patches.</li><br />	<li>A good bug / spec with a good, short summary.</li><br />	<li>A review request letter, summarizing your implementation strategy, any compromises you made, gaps in testing, future work etc.</li><br /></ul><br />That's not exhaustive either. In #2037, I didn't understand the motivation for lots of the code, nor for some of the changes to the code.<br /><br />I'm indebted to <a href="http://andrew.puzzling.org">Andrew Bennetts</a> for teaching me that the first duty of a reviewer is to ensure that the code is clear and to <a href="http://intellectronica.net/">Tom Berger</a> for reminding me that compromises are worth noting.<br /><br />----<br /><br />[1] Actually, this reminds me of something I heard <a href="http://en.wikipedia.org/wiki/Don_Carson">a preacher</a> say, "before I give a sermon, I go through it, find everything clever, and take it out" (I paraphrase, not having a reference on hand).<br /><br />In as much as sermons and code should both be ego-free communications of ideas, I think this is sound advice for hackers.</div>
