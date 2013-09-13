@@ -10,12 +10,12 @@ Last weekend I spent a bunch of timing hacking on <a href="https://launchpad.net
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2008-08-19 00:31</span></div>
 <div class='content'>
 Thanks for the comments John.<BR/><BR/>1) The way to run the testresources tests is 'make check'. I guess test_all can be tweaked to do PYTHONPATH setup.<BR/><BR/>2) The dependency is on zope.interfaces -- available separately from the main zope. I guess I don't really need to use it, and could use an abstract class instead.</div>
 </div>
 <div class='comment'>
-<div class='author'>jam</div>
+<div class='author'>jam<span class='comment-date'> on 2008-08-18 15:28</span></div>
 <div class='content'>
 I thought I'd give a look at the testresources code. I've peeked at it before, and I'm generally interested in both testresources and your pyunit3k work.<BR/><BR/>Some quick comments:<BR/><BR/>1) There is a 'test_all.py' file in the root directory, but running it fails because the actual library is under 'lib/'. So you have to do something like "PYTHONPATH='lib' ./test_all.py" which seems a bit odd.<BR/><BR/>2) In grabbing pyunit3k, I figured I'd run *its* test suite as well. However that seems to depend on 'Zope' being installed. Which is a rather huge dependency for a small library. Is it truly dependent? Is it only the test suite? Could you something like the bzr 'Feature' work to make it a soft-dependency? (Test if it is available, else skip and warn)</div>
 </div>

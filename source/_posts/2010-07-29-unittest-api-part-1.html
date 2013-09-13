@@ -10,32 +10,32 @@ It's a little known fact, but unittest actually has an API.<br /><br />This isn'
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2010-08-02 12:13</span></div>
 <div class='content'>
 Aaron, an <i>instance</i> of TestCase is a single test.<br /><br />When you have many test_ methods on a TestCase, what actually happens is that one TestCase object gets constructed for each test method.<br /><br />Say you&#39;ve got:<br /><br />class TestFoo(TestCase):<br />  def test_a(self):<br />    pass<br />  def test_b(self):<br />    pass<br /><br />(please forgive the lack of indentation.)<br /><br />Then the default test loader will construct something like:<br />[TestFoo(&quot;test_a&quot;), TestFoo(&quot;test_b&quot;)]<br /><br />Thanks for asking the question. It&#39;s a common point of confusion. Indeed, it tripped me up the first year or so I was writing Trial.</div>
 </div>
 <div class='comment'>
-<div class='author'>Aaron</div>
+<div class='author'>Aaron<span class='comment-date'> on 2010-07-30 19:29</span></div>
 <div class='content'>
 I don&#39;t understand how a TestCase can be a single test when the test suites I use all have multiple test cases per TestCase.</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2010-07-30 16:39</span></div>
 <div class='content'>
 Thanks for the comments all. I&#39;m glad you like it.<br /><br />Michael, once I&#39;m finished with the series and have a chance to get some more feedback – particularly from other framework authors – I&#39;ll try to turn these into patches. (And also try to get over the fact that I won&#39;t be able to use zope.interface to do so).<br /><br />Your plugin proposal is up there on my list of things to respond to, but I likely won&#39;t get a chance until the weekend.</div>
 </div>
 <div class='comment'>
-<div class='author'>Michael Foord</div>
+<div class='author'>Michael Foord<span class='comment-date'> on 2010-07-30 16:20</span></div>
 <div class='content'>
 Great stuff Jonathan. If you want to formulate these as patches to the unittest docs then please feel free. :-)<br /><br />Would be interested in your feedback on my unittest plugin proposal too.</div>
 </div>
 <div class='comment'>
-<div class='author'>jam</div>
+<div class='author'>jam<span class='comment-date'> on 2010-07-30 15:51</span></div>
 <div class='content'>
 I think it is quite useful.<br />We&#39;ve certainly had our share of unittest issues in bzr, so it is nice to have a fairly easy-to-read explanation of how it is at least <i>supposed</i> to work.</div>
 </div>
 <div class='comment'>
-<div class='author'>Kevin H</div>
+<div class='author'>Kevin H<span class='comment-date'> on 2010-07-30 04:23</span></div>
 <div class='content'>
 Heck yeah, it&#39;s useful!<br /><br />Please keep it up!</div>
 </div>

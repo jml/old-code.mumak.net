@@ -10,37 +10,37 @@ In Argentina I hacked up a little command for the 'launchpad' Bazaar plugin. It'
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2009-02-24 06:12</span></div>
 <div class='content'>
 There's a fix for the issues here in the Bazaar review queue: http://bundlebuggy.aaronbentley.com.</div>
 </div>
 <div class='comment'>
-<div class='author'>bialix</div>
+<div class='author'>bialix<span class='comment-date'> on 2009-02-22 06:59</span></div>
 <div class='content'>
 IIRC, public branch settings used only by `bzr send` command, and maybe by pqm plugin (I'm not sure).<BR/><BR/>Your command just unclear in what it ought to do and why for it designed. So...</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2009-02-21 22:27</span></div>
 <div class='content'>
 bialix, the main use case for this was to open the pages of branches that you already have locally. The command you type ought to work though.<BR/><BR/>Do you know why having public branches set is useful in general?</div>
 </div>
 <div class='comment'>
-<div class='author'>bialix</div>
+<div class='author'>bialix<span class='comment-date'> on 2009-02-21 11:49</span></div>
 <div class='content'>
 $ bzr lp-open lp:qbzr<BR/><BR/>bzr: ERROR: There is no public branch set for "bzr+ssh://bazaar.launchpad.net/~qbzr-dev/qbzr/trunk/".<BR/><BR/>Your neat trick is a bit useless without public branch. Why I should have public branch for lp:qbzr branch anyway?</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2009-02-21 02:04</span></div>
 <div class='content'>
 https://bugs.edge.launchpad.net/bzr/+bug/332372</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2009-02-21 02:04</span></div>
 <div class='content'>
 Good point!<BR/><BR/>At the moment works based on the public location, which is different from the push location. I guess the push location could be used as a fallback.</div>
 </div>
 <div class='comment'>
-<div class='author'>Eduardo de Oliveira Padoan</div>
+<div class='author'>Eduardo de Oliveira Padoan<span class='comment-date'> on 2009-02-21 02:01</span></div>
 <div class='content'>
 Don't seem to work with local branches pushed (with --remember) to launchpad. <BR/><BR/>$ bzr lp-open<BR/>bzr: ERROR: There is no public branch set for ...</div>
 </div>

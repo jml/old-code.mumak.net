@@ -10,47 +10,47 @@ One of the hallway conversations I've had a few times so far at EuroPython goes 
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>Richard Jones</div>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-04 00:34</span></div>
 <div class='content'>
 Kilroy, I think you need to read the comments already posted here (maybe again, but reading your reply I can&#39;t help thinking for the first time).<br /><br />In particular, about HOWTOs &quot;B&quot; specifically said &quot;So you read a tutorial and you get told you have to write 10 lines of code, except you only know what 1 of those lines actually does.&quot;<br /><br />Without solid API documentation to back them up those HOWTOs are basically just crumbs thrown out to try to satisfy the hungry masses.</div>
 </div>
 <div class='comment'>
-<div class='author'>Kilroy</div>
+<div class='author'>Kilroy<span class='comment-date'> on 2009-07-04 00:02</span></div>
 <div class='content'>
 I keep hearing things like this as well, and I just don&#39;t understand why so many are so intimidated by twisted. It really isn&#39;t any harder to get to grips with than any other large python project like TG IMHO. They do have some tools to kick you into gear a little faster perhaps. <br /><br />I also hear things like &quot;twisted eats your errors&quot;, &quot;twisted doesn&#39;t let me use threads&quot;, &quot;twisted can&#39;t work with my libraries&quot;, &quot;you can&#39;t use databases with twisted&quot; - all utter nonsense, but I keep hearing it over and over again. They&#39;re usually in the form of anecdotal stories &quot;twisted ate all my errors, I promise I attached errbacks&quot;.  <br /><br />Some 5 minute howtos may be the answer to some of these. If we listen to a few of these complaints and create a &quot;how to access your ${foo}sql instance&quot;, &quot;how to set up logging&quot;, &quot;how to use callInThread/callFromThread&quot;, &quot;why forgetting your errbacks is bad&quot; it could be something to point folks to.</div>
 </div>
 <div class='comment'>
-<div class='author'>europearchive</div>
+<div class='author'>europearchive<span class='comment-date'> on 2009-07-01 12:24</span></div>
 <div class='content'>
 For me the biggest issue with Twisted is the steep learning curve. It isn&#39;t helped by the documentation - although the twisted book goes some way to dealing with that. Most of what I know about Twisted I learned from the source code though. <br /><br />I wrote a large heavy duty crawler in it - including custom  DNS and HTTP protocols. And if I was honest I am still not 100% sure how the protocol/factory bits work although I obviously have made them work well (because the crawler worked really well) <br /><br />Not sure what or even if you would want to do something about this. Twisted is incredibly powerful and can do some superb stuff - but on the other hand I am unlikely to start new projects with it because either I maintain it or I have to push team members up that learning curve before they can do anything on it.</div>
 </div>
 <div class='comment'>
-<div class='author'>James Henstridge</div>
+<div class='author'>James Henstridge<span class='comment-date'> on 2009-07-01 02:20</span></div>
 <div class='content'>
 I think it would be a lot easier to understand Twisted if it was smaller.  I don&#39;t mean remove features, but rather reduce cases where it duplicates functionality from the standard library.<br /><br />For example, if I am trying to understand the deferred concept, I need to understand failures.  I already understand exceptions, but now need to learn about this similar but slightly different concept.<br /><br />For each of the bits of twisted.python where standard library interfaces have been extended, it would be good to consider them bugs that should eventually be fixed by getting the standard library updated.  For failures, perhaps the exception handling changes in Python 3 are enough to use directly.<br /><br />In other cases, I think it would be useful to look at pushing some of Twisted&#39;s core concepts into the standard libraries.  The deferred system is one I&#39;ve mentioned before.  The API review that would come it would likely be helpful too.</div>
 </div>
 <div class='comment'>
-<div class='author'>Richard Jones</div>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-01 01:01</span></div>
 <div class='content'>
 ps. I also like Twisted ;)</div>
 </div>
 <div class='comment'>
-<div class='author'>Richard Jones</div>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-01 01:00</span></div>
 <div class='content'>
 This comment has been removed by the author.</div>
 </div>
 <div class='comment'>
-<div class='author'>Richard Jones</div>
+<div class='author'>Richard Jones<span class='comment-date'> on 2009-07-01 01:00</span></div>
 <div class='content'>
 &quot;B&quot; said. Twisted&#39;s just too impenetrable for newbies. As a seasoned Twisted programmer (ie. I&#39;ve written a few systems using it) I&#39;m still not sure where to look in the docs for simple things like the API for deferreds and how they work. <br /><br />The inheritance tree is part of this: the API docs for a lot of classes just indicate that they inherit from some other class(es) and add some (un- or poorly-documented) new methods. To find out how to use said class you have to dig right down to the base class(es) and often their documentation is also poor/missing/too abstract.</div>
 </div>
 <div class='comment'>
-<div class='author'>B</div>
+<div class='author'>B<span class='comment-date'> on 2009-06-30 22:53</span></div>
 <div class='content'>
 I like Twisted.<br /><br />But, I know where people are coming from. You get a bunch of docs that just don&#39;t seem to quite fit together and the API reference just doesn&#39;t seem quite finished, so your learning process is scattered all over the place.<br /><br />So you read a tutorial and you get told you have to write 10 lines of code, except you only know what 1 of those lines actually does. The rest is just &quot;necessary&quot;, but since you don&#39;t know what it does, it&#39;s easy to see why people think it&#39;s unnecessary boilerplate, when in fact it&#39;s a bunch of powerful tools that you can use to extend your application.<br /><br />I really believe that the only thing that creates such an unexpected number of Twisted detractors is the fact that there isn&#39;t a nice, easy, pretty, consistent documentation system that takes each part of Twisted as a clean slate, providing easy access to all the core stuff that&#39;s being used in the examples as assumed knowledge.<br /><br />Once the assumed knowledge is clearly laid out and accessable from every page I think everything will fall into place.<br /><br />Learning a new API, especially one as extensive as Twisted&#39;s, is hard enough already, without also having to juggle in your mind a kludgy and patchy documentation system.<br /><br />(I really, really do like Twisted a lot though)</div>
 </div>
 <div class='comment'>
-<div class='author'>Geekwad</div>
+<div class='author'>Geekwad<span class='comment-date'> on 2009-06-30 20:27</span></div>
 <div class='content'>
 If only we *could* force them to use zope.interface.  ;-)</div>
 </div>

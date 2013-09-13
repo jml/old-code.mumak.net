@@ -10,32 +10,32 @@ I like unit testing a lot. I've recently been thinking about whether it really i
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>AmanicA</div>
+<div class='author'>AmanicA<span class='comment-date'> on 2009-11-12 12:05</span></div>
 <div class='content'>
 For me a major benefit is that you save time. I.e you don&#39;t have to manually test something 100 times until it works correctly. You just run the test and it should be able to automatically do the test in less time than it would have taken to do it manually. With the added benefit that you can redo the test in a months time without remembering exactly how it works.<br /><br />Another advantage for me is that it gets you thinking about what exactly you are trying to do before you spend the time going in circles of implementation while you are still trying to figure out what you are trying to do.<br />Especially if you doing it right:<br />http://en.wikipedia.org/wiki/Behavior_Driven_Development</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2009-11-11 23:28</span></div>
 <div class='content'>
 Cory, I wasn&#39;t talking about testing when I was talking about right things, costs and benefits.<br /><br />Bice, I disagree..</div>
 </div>
 <div class='comment'>
-<div class='author'>Cory</div>
+<div class='author'>Cory<span class='comment-date'> on 2009-11-11 19:54</span></div>
 <div class='content'>
 &gt; What happened to doing something because it was the right thing?<br /><br />This isn&#39;t a moral issue, you won&#39;t go to hell if you didn&#39;t write any unit tests. ;-)<br /><br />Something is the right thing if the costs outweigh the benefits.  Unit tests clearly add value to the process, and for me it&#39;s just as clear that the value is greater than the cost.  Most people at least agree that testing (of some kind) reduces the time-spent-per-bug.<br /><br />I think the debate is really about the <i>opportunity</i> cost of unit testing; could we be doing some BETTER form of testing, if we weren&#39;t writing unit tests?<br /><br />For me, the answer is &quot;maybe, but I haven&#39;t heard about it yet&quot;.</div>
 </div>
 <div class='comment'>
-<div class='author'>Travis B. Hartwell</div>
+<div class='author'>Travis B. Hartwell<span class='comment-date'> on 2009-11-11 10:09</span></div>
 <div class='content'>
 Sure, you don&#39;t need as many of the unit tests in a language like Haskell, because you can encode some of the constraints on behavior in the type system and the compiler will handle ensure these.<br /><br />But, I almost think I would be more inclined to do testing of at least the core structures and functions of my applications if I were in Haskell because in fact it sounds like it is easier.  With tools like QuickCheck and HPC and some more advanced checkers as well, there is a large toolkit to do so.<br /><br />I recently have been re-reading Real World Haskell and Chapter 11 Testing and Quality Assurance (http://book.realworldhaskell.org/read/testing-and-quality-assurance.html) makes me feel like the cost vs benefit ratio is definitely more bang for buck.<br /><br />I also remember watching a talk by Don Stewart (and perhaps another of the xmonad developers, I can&#39;t remember right now) about the development of xmonad and the testing that went on.  It was very enlightening.<br /><br />I feel like I&#39;d be more prone to catch the TDD spirit (well, more correctly the attitude that the code isn&#39;t done until it is tested) while using Haskell than I have been using Python.  I have not, in fact, got into TDD in Python because it does seem onerous.</div>
 </div>
 <div class='comment'>
-<div class='author'>Bice Dibley</div>
+<div class='author'>Bice Dibley<span class='comment-date'> on 2009-11-11 09:53</span></div>
 <div class='content'>
 You can focus on what&#39;s right only when there is no cost to consider.</div>
 </div>
 <div class='comment'>
-<div class='author'>Gary van der Merwe</div>
+<div class='author'>Gary van der Merwe<span class='comment-date'> on 2009-11-11 09:40</span></div>
 <div class='content'>
 Yes - Language is very important in this debate. Test are more important for dynamically typed languages (e.g. python), than for statically typed languages (e.g. C#.) <br /><br />For example, if you rename a method, and you don&#39;t change one of the caller of the method (cause you missed it,) the static language will pick this up at compile time, but with the dynamic language, if you don&#39;t have tests, it&#39;s going to show up later as a bug.</div>
 </div>

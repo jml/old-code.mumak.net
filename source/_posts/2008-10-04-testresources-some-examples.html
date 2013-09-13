@@ -10,32 +10,32 @@ There's been a clamor for more documentation on how to use <a href="https://laun
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2011-04-15 11:57</span></div>
 <div class='content'>
 *ahem* https://answers.launchpad.net/testresources</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2011-04-15 11:57</span></div>
 <div class='content'>
 Not really. testresources may have changed a lot since I wrote this blog post. I&#39;m not using it day-to-day these days.<br /><br />Your best hope for getting help is to ask a question on  or to ask &#39;lifeless&#39; on the #python-testing channel on Freenode.<br /><br />Good luck!</div>
 </div>
 <div class='comment'>
-<div class='author'>Max Magee</div>
+<div class='author'>Max Magee<span class='comment-date'> on 2011-04-14 19:17</span></div>
 <div class='content'>
 Sorry to be a bother, but I&#39;m elbows deep in an implementation of testresources currently, and I&#39;m getting &quot;TypeError: make() takes exactly 1 argument (2 given)&quot; in each test case (method of the ResourcedTestCase class).<br /><br />I went back and reconstructed the 3rd complex example from your .py and Storm, and I get the exact same error from testresources.__init__ (where I am getting it in mine).  Does this ring a bell?</div>
 </div>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2011-04-14 18:08</span></div>
 <div class='content'>
 I&#39;m glad you liked it, and that it&#39;s still useful years later.<br /><br />In an ideal world, yes. However, there&#39;s no way for the test framework to predict which tests will dirty which resources. Within a group of tests that declare the same resources, they just run in alphabetical order.</div>
 </div>
 <div class='comment'>
-<div class='author'>Max Magee</div>
+<div class='author'>Max Magee<span class='comment-date'> on 2011-04-13 22:07</span></div>
 <div class='content'>
 Thanks for posting this example.  I&#39;ve been struggling to understand testresource (coming from PyUnit backgroun) and your third example is the most helpful I&#39;ve seen so far.<br /><br />One question- why do you say the database gets created and destroyed <i>twice</i> in that example?  If they&#39;re optimized, shouldn&#39;t the test case that dirties the database be run last, then simply tear the db down at the end of the test run- so only <i>one</i> invocation of setup and tear down total?</div>
 </div>
 <div class='comment'>
-<div class='author'>spiv</div>
+<div class='author'>spiv<span class='comment-date'> on 2008-10-06 05:44</span></div>
 <div class='content'>
 Fully “sic” bro. :)</div>
 </div>

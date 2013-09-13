@@ -10,17 +10,17 @@ Since I wrote the notes that appear in my previous post, I've had a chance to re
 <h2>Comments</h2>
 <div class='comments'>
 <div class='comment'>
-<div class='author'>jml</div>
+<div class='author'>jml<span class='comment-date'> on 2012-06-25 10:27</span></div>
 <div class='content'>
 @clint-fewbar, thanks for the &#39;ccze&#39; tip. That&#39;s very useful, and not just for juju charming.<br /><br />@Kapil, thanks. I discovered replay and log level filtering pretty early on. The log level filtering was a bit annoying as -l ERROR didn&#39;t give me <i>all</i> the errors, included some non-errors, and didn&#39;t provide enough context for the errors that were included.<br /><br />I&#39;m not really sure what an agent is or how it matters.</div>
 </div>
 <div class='comment'>
-<div class='author'>Kapil Thangavelu</div>
+<div class='author'>Kapil Thangavelu<span class='comment-date'> on 2012-06-23 01:40</span></div>
 <div class='content'>
 thanks for the feedback.<br /><br />just fwiw, juju debug-log has very fine grained options for exactly targeting what your interested in, you can listen in on a particular agent or group of agents,  exclude hook output, capture logs at a particular level, replay logs, etc.</div>
 </div>
 <div class='comment'>
-<div class='author'>clint-fewbar</div>
+<div class='author'>clint-fewbar<span class='comment-date'> on 2012-06-22 19:43</span></div>
 <div class='content'>
 Jono, thanks so much for spending time with juju, its really great to hear some fresh new thoughts (and to have a few old problems reiterated so we remember to address them.)<br /><br />For the feedback loop, I think the &#39;debug-hooks&#39; command is going to save you a lot of problems at least in terms of being able to run your hook over and over until its &quot;right&quot;. The problem is that unlike a test suite, we are changing the system state *on purpose* so iterating means getting back to the same starting state. I do think we need to make better use of LXC&#39;s ability to clone containers in the debug-hooks command, but network complexity becomes an issue, so we&#39;ll have to keep working on this.<br /><br />Also for colorized logs:<br /><br />juju debug-log | ccze -A<br /><br />The ccze tool&#39;s general rules will produce a pretty nicely highlighted log for you. The ERROR issue remains, but I think we&#39;ll solve that soon enough with the patch you submitted. :)</div>
 </div>
